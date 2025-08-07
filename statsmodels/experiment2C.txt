@@ -1,0 +1,45 @@
+          Mixed Linear Model Regression Results
+==========================================================
+Model:             MixedLM  Dependent Variable:  brain_SIG
+No. Observations:  2175     Method:              ML       
+No. Groups:        650      Scale:               0.0031   
+Min. group size:   3        Log-Likelihood:      2967.2926
+Max. group size:   6        Converged:           Yes      
+Mean group size:   3.3                                    
+----------------------------------------------------------
+               Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+----------------------------------------------------------
+C(cohort)[EPI]  1.132    0.002 468.142 0.000  1.127  1.137
+C(cohort)[GRE]  1.115    0.002 461.114 0.000  1.110  1.120
+C(cohort)[TSE]  1.223    0.002 505.825 0.000  1.218  1.228
+PMA            -0.015    0.000 -33.221 0.000 -0.016 -0.014
+Group Var       0.001    0.002                            
+==========================================================
+
+Marginal R² = 0.54, Conditional R² = 0.65
+
+            Mixed Linear Model Regression Results
+==============================================================
+Model:               MixedLM   Dependent Variable:   brain_SIG
+No. Observations:    2175      Method:               ML       
+No. Groups:          650       Scale:                0.0031   
+Min. group size:     3         Log-Likelihood:       2970.9043
+Max. group size:     6         Converged:            Yes      
+Mean group size:     3.3                                      
+--------------------------------------------------------------
+                   Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+--------------------------------------------------------------
+C(cohort)[EPI]      1.132    0.002 468.481 0.000  1.127  1.137
+C(cohort)[GRE]      1.115    0.002 461.431 0.000  1.110  1.120
+C(cohort)[TSE]      1.223    0.002 506.293 0.000  1.219  1.228
+C(cohort)[EPI]:PMA -0.015    0.001 -23.097 0.000 -0.016 -0.014
+C(cohort)[GRE]:PMA -0.015    0.001 -23.544 0.000 -0.017 -0.014
+C(cohort)[TSE]:PMA -0.013    0.001 -20.355 0.000 -0.015 -0.012
+Group Var           0.001    0.002                            
+==============================================================
+
+Marginal R² = 0.54, Conditional R² = 0.66
+
+
+Likelihood ratio test, Chi2(2) = 7.22, p-val = 0.0270
+

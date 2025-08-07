@@ -1,0 +1,36 @@
+           Mixed Linear Model Regression Results
+===========================================================
+Model:            MixedLM Dependent Variable: GRE_brain_SIG
+No. Observations: 868     Method:             ML           
+No. Groups:       770     Scale:              0.0034       
+Min. group size:  1       Log-Likelihood:     1196.2533    
+Max. group size:  3       Converged:          Yes          
+Mean group size:  1.1                                      
+------------------------------------------------------------
+            Coef.   Std.Err.     z     P>|z|  [0.025  0.975]
+------------------------------------------------------------
+Intercept    1.116     0.002  528.288  0.000   1.112   1.120
+PMA         -0.016     0.001  -26.102  0.000  -0.018  -0.015
+Group Var    0.000     0.005                                
+===========================================================
+
+Marginal R² = 0.46, Conditional R² = 0.50
+
+           Mixed Linear Model Regression Results
+===========================================================
+Model:            MixedLM Dependent Variable: GRE_brain_EPS
+No. Observations: 868     Method:             ML           
+No. Groups:       770     Scale:              74.5521      
+Min. group size:  1       Log-Likelihood:     -3150.4518   
+Max. group size:  3       Converged:          Yes          
+Mean group size:  1.1                                      
+------------------------------------------------------------
+            Coef.   Std.Err.     z     P>|z|  [0.025  0.975]
+------------------------------------------------------------
+Intercept   80.972     0.313  258.501  0.000  80.359  81.586
+PMA         -0.712     0.090   -7.949  0.000  -0.888  -0.537
+Group Var    8.752     0.799                                
+===========================================================
+
+Marginal R² = 0.07, Conditional R² = 0.16
+

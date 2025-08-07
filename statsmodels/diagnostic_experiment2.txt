@@ -1,0 +1,51 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              brain_SIG   R-squared:                       0.352
+Model:                            OLS   Adj. R-squared:                  0.348
+Method:                 Least Squares   F-statistic:                     71.99
+Date:                Thu, 07 Aug 2025   Prob (F-statistic):           1.12e-48
+Time:                        17:00:51   Log-Likelihood:                 944.08
+No. Observations:                 534   AIC:                            -1878.
+Df Residuals:                     529   BIC:                            -1857.
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      1.1529      0.002    642.024      0.000       1.149       1.156
+PMA           -0.0084      0.001     -7.148      0.000      -0.011      -0.006
+RVV            0.0168      0.005      3.215      0.001       0.007       0.027
+brain_MD       0.3233      0.056      5.824      0.000       0.214       0.432
+PTB            0.0022      0.001      3.856      0.000       0.001       0.003
+==============================================================================
+Omnibus:                        9.437   Durbin-Watson:                   1.835
+Prob(Omnibus):                  0.009   Jarque-Bera (JB):               11.382
+Skew:                          -0.208   Prob(JB):                      0.00338
+Kurtosis:                       3.582   Cond. No.                         121.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                    Robust linear Model Regression Results                    
+==============================================================================
+Dep. Variable:              brain_SIG   No. Observations:                  534
+Model:                            RLM   Df Residuals:                      529
+Method:                          IRLS   Df Model:                            4
+Norm:                          HuberT                                         
+Scale Est.:                       mad                                         
+Cov Type:                          H1                                         
+Date:                Thu, 07 Aug 2025                                         
+Time:                        17:00:51                                         
+No. Iterations:                    17                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          1.1537      0.002    654.378      0.000       1.150       1.157
+PMA           -0.0087      0.001     -7.563      0.000      -0.011      -0.006
+RVV            0.0157      0.005      3.061      0.002       0.006       0.026
+brain_MD       0.3429      0.055      6.291      0.000       0.236       0.450
+PTB            0.0019      0.001      3.493      0.000       0.001       0.003
+==============================================================================
+
+If the model instance has been used for another fit with different fit parameters, then the fit options might not be the correct ones anymore .

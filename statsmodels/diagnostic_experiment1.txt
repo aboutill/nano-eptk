@@ -1,0 +1,88 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              brain_SIG   R-squared:                       0.352
+Model:                            OLS   Adj. R-squared:                  0.348
+Method:                 Least Squares   F-statistic:                     71.99
+Date:                Thu, 07 Aug 2025   Prob (F-statistic):           1.12e-48
+Time:                        17:15:03   Log-Likelihood:                 944.08
+No. Observations:                 534   AIC:                            -1878.
+Df Residuals:                     529   BIC:                            -1857.
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      1.1529      0.002    642.024      0.000       1.149       1.156
+PMA           -0.0084      0.001     -7.148      0.000      -0.011      -0.006
+RVV            0.0168      0.005      3.215      0.001       0.007       0.027
+brain_MD       0.3233      0.056      5.824      0.000       0.214       0.432
+PTB            0.0022      0.001      3.856      0.000       0.001       0.003
+==============================================================================
+Omnibus:                        9.437   Durbin-Watson:                   1.835
+Prob(Omnibus):                  0.009   Jarque-Bera (JB):               11.382
+Skew:                          -0.208   Prob(JB):                      0.00338
+Kurtosis:                       3.582   Cond. No.                         121.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              brain_SIG   R-squared:                       0.354
+Model:                            OLS   Adj. R-squared:                  0.348
+Method:                 Least Squares   F-statistic:                     57.93
+Date:                Thu, 07 Aug 2025   Prob (F-statistic):           5.00e-48
+Time:                        17:15:03   Log-Likelihood:                 944.81
+No. Observations:                 534   AIC:                            -1878.
+Df Residuals:                     528   BIC:                            -1852.
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      1.1526      0.002    636.853      0.000       1.149       1.156
+PMA           -0.0083      0.001     -7.048      0.000      -0.011      -0.006
+RVV            0.0169      0.005      3.235      0.001       0.007       0.027
+brain_MD       0.3127      0.056      5.564      0.000       0.202       0.423
+PTB            0.0024      0.001      4.034      0.000       0.001       0.004
+PMA:PTB       -0.0004      0.000     -1.201      0.230      -0.001       0.000
+==============================================================================
+Omnibus:                        9.235   Durbin-Watson:                   1.836
+Prob(Omnibus):                  0.010   Jarque-Bera (JB):               11.315
+Skew:                          -0.197   Prob(JB):                      0.00349
+Kurtosis:                       3.594   Cond. No.                         216.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:              brain_SIG   R-squared:                       0.353
+Model:                            OLS   Adj. R-squared:                  0.347
+Method:                 Least Squares   F-statistic:                     57.65
+Date:                Thu, 07 Aug 2025   Prob (F-statistic):           7.76e-48
+Time:                        17:15:03   Log-Likelihood:                 944.36
+No. Observations:                 534   AIC:                            -1877.
+Df Residuals:                     528   BIC:                            -1851.
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept       1.1517      0.002    482.484      0.000       1.147       1.156
+PMA            -0.0083      0.001     -7.066      0.000      -0.011      -0.006
+RVV             0.0163      0.005      3.099      0.002       0.006       0.027
+brain_MD        0.3228      0.056      5.811      0.000       0.214       0.432
+PTB             0.0022      0.001      3.838      0.000       0.001       0.003
+I(PMA ** 2)     0.0004      0.000      0.743      0.458      -0.001       0.001
+==============================================================================
+Omnibus:                        9.061   Durbin-Watson:                   1.837
+Prob(Omnibus):                  0.011   Jarque-Bera (JB):               10.967
+Skew:                          -0.198   Prob(JB):                      0.00416
+Kurtosis:                       3.579   Cond. No.                         155.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
