@@ -16,14 +16,15 @@ from utils.metrics import extract_ep_metrics
 
 
 def _gaussian_filter(
-        img, #3D
-        mask, #3D
+        img,
+        mask,
         gs_sigma=1.0,
         vox=[1.0,1.0,1.0],
         gs_axes=[0,1,2],
         **kwargs,
     ):
     
+    # Image dim
     d = np.ndim(img)
     
     # Apply Gaussian smoothing
@@ -106,7 +107,7 @@ def _poc_reconstruction(
     # Apply Gaussian smoothing
     pha = _gaussian_filter(img=pha, mask=mask, vox=vox, **kwargs)
                 
-    # Solve Helmholtz homogeneous PDE
+    # Solve POC
     vox = vox * 1e-3 # in m
     sig = _poc_solver(pha, vox=vox, **kwargs)
     
@@ -236,7 +237,6 @@ def mspoc_pipeline(
             os.path.join(temp_dir.name, f"sig_eroded-{i}.nii.gz")
             for i in range(n)
         ]
-        
     if output_mask_path is None:
         output_mask_path = os.path.join(temp_dir.name, "mask.nii.gz")
     if output_mask_eroded_path is None:
@@ -253,7 +253,7 @@ def mspoc_pipeline(
     # Iter over stacks
     for i in range(n):
         
-        # Helmholtz homogeneous reconstruction
+        # POC reconstruction
         _poc_reconstruction(
             input_pha_path=input_pha_paths[i],
             input_mask_path=input_mask_paths[i],

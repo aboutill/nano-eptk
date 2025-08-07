@@ -120,7 +120,6 @@ def degibbs(
             header_acquired["pixdim"][i] * header["dim"][i]
             / header_acquired["dim"][i] for i in range(1,4)
         ]
-        
         affine_acquired = rescale_affine(
             affine, 
             header["dim"][1:4], 

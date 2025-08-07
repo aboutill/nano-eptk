@@ -115,6 +115,7 @@ def _gaussian_filter(
         **kwargs,
     ):
     
+    # Data dims
     d = np.ndim(cmpl) 
     if np.ndim(mask) == d-1:
         mask = mask[..., None]

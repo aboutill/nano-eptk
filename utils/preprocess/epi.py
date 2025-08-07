@@ -138,7 +138,7 @@ def topup(
     up_info = info["up"]
     down_info  = info["down"]
    
-    # Empty dict
+    # Empty info
     if up_info is None and down_info is None:
         # Delete temp dir    
         shutil.rmtree(temp_dir.name)
@@ -151,7 +151,7 @@ def topup(
         info_file.write(f"1 0 0 {up_info['rd_time']}\n") 
         info_file.write(f"-1 0 0 {down_info['rd_time']}\n")
     elif pe_axis == 1:
-        info_file.write(f"0 1 0 {up_info['rd_time']}\n") # Specific to dHCP SE EPI data
+        info_file.write(f"0 1 0 {up_info['rd_time']}\n")
         info_file.write(f"0 -1 0 {down_info['rd_time']}\n")
     info_file.close()
     
@@ -257,6 +257,7 @@ def topup(
         output_topup_img_path=temp_imag_path,
     )
     
+    # Failed Topup
     if (not os.path.exists(temp_real_path)
         or not os.path.exists(temp_imag_path)):
         # Delete temp dir    

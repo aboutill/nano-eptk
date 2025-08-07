@@ -17,6 +17,7 @@ def mirtk_average_images(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "average-images",
         output_path,
@@ -31,16 +32,19 @@ def mirtk_average_images(
     
     os.system(cmd)
         
+    # Merge labels
     if label:
+        # Get filename
         base = os.path.basename(output_path).split(".nii.gz")[0]
         files = [file for file in os.listdir(output_dir)
                  if re.match(rf"{re.escape(base)}_\d+", file)]
         n = len(files)
         label_1_path = output_path.replace(".nii.gz", "_1.nii.gz")
         
+        # Iter over labels
         for i in range(n):
+            # Threshold
             label_i_path = output_path.replace(".nii.gz", f"_{i+1}.nii.gz")
-            
             fsl_threshold(
                 input_path=label_i_path,
                 output_path=label_i_path,
@@ -48,12 +52,12 @@ def mirtk_average_images(
             )
             
             if i > 0:
+                # Add labels
                 mrtrix_multiply(
                     operand1=label_i_path,
                     operand2=i+1,
                     output_path=label_i_path,
                 )
-                
                 mrtrix_add(
                     operand1=label_i_path,
                     operand2=label_1_path,
@@ -77,6 +81,7 @@ def mirtk_transform_image(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "transform-image",
         input_path,
@@ -107,6 +112,7 @@ def mirtk_register(
     output_dir = os.path.dirname(output_dof_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "register",
         "-image", input_img1_path,
@@ -131,6 +137,7 @@ def mirtk_resample_image(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "resample-image",
         input_path,

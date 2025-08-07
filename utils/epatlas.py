@@ -26,6 +26,7 @@ def construct_ep_atlas(
         verbose=False,
     ):
     
+    # Check input
     if len(input_ep_paths) < 2:
         return
     
@@ -47,31 +48,33 @@ def construct_ep_atlas(
     # Iter over EP images
     for i in range(n):
         
+        # Print progress
         if verbose:
             print(f"EP {i+1}/{n} to atlas space")
         
-        #
+        # Set path
         ep_path = input_ep_paths[i]
         
+        # Iter over age bu age template
         for j in range(m):
             
-            # 
+            # Age difference
             age_delta = input_atlas_ages[j] - input_ages[i]
             
-            # Skip 
+            # Skip condition
             if abs(age_delta) > 3 * age_sigma:
                 continue
             
-            #
+            # Print progress
             if verbose:
                 print(f"EP {i+1}/{n} to atlas space {j+1}/{m}")
             
-            #
+            # Set paths
             anat_atlas_path = input_anat_atlas_paths[j]
             warp_path = input_intra_atlas_warp_paths[j]
             temp_ep_age_path = os.path.join(temp_dir.name, f"ep_{i}_{j}.nii.gz")
             
-            #
+            # Warp to age by age template
             if  warp_path is not None:
             
                 # FSL apply warp to atlas
@@ -83,10 +86,10 @@ def construct_ep_atlas(
                 )
                 
             else:
-                # Copy files
+                # Template used used as reference, copy files
                 os.system(f"cp {ep_path} {temp_ep_age_path}")
                 
-            # Gaussian temporal weights
+            # Gaussian temporal weight
             weight = np.exp(- age_delta**2 / (2 * age_sigma**2)) # exp(- delta**2 / (2*sigma**2))
             weight /= (age_sigma * np.sqrt(2 * np.pi)) # 1 / (sigma * sqrt(2 * pi))
                     
@@ -101,22 +104,24 @@ def construct_ep_atlas(
             ep_paths[j] += [temp_ep_age_path]
             weights[j] += [weight]
             
-    # Build atlas
+    # Build age by age atlas
     for j in range(m):
         
         # Update number of EPs
         n_ep = len(ep_paths[j])
         
+        # Print progress
         if verbose:
             print(f"Building atlas {j+1}/{m} ({n_ep} EPs)")
             
+        # Skip condition
         if n_ep < 2:
             continue
         
-        #
+        # Set path
         ep_atlas_path = output_ep_atlas_paths[j]
         
-        # Concatenate all EPs weighted
+        # Concatenate all weighted EPs
         mrtrix_cat(
             input_paths=ep_paths[j],
             output_path=ep_atlas_path,
@@ -136,7 +141,7 @@ def construct_ep_atlas(
             output_path=ep_atlas_path,
         )
     
-    #
+    # Print timer
     if verbose:
         elapsed_time = datetime.datetime.now() - start_time
         print(f"EP atlas construction run time: {elapsed_time}")

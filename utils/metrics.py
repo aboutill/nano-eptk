@@ -41,7 +41,7 @@ def extract_ep_metrics(
         **kwargs
     ):
 
-    # Initalize meta
+    # Initalize metrics
     ep_metrics = {}
     
     # Load niftis
@@ -119,7 +119,7 @@ def extract_ep_metrics(
     output_dir = os.path.dirname(output_ep_metrics_path)
     os.makedirs(output_dir, exist_ok=True)
         
-    # Save metadata
+    # Save metrics
     with open(output_ep_metrics_path, 'w', encoding='utf-8') as f:
         json.dump(ep_metrics, f, ensure_ascii=False, indent=4)
         
@@ -129,7 +129,7 @@ def extract_dhcp_volume_metrics(
         output_volume_metrics_path,
     ):
     
-    # Initialize metadata
+    # Initialize metrics
     volume_metrics = {}
         
     # Load nifti
@@ -155,7 +155,7 @@ def extract_dhcp_volume_metrics(
     output_dir = os.path.dirname(output_volume_metrics_path)
     os.makedirs(output_dir, exist_ok=True)
         
-    # Save metadata
+    # Save metrics
     with open(output_volume_metrics_path, "w", encoding="utf-8") as f:
         json.dump(volume_metrics, f, ensure_ascii=False, indent=4)
     
@@ -166,14 +166,13 @@ def extract_dhcp_mean_diffusivity_metrics(
         output_md_metrics_path,
     ):
     
-    # Initialize metadata
+    # Initialize metrics
     md_metrics = {}
         
     # Load nifti
     md_nii = nib.load(input_mean_diffusivity_path)
     dhcp_labels9_nii = nib.load(input_dhcp_labels9_path)
     
-    #
     md = md_nii.get_fdata() * 1e3
     dhcp_labels9 = dhcp_labels9_nii.get_fdata()
     
@@ -199,7 +198,7 @@ def extract_dhcp_mean_diffusivity_metrics(
     output_dir = os.path.dirname(output_md_metrics_path)
     os.makedirs(output_dir, exist_ok=True)
         
-    # Save metadata
+    # Save metrics
     with open(output_md_metrics_path, "w", encoding="utf-8") as f:
         json.dump(md_metrics, f, ensure_ascii=False, indent=4)
         
@@ -210,7 +209,7 @@ def extract_outlier_metrics(
         output_outlier_metrics_path,
     ):
     
-    # Initalize meta
+    # Initalize metrics
     outlier_metrics = {}
     
     # Load data
@@ -227,5 +226,6 @@ def extract_outlier_metrics(
     output_dir = os.path.dirname(output_outlier_metrics_path)
     os.makedirs(output_dir, exist_ok=True)
         
+    # Save metrics
     with open(output_outlier_metrics_path, 'w', encoding='utf-8') as f:
         json.dump(outlier_metrics, f, ensure_ascii=False, indent=4)

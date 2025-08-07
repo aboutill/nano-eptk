@@ -12,6 +12,7 @@ def fsl_topup(
     # Initialize output directory
     os.makedirs(output_topup_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "topup",
         f"--imain={input_img_path}",
@@ -39,6 +40,7 @@ def fsl_apply_topup(
     output_dir = os.path.dirname(output_topup_img_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "applytopup",
         f"--imain={input_up_path},{input_down_path}",
@@ -65,6 +67,7 @@ def fsl_apply_warp(
     output_dir = os.path.dirname(output_img_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "applywarp",
         "-i", input_img_path,
@@ -88,6 +91,7 @@ def fsl_fill_holes(
     output_dir = os.path.dirname(output_mask_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "fslmaths",
         input_mask_path,
@@ -112,10 +116,10 @@ def fsl_randomise(
         vxl=None,
     ):
     
-    #
+    # Initialize output directory
     os.makedirs(output_path, exist_ok=True)
     
-    #
+    # Set and run command
     cmd = [
         "randomise",
         "-i", img_path,
@@ -127,9 +131,7 @@ def fsl_randomise(
         "-m", mask_path,
         "-R",
     ]
-    
     if vxf and vxl:
-        
         cmd += [
             f"--vxl={vxl}",
             f"--vxf={vxf}",
@@ -151,6 +153,7 @@ def fsl_threshold(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "fslmaths",
         input_path,

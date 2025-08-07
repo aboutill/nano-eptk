@@ -72,6 +72,7 @@ def erode_mask(
     mask_nii = nib.load(input_mask_path)
     mask = mask_nii.get_fdata()
     
+    # Resolution
     vox = mask_nii.header["pixdim"][1:4]
     
     if eros_rad > 0:

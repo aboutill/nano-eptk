@@ -27,13 +27,13 @@ def _select_stacks(
         output_info_path,
     ):
     
-    # Init dict
+    # Init info
     info = {}
     
-    # Init dicts
-    axial_dict = None
-    sagittal_dict = None
-    coronal_dict = None
+    # Init ornt infos
+    axial_info = None
+    sagittal_info = None
+    coronal_info = None
     
     # Number of stacks
     n = len(input_mag_paths)
@@ -92,51 +92,51 @@ def _select_stacks(
         # Update info
         info[i] = stack_info
         
-        # Update axial dir
+        # Update ornt info
         if slice_direction == "axial":
-            if axial_dict is None:
+            if axial_info is None:
                 
-                # Initialize axial dict
-                axial_dict = stack_info
+                # Initialize axial info
+                axial_info = stack_info
             
             else:
-                # Update axial dict if lower z-smooth in new stack
-                if z_smooth < axial_dict["z_smooth"]:
-                    axial_dict = stack_info
+                # Update axial info if lower z-smooth in new stack
+                if z_smooth < axial_info["z_smooth"]:
+                    axial_info = stack_info
                     
         elif slice_direction == "sagittal":
-            if sagittal_dict is None:
+            if sagittal_info is None:
                 
-                # Initialize sagittal dict
-                sagittal_dict = stack_info
+                # Initialize sagittal info
+                sagittal_info = stack_info
             
             else:
-                # Update sagittal dict if lower z-smooth in new stack
-                if z_smooth < sagittal_dict["z_smooth"]:
-                    sagittal_dict = stack_info
+                # Update coronal info if lower z-smooth in new stack
+                if z_smooth < sagittal_info["z_smooth"]:
+                    sagittal_info = stack_info
                     
         elif slice_direction == "coronal":
-            if coronal_dict is None:
+            if coronal_info is None:
                 
-                # Initialize sagittal dict
-                coronal_dict = stack_info
+                # Initialize coronal info
+                coronal_info = stack_info
             
             else:
-                # Update sagittal dict if lower z-smooth in new stack
-                if z_smooth < coronal_dict["z_smooth"]:
-                    coronal_dict = stack_info
+                # Update coronal dict if lower z-smooth in new stack
+                if z_smooth < coronal_info["z_smooth"]:
+                    coronal_info = stack_info
     
     # Initialize output directory
     output_dir = os.path.dirname(output_info_path)
     os.makedirs(output_dir, exist_ok=True)
         
     # Write output json file
-    if axial_dict:
-        info["axial"] = axial_dict
-    if sagittal_dict:
-        info["sagittal"] = sagittal_dict
-    if coronal_dict:
-        info["coronal"] = coronal_dict
+    if axial_info:
+        info["axial"] = axial_info
+    if sagittal_info:
+        info["sagittal"] = sagittal_info
+    if coronal_info:
+        info["coronal"] = coronal_info
     with open(output_info_path, "w") as f:
         json.dump(info, f, indent=4)
         
@@ -179,7 +179,7 @@ def average_stacks(
         output_info_path=output_info_path,
     )
     
-    #
+    # Init paths
     real_paths = []
     imag_paths = []
     mask_paths = []
@@ -188,7 +188,7 @@ def average_stacks(
     # Load stack selection
     info = json.load(open(output_info_path))
     
-    #
+    # Iter over ornts
     for ornt in ornts:
         if ornt in info:
             ornt_info = info[ornt]
@@ -223,7 +223,7 @@ def average_stacks(
             imag_path=ornt_imag_path,
         )
         
-        #
+        # Update paths
         real_paths += [ornt_real_path]
         imag_paths += [ornt_imag_path]
         mask_paths += [ornt_mask_path]

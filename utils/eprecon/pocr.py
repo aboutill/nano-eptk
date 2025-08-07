@@ -35,6 +35,7 @@ def _gaussian_filter(
         **kwargs,
     ):
     
+    # Image dim
     d = np.ndim(img)
     
     # Apply Gaussian smoothing
@@ -553,7 +554,6 @@ def mspocr_pipeline(
         os.path.join(temp_dir.name, f"outlier_metrics-{i}.json")
         for i in range(n)
     ]
-        
     if output_mask_path is None:
         output_mask_path = os.path.join(temp_dir.name, "mask.nii.gz")
     if output_mask_eroded_path is None:
@@ -685,5 +685,3 @@ def mspocr_pipeline(
     
     # Delete temp dir    
     shutil.rmtree(temp_dir.name)
-    
-

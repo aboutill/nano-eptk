@@ -14,6 +14,7 @@ def mrtrix_degibbs(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrdegibbs",
         input_path,
@@ -38,6 +39,7 @@ def mrtrix_polar(
     output_dir = os.path.dirname(cmpl_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         mag_path,
@@ -62,6 +64,7 @@ def mrtrix_real(
     output_dir = os.path.dirname(real_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         cmpl_path,
@@ -85,6 +88,7 @@ def mrtrix_imag(
     output_dir = os.path.dirname(imag_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         cmpl_path,
@@ -109,6 +113,7 @@ def mrtrix_complex(
     output_dir = os.path.dirname(cmpl_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         real_path,
@@ -133,6 +138,7 @@ def mrtrix_abs(
     output_dir = os.path.dirname(abs_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         cmpl_path,
@@ -156,6 +162,7 @@ def mrtrix_phase(
     output_dir = os.path.dirname(phase_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         cmpl_path,
@@ -180,6 +187,7 @@ def mrtrix_mean(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrmath",
         input_path,
@@ -207,6 +215,7 @@ def mrtrix_extract(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
         
+    # Set and run command
     if idx == -1:
         idx = "end" # mrtrix format
         
@@ -234,6 +243,7 @@ def mrtrix_cat(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = ["mrcat"] + input_paths + [output_path]
     cmd += args
         
@@ -253,6 +263,7 @@ def mrtrix_multiply(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         str(operand1),
@@ -278,6 +289,7 @@ def mrtrix_sum(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrmath",
         input_path,
@@ -303,6 +315,7 @@ def mrtrix_subtract(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         str(operand1),
@@ -327,6 +340,7 @@ def mrtrix_add(
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Set and run command
     cmd = [
         "mrcalc",
         str(operand1),

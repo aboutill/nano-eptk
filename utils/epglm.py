@@ -27,6 +27,7 @@ def ep_glm(
         verbose=False,
     ):
     
+    # Skip condition
     if len(input_ep_paths) < 2:
         return
     
@@ -38,13 +39,13 @@ def ep_glm(
     arg_str = lambda l: ' '.join(str(x) for x in l)
     fsl_arg_str = lambda l: ','.join(str(x) for x in l)
     
-    #
+    # Init output dir
     os.makedirs(output_dir, exist_ok=True)
     
     # Temporary dir
     temp_dir = tempfile.TemporaryDirectory()
     
-    #
+    # Number of EP maps
     n = len(input_ep_paths)
     
     # Concatenate EP
@@ -66,11 +67,11 @@ def ep_glm(
         output_path=ep_4D_path,
     )
     
-    #
+    # Load exploratory variables
     ev = json.load(open(input_ev_path))
     ev_labels = list(ev)
     
-    #
+    # Load voxel-wise exploratory variables
     vox_ev = json.load(open(input_ev_path))
     vox_ev_labels = list(vox_ev)
             
@@ -78,7 +79,7 @@ def ep_glm(
     for ev_label in ev_labels:
         ev[ev_label] -= np.mean(ev[ev_label])
 
-    #    
+    # Demean voxel-wise EVs
     vox_ev_4D_paths = []
     for vox_ev_label in vox_ev_labels:
         
@@ -101,19 +102,22 @@ def ep_glm(
             output_path=vox_ev_4D_path,
         )
         
-        #
+        # Update paths
         vox_ev_4D_paths += [vox_ev_4D_path]
     
     # Initialize design matrix
     design_path = os.path.join(temp_dir.name, "design.txt")
     design_file = open(design_path, "w")
 
+    # Iter over subkects
     for i in range(n):
         
+        # Write EV
         design = []
         for ev_label in ev_labels:
             design += [ev[ev_label][i]]
             
+        # Dummy input for voxel EV
         for vox_ev_label in vox_ev_labels:
             design += [1]
         
@@ -136,17 +140,15 @@ def ep_glm(
     
     # Aplly mask on voxel EVs
     for vox_ev_4D_path in vox_ev_4D_paths:
-        
         mrtrix_multiply(
             operand1=vox_ev_4D_path,
             operand2=input_mask_path,
             output_path=vox_ev_4D_path,
         )
         
-    # Contrast
+    # Voxel EV option
     all_ev_labels = ev_labels + vox_ev_labels
     if len(vox_ev_labels) > 0:
-        
         vxl = fsl_arg_str([i for i in range(len(ev_labels)+1, len(all_ev_labels)+1)])
         vxf = fsl_arg_str(vox_ev_4D_paths)
         
@@ -168,13 +170,12 @@ def ep_glm(
         contrast_path_con = os.path.join(temp_dir.name, f"contrast_{ev}.con")
         os.system(f"Text2Vest {contrast_path} {contrast_path_con}")
         
-        #
+        # Init output dir
         output_dir_ev = os.path.join(output_dir, ev)
         os.makedirs(output_dir_ev, exist_ok=True)
-            
-        #
         output_path_ev = os.path.join(output_dir_ev, ev)
         
+        # Run FSL randomise
         fsl_randomise(
             imgs_path=ep_4D_path,
             output_path=output_path_ev,
@@ -186,7 +187,7 @@ def ep_glm(
             vxl=vxl,
         )
         
-        #
+        # Set paths
         n = 2
         tstat_paths = [os.path.join(output_dir, f"{ev}_tstat{i+1}.nii.gz") for i in range(n)]
         tfce_corrp_tstat_paths = [os.path.join(output_dir, f"{ev}_tfce_corrp_tstat{i+1}.nii.gz") for i in range(n)]

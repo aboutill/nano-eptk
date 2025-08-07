@@ -34,6 +34,7 @@ def _create_mask_artefact(
     mask_artefact[np.abs(pha-MED) > 3*MAD] = True
     mask_artefact *= mask
     
+    # Apply input mask
     if input_mask_artefact is not None:
         mask_artefact = np.logical_or(mask_artefact, input_mask_artefact)
         
@@ -152,6 +153,7 @@ def average_phase_artefact_mask(
         output_mask_artefact_path,
     ):
     
+    # Avergage masks
     mirtk_average_images(
         input_paths=input_mask_artefact_paths,
         input_dof_paths=input_dof_paths,
@@ -160,6 +162,7 @@ def average_phase_artefact_mask(
         label=True,
     )
     
+    # Apply mask
     mrtrix_multiply(
         operand1=output_mask_artefact_path,
         operand2=input_ref_mask_path,
@@ -227,11 +230,11 @@ def correct_phase_artefact(
     output_dir = os.path.dirname(output_pha_path)
     os.makedirs(output_dir, exist_ok=True)
        
-    # Save
+    # Save phase
     pha_nii = nib.Nifti1Image(pha, affine, header)
     nib.save(pha_nii, output_pha_path)
     
-    # Save
+    # Save mask artefact
     mask_artefact_nii = nib.Nifti1Image(mask_artefact, affine, header)
     nib.save(mask_artefact_nii, output_mask_artefact_path)
     
