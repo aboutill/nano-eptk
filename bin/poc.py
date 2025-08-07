@@ -85,6 +85,7 @@ def parse_args():
         metavar="\b",
     )
     
+    # Pipeline parameters
     # Gaussian filter sigma
     parser.add_argument(
         "--gs_sigma",
@@ -145,6 +146,7 @@ def parse_args():
     ) 
     
     # Misc
+    # Verbosity
     parser.add_argument(
         "-v", 
         "--verbose",
@@ -152,6 +154,7 @@ def parse_args():
         help="Increase verbosity.",
     ) 
     
+    # Configuration file
     parser.add_argument(
         "--config",
         type=pathlib.Path,
@@ -171,11 +174,12 @@ def execute_poc_with_config(
         **kwargs,
     ):
     
-    #
+    # Load configuration
     if config_path:
         cfg = yaml.safe_load(open(config_path))
         kwargs.update(cfg)
-    #
+   
+    # Run POC pipeline
     poc_pipeline(**kwargs)
         
 
