@@ -1,0 +1,15 @@
+gs_sigma: 1.6
+gs_axes:
+- 0
+- 1
+f0: 128000000.0
+pde_axes:
+- 0
+- 1
+diff_reg_w: 0.05
+diff_reg_axes:
+- 0
+- 1
+- 2
+eros_rad: 4.8
+eros_strc: ellipsoid
