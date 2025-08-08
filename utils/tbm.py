@@ -9,10 +9,11 @@ def create_jacobian_determinant(
         sigma=1.0,
     ):
     
-    # TODO Hnadle week to week template
+    # Initialize output path
     output_dir = os.path.dirname(output_jac_path)
     os.makedirs(output_dir, exist_ok=True)
     
+    # Compute jacobian determinant
     fixed = ants.image_read(input_fixed_path)
     moving = ants.image_read(input_moving_path)
     warp = ants.registration(fixed=fixed , moving=moving, type_of_transform='SyNRA')

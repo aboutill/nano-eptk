@@ -36,7 +36,7 @@ def _get_img_dim_in_RAS(img_path):
 
 def _custom_bwr_cmap():
     
-    #
+    # Points in colorbar
     n = 256
     half = n // 2
 
@@ -165,9 +165,8 @@ def _extract_slice_img(
         if ylim is not None:
             outline = outline[:,ylim[0]:ylim[1]]
             
-    # 
+    # Colormap adn outlines
     if cmap is not None:
-        
         # Apply colormap
         img = cm(img)
         
@@ -175,15 +174,19 @@ def _extract_slice_img(
         if not keep_alpha:
             img = img[..., 0:3]
         
+        # Mark outlines
         if outline_path is not None:
             img = mark_boundaries(img, outline, color=outline_c)
-            
+          
+        # to integer
         img *= 255
         img = img.astype(np.uint8)
     else:
         if outline_path is not None:
+            # Mark outline
             img = mark_boundaries(img, outline, color=outline_c)
             
+            # to integer
             img *= 255
             img = img.astype(np.uint8)
         
@@ -245,7 +248,7 @@ def tse_pipeline_plot(
         save_imageio=False,
     ):
     
-    # 
+    # Default view
     if view_info is None:
         dims = _get_img_dim_in_RAS(input_sig_path)
         view_info = { 
@@ -254,32 +257,33 @@ def tse_pipeline_plot(
             "sagittal": {"slice_index": dims[0]//2},
         }
     
-    # Info for plotting
+    # For plotting
     vmin, vmax = 0, 255
     cmap = "gray"
     
-    # 
+    # Initialize output path
     if output_plot_path:
         output_dir = os.path.dirname(output_plot_path)
         os.makedirs(output_dir, exist_ok=True)
+   
+    # Imageiodirectory
     save_imageio = output_plot_path and save_imageio
-    
-    #
     if save_imageio:
         plot_name = os.path.splitext(os.path.basename(output_plot_path))[0]
         imageio_dir = os.path.join(output_dir, "imageio", plot_name)
         os.makedirs(imageio_dir, exist_ok=True)
         
-    #
+    # Number of images in plot
     n = len(view_info) + 4
     m = len(stack_view_info)
     
-    # Initialize figure
+    # Initialize plot
     fig = plt.figure(figsize=figsize)
     gs = GridSpec(m, n, figure=fig)
     fig.suptitle(title)
     
-    for j, (ornt, info) in enumerate(stack_view_info.items()):
+    # Iter over stack view
+    for i, (ornt, info) in enumerate(stack_view_info.items()):
     
         # Extract magnitude image
         mag_img = _extract_slice_img(
@@ -291,9 +295,9 @@ def tse_pipeline_plot(
         )
         
         # Plot magnitude image
-        ax = fig.add_subplot(gs[j, 0])
+        ax = fig.add_subplot(gs[i, 0])
         ax.imshow(mag_img, cmap=cmap, vmin=vmin, vmax=vmax)
-        if j == 0:
+        if i == 0:
             ax.set_title("Magnitude")
         ax.set_ylabel(f"{ornt.title()} stack")
         ax.set_xticks([])
@@ -314,9 +318,9 @@ def tse_pipeline_plot(
         )
         
         # Plot phase image
-        ax = fig.add_subplot(gs[j, 1])
+        ax = fig.add_subplot(gs[i, 1])
         ax.imshow(pha_img, cmap=cmap, vmin=vmin, vmax=vmax)
-        if j == 0:
+        if i == 0:
             ax.set_title("Phase")
         ax.axis('off')
         
@@ -335,9 +339,9 @@ def tse_pipeline_plot(
         )
         
         # Plot corrected phase image
-        ax = fig.add_subplot(gs[j, 2])
+        ax = fig.add_subplot(gs[i, 2])
         ax.imshow(pha_corr_img, cmap=cmap, vmin=vmin, vmax=vmax)
-        if j == 0:
+        if i == 0:
             ax.set_title("Flow void artefact\ncorrected phase")
         ax.axis('off')
         
@@ -357,9 +361,9 @@ def tse_pipeline_plot(
         )
         
         # Plot conductivity images 
-        ax = fig.add_subplot(gs[j, 3])
+        ax = fig.add_subplot(gs[i, 3])
         ax.imshow(sig_img)
-        if j == 0:
+        if i == 0:
             ax.set_title(r"$\sigma$ maps")
         ax.axis('off')
         
@@ -368,7 +372,7 @@ def tse_pipeline_plot(
             imageio_path = os.path.join(imageio_dir, f"{ornt}_sig.png")
             imageio.imwrite(imageio_path, sig_img)
             
-            
+    # Iter over view 
     for i, (ornt, info) in enumerate(view_info.items()):
         # Exctract average conductivity image
         sig_img = _extract_slice_img(
@@ -393,7 +397,7 @@ def tse_pipeline_plot(
             imageio_path = os.path.join(imageio_dir, f"{ornt}_sig_avg.png")
             imageio.imwrite(imageio_path, sig_img)
         
-    # 
+    # Adjust layout
     fig.tight_layout()
     
     # Save plot
@@ -424,39 +428,39 @@ def epi_pipeline_plot(
         save_imageio=False,
     ):
     
-    #
+    # Default view
     if slice_index is None:
         dims = _get_img_dim_in_RAS(input_mag_path)
         slice_index =  dims[0]//2
-        
     if view_info is None:
         view_info = {
             "PA": {"img_index": 0},
             "AP": {"img_index": 1},
         }
         
-    # Plot info
+    # For plotting
     cmap = "gray"
     vmin, vmax = 0, 255
     
-    # 
+    # Initializwe output dir
     if output_plot_path:
         output_dir = os.path.dirname(output_plot_path)
         os.makedirs(output_dir, exist_ok=True)
+        
+    # Initialize imageio dir
     save_imageio = output_plot_path and save_imageio
-    
-    #
     if save_imageio:
         plot_name = os.path.splitext(os.path.basename(output_plot_path))[0]
         imageio_dir = os.path.join(output_dir, "imageio", plot_name)
         os.makedirs(imageio_dir, exist_ok=True)
     
-    # Initialize figure
+    # Initialize plot
     fig = plt.figure(figsize=figsize)
     gs = GridSpec(2, 6, figure=fig)
     fig.suptitle(title)
     
-    for j, (PE_dir, info) in enumerate(view_info.items()):
+    # Iter over views
+    for i, (PE_dir, info) in enumerate(view_info.items()):
     
         # Extract magnitude image
         mag_img = _extract_slice_img(
@@ -468,9 +472,9 @@ def epi_pipeline_plot(
         )
         
         # Plot magnitude image
-        ax = fig.add_subplot(gs[j, 0])
+        ax = fig.add_subplot(gs[i, 0])
         ax.imshow(mag_img, cmap=cmap, vmin=vmin, vmax=vmax)
-        if j == 0:
+        if i == 0:
             ax.set_title("Magnitude")
         ax.set_ylabel(PE_dir)
         ax.set_xticks([])
@@ -491,9 +495,9 @@ def epi_pipeline_plot(
         )
         
         # Plot phase images
-        ax = fig.add_subplot(gs[j, 1])
+        ax = fig.add_subplot(gs[i, 1])
         ax.imshow(pha_img, cmap=cmap, vmin=vmin, vmax=vmax)
-        if j == 0:
+        if i == 0:
             ax.set_title("Phase")
         ax.axis('off')
         
@@ -585,7 +589,7 @@ def epi_pipeline_plot(
         imageio_path = os.path.join(imageio_dir, "sig.png")
         imageio.imwrite(imageio_path, sig_img)
     
-    # 
+    # Adjust Layout
     fig.tight_layout()
     
     # Save plot
@@ -620,34 +624,35 @@ def gre_pipeline_plot(
         save_imageio=False,
     ):
     
-    # Plot info
+    # Default view
     if view_info is None:
         view_info = {"head": {"img_index": 0}}
         
-    #
+    # For plotting
     vmin, vmax = 0, 255
     cmap = "gray"
     
-    # 
+    # Initialize output path
     if output_plot_path:
         output_dir = os.path.dirname(output_plot_path)
         os.makedirs(output_dir, exist_ok=True)
-    save_imageio = output_plot_path and save_imageio
     
-    #
+    # Imageio path
+    save_imageio = output_plot_path and save_imageio
     if save_imageio:
         plot_name = os.path.splitext(os.path.basename(output_plot_path))[0]
         imageio_dir = os.path.join(output_dir, "imageio", plot_name)
         os.makedirs(imageio_dir, exist_ok=True)
         
-    #
+    # Number of views
     m = len(view_info)
     
-    # Initialize figure
+    # Initialize plot
     fig = plt.figure(figsize=figsize)
     gs = GridSpec(m, 6, figure=fig)
     fig.suptitle(title)
     
+    # Iter over views
     for j, (coil, info) in enumerate(view_info.items()):
     
         # Extract magnitude image
@@ -798,7 +803,7 @@ def gre_pipeline_plot(
         imageio_path = os.path.join(imageio_dir, "eps.png")
         imageio.imwrite(imageio_path, eps_img)
     
-    # 
+    # Adjust layout
     fig.tight_layout()
     
     # Save plot
@@ -820,7 +825,7 @@ def dhcp_atlas_plot(
         save_imageio=False,
     ):
     
-    #
+    # Default view
     if view_info is None:
         dims = _get_img_dim_in_RAS(input_anat_atlas_paths[0])
         view_info = {
@@ -829,27 +834,27 @@ def dhcp_atlas_plot(
             "sagittal": {"slice_index": dims[0]//2},
         }
     
-    #
+    # Default ages
     if ages is None:
         ages = {i: i for i in range(len(input_anat_atlas_paths))}
     
-    #
+    # For plotting
     vmin, vmax = 0, 255
     cmap = "gray"
     
-    # 
+    # Initialize output path
     if output_plot_path:
         output_dir = os.path.dirname(output_plot_path)
         os.makedirs(output_dir, exist_ok=True)
-    save_imageio = output_plot_path and save_imageio
     
-    #
+    # Imageio path
+    save_imageio = output_plot_path and save_imageio
     if save_imageio:
         plot_name = os.path.splitext(os.path.basename(output_plot_path))[0]
         imageio_dir = os.path.join(output_dir, "imageio", plot_name)
         os.makedirs(imageio_dir, exist_ok=True)
         
-    #
+    # Number of images
     n = len(ages)
     m = len(view_info) * 2
     
@@ -905,7 +910,7 @@ def dhcp_atlas_plot(
                 imageio_path = os.path.join(imageio_dir, f"{ornt}_sig_{age}.png")
                 imageio.imwrite(imageio_path, sig_img)
     
-    # 
+    # Adjust layout
     fig.tight_layout()
     
     # Save plot
@@ -930,7 +935,7 @@ def dhcp_glm_plot(
         save_imageio=False,
     ):
     
-    #
+    # Default view
     if view_info is None:
         dims = _get_img_dim_in_RAS(input_anat_atlas_path)
         view_info = {
@@ -939,25 +944,27 @@ def dhcp_glm_plot(
             "sagittal": {"slice_index": dims[0]//2},
         }
     
+    # Default clim
     if ev_clim is None:
         ev_clim = {input_ev_label: None for input_ev_label in input_ev_labels}
     
-    # 
+    # Initialize output dir
     if output_plot_path:
         output_dir = os.path.dirname(output_plot_path)
         os.makedirs(output_dir, exist_ok=True)
-    save_imageio = output_plot_path and save_imageio
     
-    #
+    # Imageio dir
+    save_imageio = output_plot_path and save_imageio
     if save_imageio:
         plot_name = os.path.splitext(os.path.basename(output_plot_path))[0]
         imageio_dir = os.path.join(output_dir, "imageio", plot_name)
         os.makedirs(imageio_dir, exist_ok=True)
     
+    # Number of images
     n = len(input_ev_map_paths)
     m = len(view_info)
     
-    # Initialize figure
+    # Initialize plot
     fig, axes = plt.subplots(m, n, figsize=figsize)
     fig.suptitle(title)
     
@@ -1005,7 +1012,7 @@ def dhcp_glm_plot(
                 imageio_path = os.path.join(imageio_dir, f"{ornt}_{ev_label}.png")
                 imageio.imwrite(imageio_path, img)
     
-    # 
+    # Adjust layout
     fig.tight_layout()
     
     # Save plot
@@ -1025,10 +1032,7 @@ def dhcp_atlas_gif(
         sig_cmap="inferno",
     ):
     
-    #
-    n = len(input_anat_atlas_paths)
-    
-    #
+    # Default view
     if view_info is None:
         dims = _get_img_dim_in_RAS(input_anat_atlas_paths[0])
         view_info = {
@@ -1036,8 +1040,11 @@ def dhcp_atlas_gif(
             "coronal": {"slice_index": dims[1]//2},
             "sagittal": {"slice_index": dims[0]//2},
         }
+        
+    # Number of images
+    n = len(input_anat_atlas_paths)
     
-    # 
+    # Initialize output dir
     os.makedirs(output_dir, exist_ok=True)
     
     # Iter over view
@@ -1068,6 +1075,7 @@ def dhcp_atlas_gif(
             img = _combine_imgs(rgb_mag_img, sig_img, alpha)
             frames += [img]
         
+        # Save gif
         output_path = os.path.join(output_dir, f"dhcp_atlas_{ornt}.gif")
         imageio.mimsave(output_path, frames, duration=1/fps, loop=0) 
         
@@ -1090,39 +1098,42 @@ def parameter_tuning_plot(
         save_imageio=False,
     ):
     
-    #
+    # Default view
     if slice_index is None:
         dims = _get_img_dim_in_RAS(input_sig_paths[0])
         slice_index =  dims[0]//2
         
+    # Number of images
     n = len(input_sig_paths)    
     m = len(input_sig_paths[0])
     param_labels = list(param_info.keys())
     
-    # 
+    # Default 
+    if ep_clim is None or not isinstance(ep_clim[0], list):
+        ep_clim = [[ep_clim for j in range(m)] for i in range(n)]
+    
+    # Initialize output dir
     if output_plot_path:
         output_dir = os.path.dirname(output_plot_path)
         os.makedirs(output_dir, exist_ok=True)
-    save_imageio = output_plot_path and save_imageio
     
-    #
+    # Initialize imageio dir
+    save_imageio = output_plot_path and save_imageio
     if save_imageio:
         plot_name = os.path.splitext(os.path.basename(output_plot_path))[0]
         imageio_dir = os.path.join(output_dir, "imageio", plot_name)
         os.makedirs(imageio_dir, exist_ok=True)
     
-    # Initialize figure
+    # Initialize plot
     fig, axes = plt.subplots(m, n, figsize=figsize)
     fig.suptitle(title)
     
-    # Iter over
+    # Iter over param1
     for i in range(n):
-        
         param_i = param_info[param_labels[0]][i]
         
-        # Iter over
+        # Iter over para2
         for j  in range(m):
-        
             param_j = param_info[param_labels[1]][j]
             
             # Extract conductivity image
@@ -1130,7 +1141,7 @@ def parameter_tuning_plot(
                 img_path=input_sig_paths[i][j], 
                 slice_index=slice_index,
                 slice_ornt=ornt, 
-                clim=ep_clim,
+                clim=ep_clim[i][j],
                 cmap=ep_cmap, 
                 xlim=xlim,
                 ylim=ylim,
@@ -1147,14 +1158,13 @@ def parameter_tuning_plot(
                 axes[j,i].set_ylabel(f"{param_labels[1].title()} = {param_j}")
             axes[j,i].set_xticks([])
             axes[j,i].set_yticks([])
-            
         
             # Save images
             if save_imageio:
                 imageio_path = os.path.join(imageio_dir, f"{i}_{j}.png")
                 imageio.imwrite(imageio_path, sig_img)
     
-    # 
+    # Adjust layout
     fig.tight_layout()
     
     # Save plot
@@ -1175,11 +1185,11 @@ def covariates_plot(
         save_imageio=False,
     ):
     
-    #
+    # For plotting
     vmin, vmax = 0, 255
     cmap = "gray"
     
-    #
+    # Default view
     if view_info is None:
         dims = _get_img_dim_in_RAS(input_cov_paths[0])
         view_info = { 
@@ -1188,16 +1198,23 @@ def covariates_plot(
             "sagittal": {"slice_index": dims[0]//2},
         }
         
+    # Number of images
     n = len(input_cov_paths)    
     m = len(view_info)
     
-    # 
+    # Default view
+    if ep_clim is None or not isinstance(ep_clim[0], list):
+        ep_clim = [[ep_clim for j in range(m)] for i in range(n)]
+    if ep_cmap is None or not isinstance(ep_cmap[0], list):
+        ep_cmap = [[ep_cmap for j in range(m)] for i in range(n)]
+    
+    # Initialize output dir
     if output_plot_path:
         output_dir = os.path.dirname(output_plot_path)
         os.makedirs(output_dir, exist_ok=True)
+        
+    # Initialize imageio dir
     save_imageio = output_plot_path and save_imageio
-    
-    #
     if save_imageio:
         plot_name = os.path.splitext(os.path.basename(output_plot_path))[0]
         imageio_dir = os.path.join(output_dir, "imageio", plot_name)
@@ -1207,10 +1224,9 @@ def covariates_plot(
     fig, axes = plt.subplots(m, n, figsize=figsize)
     fig.suptitle(title)
     
-    # Iter over
+    # Iter over covariate
     for i in range(n):
-        
-        # Iter over
+        # Iter over view
         for j, (ornt, info) in enumerate(view_info.items()):
             
             # Extract covariate image
@@ -1218,8 +1234,8 @@ def covariates_plot(
                 img_path=input_cov_paths[i], 
                 slice_index=info["slice_index"],
                 slice_ornt=ornt, 
-                clim=ep_clim,
-                cmap=ep_cmap,
+                clim=ep_clim[i][j],
+                cmap=ep_cmap[i][j],
                 mask_path=input_mask_path,
             )
             
@@ -1231,14 +1247,13 @@ def covariates_plot(
                 axes[j,i].set_ylabel(f"{ornt.title()} view")
             axes[j,i].set_xticks([])
             axes[j,i].set_yticks([])
-            
         
             # Save images
             if save_imageio:
                 imageio_path = os.path.join(imageio_dir, f"{ornt}_{input_cov_labels[i]}.png")
                 imageio.imwrite(imageio_path, cov_img)
     
-    # 
+    #Adjust layout
     fig.tight_layout()
     
     # Save plot
@@ -1265,11 +1280,11 @@ def annotate_pairplot(x, y, hue=None, ax=None, **kws):
     x_name = getattr(x, 'name', 'x')
     y_name = getattr(y, 'name', 'y')
 
-    # Build subscript using sanitized variable names
+    # Build subscript
     def format_var(var):
-        # Attempt to extract clean LaTeX-compatible label from known mappings or raw name
         return var.replace("r$", "").replace("$", "").replace("[", "").replace("]", "").split()[0].strip()
-
+    
+    # Label
     subscript = f"{format_var(x_name)}-{format_var(y_name)}"
     label = rf"\rho_{{\mathregular{{{subscript}}}}}"
 
@@ -1282,7 +1297,7 @@ def annotate_pairplot(x, y, hue=None, ax=None, **kws):
     
 def annotate_tissue_pairplot(x, y, tissue_labels=None, hue=None, ax=None, **kws):
 
-    #
+    # Numer of points/tissues
     n = len(x)
     m = len(tissue_labels)
     k = int(n/m)
@@ -1297,13 +1312,16 @@ def annotate_tissue_pairplot(x, y, tissue_labels=None, hue=None, ax=None, **kws)
     # Coordinates for annotation
     xy = (.1, .05)
     
+    # Init legend
     lgd = ""
 
+    # Iter over tissues
     for i, tissue in enumerate(tissue_labels):
 
         if i > 0:
             lgd += "\n"
 
+        # Extract tissue data
         x_tissue = x[k*i:k*(i+1)]
         y_tissue = y[k*i:k*(i+1)]
 
@@ -1314,11 +1332,11 @@ def annotate_tissue_pairplot(x, y, tissue_labels=None, hue=None, ax=None, **kws)
         x_name = getattr(x, 'name', 'x')
         y_name = getattr(y, 'name', 'y')
     
-        # Build subscript using sanitized variable names
+        # Build subscript 
         def format_var(var):
-            # Attempt to extract clean LaTeX-compatible label from known mappings or raw name
             return var.replace("r$", "").replace("$", "").replace("[", "").replace("]", "").split()[0].strip()
 
+        # Label
         subscript = f"{format_var(x_name)}-{format_var(y_name)}"
         label = rf"\rho_{{\mathregular{{{subscript}}}}}^{{\mathregular{{{tissue}}}}}"
         lgd += rf"${label} = {r:.2f}$ ({convert_pvalue_to_asterisks(p)})"
@@ -1334,6 +1352,7 @@ def calculate_plot_lim(
         coeff_max=1,
     ):
     
+    # Extract min/max, adjust with margin
     val_min, val_max = data.min(), data.max()
     val_margin = coeff_margin * (val_max - val_min)
     lim = [val_min - coeff_min * val_margin, val_max + coeff_max * val_margin]
