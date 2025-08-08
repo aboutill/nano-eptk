@@ -4,7 +4,7 @@ Dep. Variable:              brain_SIG   R-squared:                       0.352
 Model:                            OLS   Adj. R-squared:                  0.348
 Method:                 Least Squares   F-statistic:                     71.99
 Date:                Thu, 07 Aug 2025   Prob (F-statistic):           1.12e-48
-Time:                        17:00:51   Log-Likelihood:                 944.08
+Time:                        19:31:20   Log-Likelihood:                 944.08
 No. Observations:                 534   AIC:                            -1878.
 Df Residuals:                     529   BIC:                            -1857.
 Df Model:                           4                                         
@@ -36,7 +36,7 @@ Norm:                          HuberT
 Scale Est.:                       mad                                         
 Cov Type:                          H1                                         
 Date:                Thu, 07 Aug 2025                                         
-Time:                        17:00:51                                         
+Time:                        19:31:20                                         
 No. Iterations:                    17                                         
 ==============================================================================
                  coef    std err          z      P>|z|      [0.025      0.975]

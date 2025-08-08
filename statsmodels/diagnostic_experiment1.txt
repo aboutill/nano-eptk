@@ -4,7 +4,7 @@ Dep. Variable:              brain_SIG   R-squared:                       0.352
 Model:                            OLS   Adj. R-squared:                  0.348
 Method:                 Least Squares   F-statistic:                     71.99
 Date:                Thu, 07 Aug 2025   Prob (F-statistic):           1.12e-48
-Time:                        17:15:03   Log-Likelihood:                 944.08
+Time:                        19:31:20   Log-Likelihood:                 944.08
 No. Observations:                 534   AIC:                            -1878.
 Df Residuals:                     529   BIC:                            -1857.
 Df Model:                           4                                         
@@ -33,7 +33,7 @@ Dep. Variable:              brain_SIG   R-squared:                       0.354
 Model:                            OLS   Adj. R-squared:                  0.348
 Method:                 Least Squares   F-statistic:                     57.93
 Date:                Thu, 07 Aug 2025   Prob (F-statistic):           5.00e-48
-Time:                        17:15:03   Log-Likelihood:                 944.81
+Time:                        19:31:20   Log-Likelihood:                 944.81
 No. Observations:                 534   AIC:                            -1878.
 Df Residuals:                     528   BIC:                            -1852.
 Df Model:                           5                                         
@@ -63,7 +63,7 @@ Dep. Variable:              brain_SIG   R-squared:                       0.353
 Model:                            OLS   Adj. R-squared:                  0.347
 Method:                 Least Squares   F-statistic:                     57.65
 Date:                Thu, 07 Aug 2025   Prob (F-statistic):           7.76e-48
-Time:                        17:15:03   Log-Likelihood:                 944.36
+Time:                        19:31:20   Log-Likelihood:                 944.36
 No. Observations:                 534   AIC:                            -1877.
 Df Residuals:                     528   BIC:                            -1851.
 Df Model:                           5                                         
