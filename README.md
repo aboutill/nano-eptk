@@ -7,5 +7,5 @@ eptk-nano package by Arnaud Boutillon (arnaud.boutillon@kcl.ac.uk)
 This package relies on MRtrix (https://mrtrix.readthedocs.io/, developer build), FSL (https://fsl.fmrib.ox.ac.uk/) and MIRTK (https://mirtk.github.io/) softwares. Please refer to their respective websites for proper installation.
 
 To install this package and its Python dependencies:\
-`pip install -r /path/to/requirements.txt`\
+`pip install -r requirements.txt`\
 `pip install .`
