@@ -4,8 +4,8 @@ This package provides the processing pipelines, EPT reconstruction algorithms an
 eptk-nano package by Arnaud Boutillon (arnaud.boutillon@kcl.ac.uk)
 
 ## Installation
-This package relies on MRtrix (https://mrtrix.readthedocs.io/, developer build), FSL (https://fsl.fmrib.ox.ac.uk/) and MIRTK (https://mirtk.github.io/). Please refer to their respective websites for proper installation.
+This package relies on MRtrix (https://mrtrix.readthedocs.io/, developer build), FSL (https://fsl.fmrib.ox.ac.uk/) and MIRTK (https://mirtk.github.io/) softwares. Please refer to their respective websites for proper installation.
 
-To install this package and its Python dependencies:
-`pip install -r /path/to/requirements.txt`
+To install this package and its Python dependencies:\
+`pip install -r /path/to/requirements.txt`\
 `pip install .`
