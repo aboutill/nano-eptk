@@ -1,0 +1,4 @@
+{
+    "MD": ["./data/dHCP/example_subject/MD/MD_in_extdhcp40wk_res15mm.nii.gz"],
+    "LVC": ["./data/dHCP/example_subject/LVC/LVC_in_extdhcp40wk_res15mm.nii.gz"]
+}
