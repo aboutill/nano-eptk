@@ -17,7 +17,7 @@ from utils.metrics import extract_ep_metrics
 
 def _save_cmpl_nifti(cmpl, header, affine, output_path):
     
-    # To polar magnitude and phase
+    # To polar
     mag = np.abs(cmpl)
     pha = np.angle(cmpl)
     
