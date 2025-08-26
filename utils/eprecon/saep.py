@@ -116,13 +116,15 @@ def _multi_coil_normalization(
         cmpl = cmpl[..., coils_idx]
 
     # Divide by reference
-    ref[ref == 0] = 1 # prevent NaN
+    nan_mask = ref == 0
+    ref[nan_mask] = 1 # prevent NaN
     cmpl /= ref[..., None]
+    ref[nan_mask] = 0 #  For saving
     
     # Apply mask
     cmpl *= mask[..., None]
 
-    return cmpl
+    return cmpl, ref
 
 
 def _gaussian_filter(
@@ -284,13 +286,18 @@ def _saep_reconstruction(
     cmpl *= mask[..., None]
     
     # Multi coil normalization
-    cmpl = _multi_coil_normalization(cmpl=cmpl, mask=mask, **kwargs)
+    cmpl, ref = _multi_coil_normalization(cmpl=cmpl, mask=mask, **kwargs)
     if debug:
         norm_path = os.path.join(debug_dir, "norm")
         _save_cmpl_nifti(cmpl, header, affine, norm_path)
+        ref_path = os.path.join(debug_dir, "ref")
+        _save_cmpl_nifti(ref, header, affine, ref_path)
     
     # Apply Gaussian smoothing
     cmpl = _gaussian_filter(cmpl=cmpl, mask=mask, vox=vox, **kwargs)
+    if debug:
+        gs_path = os.path.join(debug_dir, "gs")
+        _save_cmpl_nifti(cmpl, header, affine, gs_path)
 
     # SVD
     cmpl = _svd(cmpl=cmpl, **kwargs)
