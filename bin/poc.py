@@ -205,7 +205,7 @@ def main():
         eros_rad=args.eros_rad,
         eros_strc=args.eros_strc,
         verbose=args.verbose,
-        config=args.config,
+        config_path=args.config,
     )
     
 
