@@ -72,6 +72,10 @@ def erode_mask(
     mask_nii = nib.load(input_mask_path)
     mask = mask_nii.get_fdata()
     
+    # Extract header and affine
+    header = mask_nii.header
+    affine = mask_nii.affine
+    
     # Resolution
     vox = mask_nii.header["pixdim"][1:4]
     
@@ -107,5 +111,44 @@ def erode_mask(
     os.makedirs(output_dir, exist_ok=True)
         
     # Save mask
-    output_mask_nii = nib.Nifti1Image(mask.astype(np.float32), mask_nii.affine, mask_nii.header)
+    output_mask_nii = nib.Nifti1Image(mask.astype(np.float32), affine, header)
     nib.save(output_mask_nii, output_mask_path)
+    
+    
+def extract_tissue_labels(
+        input_labels_path,
+        output_labels_path,
+        labels_idx=None,
+        exclude_labels_idx=None,
+    ):
+    
+    # Load nifti
+    labels_nii = nib.load(input_labels_path)
+    labels = labels_nii.get_fdata()
+    
+    # Extract header and affine
+    header = labels_nii.header
+    affine = labels_nii.affine
+    
+    # Create mask
+    if labels_idx is not None:
+        mask = np.zeros_like(labels)
+        for label_idx in labels_idx:
+            mask[labels == label_idx] = 1
+    elif exclude_labels_idx is not None:
+        mask = np.ones_like(labels)
+        for label_idx in exclude_labels_idx:
+            mask[labels == label_idx] = 0
+    else: 
+        mask = np.ones_like(labels)
+        
+    # Apply mask
+    labels *= mask
+    
+    # Initialize output directory
+    output_dir = os.path.dirname(output_labels_path)
+    os.makedirs(output_dir, exist_ok=True)
+        
+    # Save mask
+    output_labels_nii = nib.Nifti1Image(labels, affine, header)
+    nib.save(output_labels_nii, output_labels_path)

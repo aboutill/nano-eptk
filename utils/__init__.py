@@ -7,6 +7,7 @@ from .epglm import (
 from .mask import (  
     binary_segmentation,
     erode_mask, 
+    extract_tissue_labels,
 )
 from .metrics import (
     extract_ep_metrics,
