@@ -1,12 +1,9 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 setup(
     name="nano-eptk",
     version="0.0.1",
-    packages=find_packages(
-        where="utils",
-    ),
     entry_points={
         "console_scripts": [
             "nano-eptk-mspoc = bin.mspoc:main",
