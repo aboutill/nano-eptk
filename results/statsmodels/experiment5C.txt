@@ -1,0 +1,180 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          TSE_brain_SIG   R-squared:                       0.146
+Model:                            OLS   Adj. R-squared:                  0.142
+Method:                 Least Squares   F-statistic:                     39.04
+Date:                Fri, 07 Nov 2025   Prob (F-statistic):           2.24e-16
+Time:                        17:16:22   Log-Likelihood:                 774.20
+No. Observations:                 459   AIC:                            -1542.
+Df Residuals:                     456   BIC:                            -1530.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+C(Type)[Control]     1.2087      0.003    452.384      0.000       1.203       1.214
+C(Type)[HIE]         1.2696      0.009    147.999      0.000       1.253       1.286
+PMA_c               -0.0064      0.001     -5.174      0.000      -0.009      -0.004
+==============================================================================
+Omnibus:                        6.535   Durbin-Watson:                   1.953
+Prob(Omnibus):                  0.038   Jarque-Bera (JB):                6.393
+Skew:                          -0.256   Prob(JB):                       0.0409
+Kurtosis:                       3.268   Cond. No.                         8.95
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          TSE_brain_SIG   R-squared:                       0.146
+Model:                            OLS   Adj. R-squared:                  0.142
+Method:                 Least Squares   F-statistic:                     39.04
+Date:                Fri, 07 Nov 2025   Prob (F-statistic):           2.24e-16
+Time:                        17:16:22   Log-Likelihood:                 774.20
+No. Observations:                 459   AIC:                            -1542.
+Df Residuals:                     456   BIC:                            -1530.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          1.2087      0.003    452.384      0.000       1.203       1.214
+C(Type)[T.HIE]     0.0609      0.009      6.943      0.000       0.044       0.078
+PMA_c             -0.0064      0.001     -5.174      0.000      -0.009      -0.004
+==============================================================================
+Omnibus:                        6.535   Durbin-Watson:                   1.953
+Prob(Omnibus):                  0.038   Jarque-Bera (JB):                6.393
+Skew:                          -0.256   Prob(JB):                       0.0409
+Kurtosis:                       3.268   Cond. No.                         9.21
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          TSE_brain_SIG   R-squared:                       0.152
+Model:                            OLS   Adj. R-squared:                  0.146
+Method:                 Least Squares   F-statistic:                     27.15
+Date:                Fri, 07 Nov 2025   Prob (F-statistic):           3.62e-16
+Time:                        17:16:22   Log-Likelihood:                 775.72
+No. Observations:                 459   AIC:                            -1543.
+Df Residuals:                     455   BIC:                            -1527.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+========================================================================================
+                           coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------------
+Intercept                1.2081      0.003    449.410      0.000       1.203       1.213
+C(Type)[T.HIE]           0.0709      0.010      6.764      0.000       0.050       0.092
+PMA_c                   -0.0059      0.001     -4.688      0.000      -0.008      -0.003
+C(Type)[T.HIE]:PMA_c    -0.0102      0.006     -1.738      0.083      -0.022       0.001
+==============================================================================
+Omnibus:                        6.366   Durbin-Watson:                   1.950
+Prob(Omnibus):                  0.041   Jarque-Bera (JB):                6.254
+Skew:                          -0.246   Prob(JB):                       0.0439
+Kurtosis:                       3.290   Cond. No.                         11.7
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+ANCOVA
+  Source       SS  DF         F        p-unc      np2
+    Type 0.097357   1 48.200182 1.330290e-11 0.095597
+   PMA_c 0.054071   1 26.769810 3.440578e-07 0.055450
+Residual 0.921053 456       NaN          NaN      NaN
+
+
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               brain_MD   R-squared:                       0.261
+Model:                            OLS   Adj. R-squared:                  0.257
+Method:                 Least Squares   F-statistic:                     80.36
+Date:                Fri, 07 Nov 2025   Prob (F-statistic):           1.27e-30
+Time:                        17:16:22   Log-Likelihood:                 898.32
+No. Observations:                 459   AIC:                            -1791.
+Df Residuals:                     456   BIC:                            -1778.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+C(Type)[Control]     1.1897      0.002    583.581      0.000       1.186       1.194
+C(Type)[HIE]         1.2047      0.007    184.039      0.000       1.192       1.218
+PMA_c               -0.0117      0.001    -12.377      0.000      -0.014      -0.010
+==============================================================================
+Omnibus:                       35.249   Durbin-Watson:                   2.044
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               77.659
+Skew:                           0.419   Prob(JB):                     1.37e-17
+Kurtosis:                       4.833   Cond. No.                         8.95
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               brain_MD   R-squared:                       0.261
+Model:                            OLS   Adj. R-squared:                  0.257
+Method:                 Least Squares   F-statistic:                     80.36
+Date:                Fri, 07 Nov 2025   Prob (F-statistic):           1.27e-30
+Time:                        17:16:22   Log-Likelihood:                 898.32
+No. Observations:                 459   AIC:                            -1791.
+Df Residuals:                     456   BIC:                            -1778.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          1.1897      0.002    583.581      0.000       1.186       1.194
+C(Type)[T.HIE]     0.0149      0.007      2.227      0.026       0.002       0.028
+PMA_c             -0.0117      0.001    -12.377      0.000      -0.014      -0.010
+==============================================================================
+Omnibus:                       35.249   Durbin-Watson:                   2.044
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               77.659
+Skew:                           0.419   Prob(JB):                     1.37e-17
+Kurtosis:                       4.833   Cond. No.                         9.21
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               brain_MD   R-squared:                       0.270
+Model:                            OLS   Adj. R-squared:                  0.265
+Method:                 Least Squares   F-statistic:                     55.98
+Date:                Fri, 07 Nov 2025   Prob (F-statistic):           8.16e-31
+Time:                        17:16:22   Log-Likelihood:                 901.13
+No. Observations:                 459   AIC:                            -1794.
+Df Residuals:                     455   BIC:                            -1778.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+========================================================================================
+                           coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------------
+Intercept                1.1891      0.002    581.358      0.000       1.185       1.193
+C(Type)[T.HIE]           0.0253      0.008      3.172      0.002       0.010       0.041
+PMA_c                   -0.0112      0.001    -11.636      0.000      -0.013      -0.009
+C(Type)[T.HIE]:PMA_c    -0.0106      0.004     -2.366      0.018      -0.019      -0.002
+==============================================================================
+Omnibus:                       25.152   Durbin-Watson:                   2.088
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               58.199
+Skew:                           0.257   Prob(JB):                     2.30e-13
+Kurtosis:                       4.667   Cond. No.                         11.7
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+ANCOVA
+  Source       SS  DF          F        p-unc      np2
+    Type 0.005835   1   4.961289 2.640821e-02 0.010763
+   PMA_c 0.180172   1 153.198418 1.542335e-30 0.251475
+Residual 0.536287 456        NaN          NaN      NaN
+
+
+
