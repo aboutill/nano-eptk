@@ -26,7 +26,7 @@ from .plots import (
     parameter_tuning_plot,
     covariates_plot,
     annotate_pairplot,
-    annotate_tissue_pairplot,
+    annotate_cat_pairplot,
 )
 from .stats import (
     convert_pvalue_to_asterisks,

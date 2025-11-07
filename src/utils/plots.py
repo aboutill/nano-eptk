@@ -1295,13 +1295,8 @@ def annotate_pairplot(x, y, hue=None, ax=None, **kws):
     )
     
     
-def annotate_tissue_pairplot(x, y, tissue_labels=None, hue=None, ax=None, **kws):
+def annotate_cat_pairplot(x, y, cats=None, cats_idx=None, hue=None, ax=None, **kws):
 
-    # Numer of points/tissues
-    n = len(x)
-    m = len(tissue_labels)
-    k = int(n/m)
-    
     # Calculate limits
     ylim = calculate_plot_lim(y, coeff_margin=0.15)
 
@@ -1316,17 +1311,17 @@ def annotate_tissue_pairplot(x, y, tissue_labels=None, hue=None, ax=None, **kws)
     lgd = ""
 
     # Iter over tissues
-    for i, tissue in enumerate(tissue_labels):
+    for i, (cat, cat_idx) in enumerate(zip(cats, cats_idx)):
 
         if i > 0:
             lgd += "\n"
 
-        # Extract tissue data
-        x_tissue = x[k*i:k*(i+1)]
-        y_tissue = y[k*i:k*(i+1)]
+        # Extract cat data
+        x_cat = x[cat_idx]
+        y_cat = y[cat_idx]
 
         # Pearson correlation
-        r, p = pearsonr(x_tissue, y_tissue)
+        r, p = pearsonr(x_cat, y_cat)
     
         # Extract variable names
         x_name = getattr(x, 'name', 'x')
@@ -1338,7 +1333,7 @@ def annotate_tissue_pairplot(x, y, tissue_labels=None, hue=None, ax=None, **kws)
 
         # Label
         subscript = f"{format_var(x_name)}-{format_var(y_name)}"
-        label = rf"\rho_{{\mathregular{{{subscript}}}}}^{{\mathregular{{{tissue}}}}}"
+        label = rf"\rho_{{\mathregular{{{subscript}}}}}^{{\mathregular{{{cat}}}}}"
         lgd += rf"${label} = {r:.2f}$ ({convert_pvalue_to_asterisks(p)})"
 
     # Annotate with correlation and p-value significance
