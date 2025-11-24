@@ -27,25 +27,31 @@ Kurtosis:                       3.582   Cond. No.                         121.
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
-                    Robust linear Model Regression Results                    
+                            OLS Regression Results                            
 ==============================================================================
-Dep. Variable:              brain_SIG   No. Observations:                  534
-Model:                            RLM   Df Residuals:                      529
-Method:                          IRLS   Df Model:                            4
-Norm:                          HuberT                                         
-Scale Est.:                       mad                                         
-Cov Type:                          H1                                         
-Date:                Fri, 21 Nov 2025                                         
-Time:                        11:12:19                                         
-No. Iterations:                    17                                         
+Dep. Variable:              brain_SIG   R-squared:                       0.339
+Model:                            OLS   Adj. R-squared:                  0.334
+Method:                 Least Squares   F-statistic:                     63.18
+Date:                Fri, 21 Nov 2025   Prob (F-statistic):           4.20e-43
+Time:                        11:12:19   Log-Likelihood:                 886.09
+No. Observations:                 498   AIC:                            -1762.
+Df Residuals:                     493   BIC:                            -1741.
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
 ==============================================================================
-                 coef    std err          z      P>|z|      [0.025      0.975]
+                 coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const          1.1537      0.002    654.378      0.000       1.150       1.157
-PMA           -0.0087      0.001     -7.563      0.000      -0.011      -0.006
-RVV            0.0157      0.005      3.061      0.002       0.006       0.026
-brain_MD       0.3429      0.055      6.291      0.000       0.236       0.450
-PTB            0.0019      0.001      3.493      0.000       0.001       0.003
+Intercept      1.1518      0.002    622.549      0.000       1.148       1.155
+PMA           -0.0082      0.001     -6.782      0.000      -0.011      -0.006
+RVV            0.0119      0.006      2.023      0.044       0.000       0.023
+brain_MD       0.3704      0.057      6.505      0.000       0.259       0.482
+PTB            0.0016      0.001      2.574      0.010       0.000       0.003
+==============================================================================
+Omnibus:                       10.885   Durbin-Watson:                   1.902
+Prob(Omnibus):                  0.004   Jarque-Bera (JB):               12.378
+Skew:                          -0.270   Prob(JB):                      0.00205
+Kurtosis:                       3.552   Cond. No.                         111.
 ==============================================================================
 
-If the model instance has been used for another fit with different fit parameters, then the fit options might not be the correct ones anymore .
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
