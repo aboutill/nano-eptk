@@ -1,56 +1,328 @@
-                   Mixed Linear Model Regression Results
-============================================================================
-Model:                   MixedLM        Dependent Variable:        SIG      
-No. Observations:        810            Method:                    ML       
-No. Groups:              405            Scale:                     0.0039   
-Min. group size:         2              Log-Likelihood:            1058.9338
-Max. group size:         2              Converged:                 Yes      
-Mean group size:         2.0                                                
-----------------------------------------------------------------------------
-                                 Coef.  Std.Err.    z    P>|z| [0.025 0.975]
-----------------------------------------------------------------------------
-C(Tissue)[WM]                     1.200    0.003 354.766 0.000  1.193  1.206
-C(Tissue)[dGM]                    1.171    0.003 345.841 0.000  1.164  1.178
-C(Tissue)[WM]:C(Type)[T.HIE]      0.056    0.014   3.919 0.000  0.028  0.084
-C(Tissue)[dGM]:C(Type)[T.HIE]     0.056    0.016   3.574 0.000  0.025  0.086
-C(Tissue)[WM]:PMA                -0.003    0.002  -1.205 0.228 -0.007  0.002
-C(Tissue)[dGM]:PMA               -0.007    0.003  -2.714 0.007 -0.013 -0.002
-C(Tissue)[WM]:RVV                 0.002    0.014   0.113 0.910 -0.026  0.030
-C(Tissue)[dGM]:RVV                0.032    0.014   2.249 0.025  0.004  0.061
-C(Tissue)[WM]:MD                  0.295    0.068   4.366 0.000  0.163  0.428
-C(Tissue)[dGM]:MD                 0.524    0.121   4.318 0.000  0.286  0.761
-C(Tissue)[WM]:C(Type)[T.HIE]:MD  -0.248    0.161  -1.542 0.123 -0.562  0.067
-C(Tissue)[dGM]:C(Type)[T.HIE]:MD  0.723    0.321   2.251 0.024  0.094  1.352
-Group Var                         0.000    0.004                            
-============================================================================
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            TSE_dGM_SIG   R-squared:                       0.090
+Model:                            OLS   Adj. R-squared:                  0.085
+Method:                 Least Squares   F-statistic:                     19.77
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           6.45e-09
+Time:                        11:34:54   Log-Likelihood:                 417.07
+No. Observations:                 405   AIC:                            -828.1
+Df Residuals:                     402   BIC:                            -816.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+C(Type)[Control]     1.1923      0.006    207.443      0.000       1.181       1.204
+C(Type)[HIE]         1.2273      0.017     71.167      0.000       1.193       1.261
+PMA_c               -0.0159      0.003     -5.871      0.000      -0.021      -0.011
+==============================================================================
+Omnibus:                        4.953   Durbin-Watson:                   1.865
+Prob(Omnibus):                  0.084   Jarque-Bera (JB):                4.762
+Skew:                          -0.224   Prob(JB):                       0.0924
+Kurtosis:                       3.287   Cond. No.                         8.68
+==============================================================================
 
-Marginal R² = 0.20, Conditional R² = 0.28
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
-                   Mixed Linear Model Regression Results
-===========================================================================
-Model:                   MixedLM       Dependent Variable:       SIG       
-No. Observations:        810           Method:                   ML        
-No. Groups:              405           Scale:                    0.7045    
-Min. group size:         2             Log-Likelihood:           -1059.0556
-Max. group size:         2             Converged:                Yes       
-Mean group size:         2.0                                               
----------------------------------------------------------------------------
-                                 Coef.  Std.Err.   z    P>|z| [0.025 0.975]
----------------------------------------------------------------------------
-C(Tissue)[WM]                    -0.085    0.046 -1.843 0.065 -0.176  0.005
-C(Tissue)[dGM]                   -0.029    0.046 -0.623 0.533 -0.120  0.062
-C(Tissue)[WM]:C(Type)[T.HIE]      1.222    0.195  6.267 0.000  0.840  1.604
-C(Tissue)[dGM]:C(Type)[T.HIE]     0.592    0.214  2.771 0.006  0.173  1.012
-C(Tissue)[WM]:PMA                -0.099    0.050 -1.990 0.047 -0.197 -0.001
-C(Tissue)[dGM]:PMA               -0.127    0.059 -2.146 0.032 -0.243 -0.011
-C(Tissue)[WM]:RVV                 0.009    0.047  0.193 0.847 -0.083  0.101
-C(Tissue)[dGM]:RVV                0.087    0.047  1.853 0.064 -0.005  0.179
-C(Tissue)[WM]:MD                  0.373    0.054  6.932 0.000  0.268  0.479
-C(Tissue)[dGM]:MD                 0.222    0.062  3.587 0.000  0.101  0.343
-C(Tissue)[WM]:C(Type)[T.HIE]:MD  -0.325    0.128 -2.538 0.011 -0.576 -0.074
-C(Tissue)[dGM]:C(Type)[T.HIE]:MD  0.253    0.165  1.533 0.125 -0.071  0.577
-Group Var                         0.102    0.055                           
-===========================================================================
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            TSE_dGM_SIG   R-squared:                       0.090
+Model:                            OLS   Adj. R-squared:                  0.085
+Method:                 Least Squares   F-statistic:                     19.77
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           6.45e-09
+Time:                        11:34:54   Log-Likelihood:                 417.07
+No. Observations:                 405   AIC:                            -828.1
+Df Residuals:                     402   BIC:                            -816.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          1.1923      0.006    207.443      0.000       1.181       1.204
+C(Type)[T.HIE]     0.0350      0.018      1.988      0.047       0.000       0.070
+PMA_c             -0.0159      0.003     -5.871      0.000      -0.021      -0.011
+==============================================================================
+Omnibus:                        4.953   Durbin-Watson:                   1.865
+Prob(Omnibus):                  0.084   Jarque-Bera (JB):                4.762
+Skew:                          -0.224   Prob(JB):                       0.0924
+Kurtosis:                       3.287   Cond. No.                         8.92
+==============================================================================
 
-Marginal R² = 0.19, Conditional R² = 0.30
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:            TSE_dGM_SIG   R-squared:                       0.090
+Model:                            OLS   Adj. R-squared:                  0.083
+Method:                 Least Squares   F-statistic:                     13.27
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           2.84e-08
+Time:                        11:34:54   Log-Likelihood:                 417.23
+No. Observations:                 405   AIC:                            -826.5
+Df Residuals:                     401   BIC:                            -810.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+========================================================================================
+                           coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------------
+Intercept                1.1918      0.006    204.715      0.000       1.180       1.203
+C(Type)[T.HIE]           0.0420      0.022      1.947      0.052      -0.000       0.084
+PMA_c                   -0.0155      0.003     -5.561      0.000      -0.021      -0.010
+C(Type)[T.HIE]:PMA_c    -0.0066      0.012     -0.564      0.573      -0.030       0.016
+==============================================================================
+Omnibus:                        4.727   Durbin-Watson:                   1.859
+Prob(Omnibus):                  0.094   Jarque-Bera (JB):                4.542
+Skew:                          -0.214   Prob(JB):                        0.103
+Kurtosis:                       3.292   Cond. No.                         11.6
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             TSE_WM_SIG   R-squared:                       0.153
+Model:                            OLS   Adj. R-squared:                  0.149
+Method:                 Least Squares   F-statistic:                     36.30
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           3.21e-15
+Time:                        11:34:54   Log-Likelihood:                 710.93
+No. Observations:                 405   AIC:                            -1416.
+Df Residuals:                     402   BIC:                            -1404.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+C(Type)[Control]     1.2095      0.003    434.761      0.000       1.204       1.215
+C(Type)[HIE]         1.2632      0.008    151.332      0.000       1.247       1.280
+PMA_c               -0.0071      0.001     -5.448      0.000      -0.010      -0.005
+==============================================================================
+Omnibus:                        0.770   Durbin-Watson:                   1.978
+Prob(Omnibus):                  0.681   Jarque-Bera (JB):                0.880
+Skew:                          -0.084   Prob(JB):                        0.644
+Kurtosis:                       2.846   Cond. No.                         8.68
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             TSE_WM_SIG   R-squared:                       0.153
+Model:                            OLS   Adj. R-squared:                  0.149
+Method:                 Least Squares   F-statistic:                     36.30
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           3.21e-15
+Time:                        11:34:54   Log-Likelihood:                 710.93
+No. Observations:                 405   AIC:                            -1416.
+Df Residuals:                     402   BIC:                            -1404.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          1.2095      0.003    434.761      0.000       1.204       1.215
+C(Type)[T.HIE]     0.0537      0.009      6.302      0.000       0.037       0.070
+PMA_c             -0.0071      0.001     -5.448      0.000      -0.010      -0.005
+==============================================================================
+Omnibus:                        0.770   Durbin-Watson:                   1.978
+Prob(Omnibus):                  0.681   Jarque-Bera (JB):                0.880
+Skew:                          -0.084   Prob(JB):                        0.644
+Kurtosis:                       2.846   Cond. No.                         8.92
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             TSE_WM_SIG   R-squared:                       0.156
+Model:                            OLS   Adj. R-squared:                  0.149
+Method:                 Least Squares   F-statistic:                     24.62
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           1.22e-14
+Time:                        11:34:54   Log-Likelihood:                 711.54
+No. Observations:                 405   AIC:                            -1415.
+Df Residuals:                     401   BIC:                            -1399.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+========================================================================================
+                           coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------------
+Intercept                1.2090      0.003    429.534      0.000       1.203       1.215
+C(Type)[T.HIE]           0.0603      0.010      5.782      0.000       0.040       0.081
+PMA_c                   -0.0068      0.001     -5.028      0.000      -0.009      -0.004
+C(Type)[T.HIE]:PMA_c    -0.0062      0.006     -1.101      0.272      -0.017       0.005
+==============================================================================
+Omnibus:                        0.551   Durbin-Watson:                   1.968
+Prob(Omnibus):                  0.759   Jarque-Bera (JB):                0.658
+Skew:                          -0.075   Prob(JB):                        0.720
+Kurtosis:                       2.871   Cond. No.                         11.6
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 dGM_MD   R-squared:                       0.438
+Model:                            OLS   Adj. R-squared:                  0.435
+Method:                 Least Squares   F-statistic:                     156.4
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.62e-51
+Time:                        11:34:54   Log-Likelihood:                 873.86
+No. Observations:                 405   AIC:                            -1742.
+Df Residuals:                     402   BIC:                            -1730.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+C(Type)[Control]     1.0618      0.002    570.682      0.000       1.058       1.065
+C(Type)[HIE]         1.0349      0.006    185.394      0.000       1.024       1.046
+PMA_c               -0.0151      0.001    -17.242      0.000      -0.017      -0.013
+==============================================================================
+Omnibus:                       16.388   Durbin-Watson:                   2.001
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               29.495
+Skew:                           0.238   Prob(JB):                     3.94e-07
+Kurtosis:                       4.233   Cond. No.                         8.68
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 dGM_MD   R-squared:                       0.438
+Model:                            OLS   Adj. R-squared:                  0.435
+Method:                 Least Squares   F-statistic:                     156.4
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.62e-51
+Time:                        11:34:54   Log-Likelihood:                 873.86
+No. Observations:                 405   AIC:                            -1742.
+Df Residuals:                     402   BIC:                            -1730.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          1.0618      0.002    570.682      0.000       1.058       1.065
+C(Type)[T.HIE]    -0.0268      0.006     -4.711      0.000      -0.038      -0.016
+PMA_c             -0.0151      0.001    -17.242      0.000      -0.017      -0.013
+==============================================================================
+Omnibus:                       16.388   Durbin-Watson:                   2.001
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               29.495
+Skew:                           0.238   Prob(JB):                     3.94e-07
+Kurtosis:                       4.233   Cond. No.                         8.92
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 dGM_MD   R-squared:                       0.438
+Model:                            OLS   Adj. R-squared:                  0.433
+Method:                 Least Squares   F-statistic:                     104.0
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           7.96e-50
+Time:                        11:34:54   Log-Likelihood:                 873.86
+No. Observations:                 405   AIC:                            -1740.
+Df Residuals:                     401   BIC:                            -1724.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+========================================================================================
+                           coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------------
+Intercept                1.0618      0.002    563.199      0.000       1.058       1.065
+C(Type)[T.HIE]          -0.0270      0.007     -3.862      0.000      -0.041      -0.013
+PMA_c                   -0.0151      0.001    -16.730      0.000      -0.017      -0.013
+C(Type)[T.HIE]:PMA_c     0.0001      0.004      0.037      0.970      -0.007       0.008
+==============================================================================
+Omnibus:                       16.381   Durbin-Watson:                   2.001
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               29.464
+Skew:                           0.238   Prob(JB):                     4.00e-07
+Kurtosis:                       4.232   Cond. No.                         11.6
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  WM_MD   R-squared:                       0.189
+Model:                            OLS   Adj. R-squared:                  0.185
+Method:                 Least Squares   F-statistic:                     46.87
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.04e-19
+Time:                        11:34:54   Log-Likelihood:                 618.61
+No. Observations:                 405   AIC:                            -1231.
+Df Residuals:                     402   BIC:                            -1219.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+C(Type)[Control]     1.3387      0.003    383.119      0.000       1.332       1.346
+C(Type)[HIE]         1.3137      0.010    125.298      0.000       1.293       1.334
+PMA_c               -0.0156      0.002     -9.490      0.000      -0.019      -0.012
+==============================================================================
+Omnibus:                        4.738   Durbin-Watson:                   1.981
+Prob(Omnibus):                  0.094   Jarque-Bera (JB):                6.026
+Skew:                          -0.058   Prob(JB):                       0.0491
+Kurtosis:                       3.586   Cond. No.                         8.68
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  WM_MD   R-squared:                       0.189
+Model:                            OLS   Adj. R-squared:                  0.185
+Method:                 Least Squares   F-statistic:                     46.87
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.04e-19
+Time:                        11:34:54   Log-Likelihood:                 618.61
+No. Observations:                 405   AIC:                            -1231.
+Df Residuals:                     402   BIC:                            -1219.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          1.3387      0.003    383.119      0.000       1.332       1.346
+C(Type)[T.HIE]    -0.0251      0.011     -2.342      0.020      -0.046      -0.004
+PMA_c             -0.0156      0.002     -9.490      0.000      -0.019      -0.012
+==============================================================================
+Omnibus:                        4.738   Durbin-Watson:                   1.981
+Prob(Omnibus):                  0.094   Jarque-Bera (JB):                6.026
+Skew:                          -0.058   Prob(JB):                       0.0491
+Kurtosis:                       3.586   Cond. No.                         8.92
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  WM_MD   R-squared:                       0.189
+Model:                            OLS   Adj. R-squared:                  0.183
+Method:                 Least Squares   F-statistic:                     31.17
+Date:                Tue, 25 Nov 2025   Prob (F-statistic):           3.93e-18
+Time:                        11:34:54   Log-Likelihood:                 618.61
+No. Observations:                 405   AIC:                            -1229.
+Df Residuals:                     401   BIC:                            -1213.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+========================================================================================
+                           coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------------
+Intercept                1.3387      0.004    378.085      0.000       1.332       1.346
+C(Type)[T.HIE]          -0.0247      0.013     -1.881      0.061      -0.050       0.001
+PMA_c                   -0.0156      0.002     -9.191      0.000      -0.019      -0.012
+C(Type)[T.HIE]:PMA_c    -0.0003      0.007     -0.049      0.961      -0.014       0.014
+==============================================================================
+Omnibus:                        4.871   Durbin-Watson:                   1.981
+Prob(Omnibus):                  0.088   Jarque-Bera (JB):                6.239
+Skew:                          -0.061   Prob(JB):                       0.0442
+Kurtosis:                       3.596   Cond. No.                         11.6
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
