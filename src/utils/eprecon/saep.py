@@ -333,7 +333,7 @@ def _saep_reconstruction(
     nib.save(eps_nii, output_eps_path)
     
 
-def saep_pipeline(
+def saep(
         input_mag_path,
         input_pha_path,
         input_mask_path,
@@ -409,7 +409,7 @@ def saep_pipeline(
     # Print timer
     if verbose:
         elapsed_time = datetime.datetime.now() - start_time
-        print(f"SAEP pipeline run time: {elapsed_time}")
+        print(f"SAEP run time: {elapsed_time}")
     
     # Delete temp dir    
     shutil.rmtree(temp_dir.name)

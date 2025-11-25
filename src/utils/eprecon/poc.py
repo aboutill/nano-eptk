@@ -121,7 +121,7 @@ def _poc_reconstruction(
     nib.save(sig_nii, output_sig_path)
     
 
-def poc_pipeline(
+def poc(
         input_pha_path,
         input_mask_path,
         output_sig_path=None,
@@ -180,13 +180,13 @@ def poc_pipeline(
     # Print timer
     if verbose:
         elapsed_time = datetime.datetime.now() - start_time
-        print(f"POC reconstruction pipeline run time: {elapsed_time}")
+        print(f"POC reconstruction run time: {elapsed_time}")
         
     # Delete temp dir    
     shutil.rmtree(temp_dir.name)
     
 
-def mspoc_pipeline(
+def mspoc(
         input_pha_paths,
         input_mask_paths,
         input_dof_paths,
@@ -345,7 +345,7 @@ def mspoc_pipeline(
     # Print timer
     if verbose:
         elapsed_time = datetime.datetime.now() - start_time
-        print(f"MSPOC pipeline run time: {elapsed_time}")
+        print(f"MSPOC run time: {elapsed_time}")
         
     # Delete temp dir    
     shutil.rmtree(temp_dir.name)

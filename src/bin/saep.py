@@ -8,7 +8,7 @@ import yaml
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
-from utils.eprecon.seap import saep_pipeline
+from utils.eprecon.seap import saep
 
 
 def parse_args():
@@ -20,7 +20,7 @@ def parse_args():
             "saep: part of nano eptk package.\n"
             "\n"
             "Reconstruct conductivity and permittivity from complex multi-coil image\n"
-            "using the single-acauisition electrical properties (SAEP) method.\n"
+            "using the single-acquisition electrical properties (SAEP) method.\n"
             "\n"    
             "Required arguments:\n"
             " - Input multi-coil magnitude.\n"
@@ -115,7 +115,7 @@ def parse_args():
         metavar="\b",
     )
     
-    # Pipeline parameters
+    # Method parameters
     # Coils index
     parser.add_argument(
         "--coils_idx",
@@ -204,7 +204,7 @@ def parse_args():
     
     # Configuration file
     parser.add_argument(
-        "--config",
+        "--cfg",
         type=pathlib.Path,
         help="Configuration file.",
         default=None,
@@ -217,18 +217,18 @@ def parse_args():
     return args
 
 
-def execute_saep_with_config(
-        config_path=None,
+def execute_saep_with_cfg(
+        cfg_path=None,
         **kwargs,
     ):
     
     # Load configuration
-    if config_path:
-        cfg = yaml.safe_load(open(config_path))
+    if cfg_path:
+        cfg = yaml.safe_load(open(cfg_path))
         kwargs.update(cfg)
    
-    # Run SAEP pipeline
-    saep_pipeline(**kwargs)
+    # Run SAEP
+    saep(**kwargs)
         
 
 def main():
@@ -237,7 +237,7 @@ def main():
     args = parse_args()
 
     # Main function call
-    execute_saep_with_config(
+    execute_saep_with_cfg(
         input_mag_path=args.mag,
         input_pha_path=args.pha,
         input_mask_path=args.mask,
@@ -256,7 +256,7 @@ def main():
         eros_rad=args.eros_rad,
         eros_strc=args.eros_strc,
         verbose=args.verbose,
-        config_path=args.config,
+        cfg_path=args.cfg,
     )
     
 

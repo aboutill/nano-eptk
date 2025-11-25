@@ -8,7 +8,7 @@ import yaml
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
-from utils.eprecon.pocr import mspocr_pipeline
+from utils.eprecon.pocr import mspocr
 
 
 def parse_args():
@@ -148,7 +148,7 @@ def parse_args():
         metavar="\b",
     )
     
-    # Pipeline parameters
+    # Method parameters
     # Gaussian filter sigma
     parser.add_argument(
         "--gs_sigma",
@@ -238,7 +238,7 @@ def parse_args():
     
     # Configuration file
     parser.add_argument(
-        "--config",
+        "--cfg",
         type=pathlib.Path,
         help="Configuration file.",
         default=None,
@@ -251,18 +251,18 @@ def parse_args():
     return args
 
 
-def execute_mspocr_with_config(
-        config_path=None,
+def execute_mspocr_with_cfg(
+        cfg_path=None,
         **kwargs,
     ):
     
     # Load configuration
-    if config_path:
-        cfg = yaml.safe_load(open(config_path))
+    if cfg_path:
+        cfg = yaml.safe_load(open(cfg_path))
         kwargs.update(cfg)
     
-    # Run MSPOCR pipeline
-    mspocr_pipeline(**kwargs)
+    # Run MSPOCR
+    mspocr(**kwargs)
         
 
 def main():
@@ -271,7 +271,7 @@ def main():
     args = parse_args()
 
     # Main function call
-    execute_mspocr_with_config(
+    execute_mspocr_with_cfg(
         input_pha_paths=args.phas,
         input_mask_paths=args.masks,
         input_dof_paths=args.dofs,
@@ -293,7 +293,7 @@ def main():
         eros_rad=args.eros_rad,
         eros_strc=args.eros_strc,
         verbose=args.verbose,
-        config_path=args.config,
+        cfgg_path=args.cfg,
     )
     
 

@@ -430,7 +430,7 @@ def _pocr_reconstruction(
         nib.save(mask_outlier_nii, output_mask_outlier_path)
     
 
-def pocr_pipeline(
+def pocr(
         input_pha_path,
         input_mask_path,
         output_sig_path=None,
@@ -489,13 +489,13 @@ def pocr_pipeline(
     # Print timer
     if verbose:
         elapsed_time = datetime.datetime.now() - start_time
-        print(f"POCR pipeline run time: {elapsed_time}")
+        print(f"POCR run time: {elapsed_time}")
         
     # Delete temp dir    
     shutil.rmtree(temp_dir.name)
     
         
-def mspocr_pipeline(
+def mspocr(
         input_pha_paths,
         input_mask_paths,
         input_dof_paths,
@@ -681,7 +681,7 @@ def mspocr_pipeline(
     # Print timer
     if verbose:
         elapsed_time = datetime.datetime.now() - start_time
-        print(f"MSPOCR pipeline run time: {elapsed_time}")
+        print(f"MSPOCR run time: {elapsed_time}")
     
     # Delete temp dir    
     shutil.rmtree(temp_dir.name)

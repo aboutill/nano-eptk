@@ -3,13 +3,13 @@ from .fd_kernels import (
     laplacian_kernel,
 )
 from .poc import (
-    poc_pipeline,
-    mspoc_pipeline,
+    poc,
+    mspoc,
 )
 from .pocr import (
-    pocr_pipeline,
-    mspocr_pipeline,
+    pocr,
+    mspocr,
 )
 from .saep import (
-    saep_pipeline,
+    saep,
 )
