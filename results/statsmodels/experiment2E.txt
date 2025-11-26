@@ -1,25 +1,25 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:              brain_SIG   R-squared:                       0.267
-Model:                            OLS   Adj. R-squared:                  0.264
-Method:                 Least Squares   F-statistic:                     96.58
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           1.72e-36
-Time:                        16:54:04   Log-Likelihood:                 912.62
-No. Observations:                 533   AIC:                            -1819.
-Df Residuals:                     530   BIC:                            -1806.
+Dep. Variable:              brain_SIG   R-squared:                       0.249
+Model:                            OLS   Adj. R-squared:                  0.246
+Method:                 Least Squares   F-statistic:                     78.98
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           2.36e-30
+Time:                        10:14:00   Log-Likelihood:                 877.53
+No. Observations:                 480   AIC:                            -1749.
+Df Residuals:                     477   BIC:                            -1737.
 Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ====================================================================================
                        coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------
-C(Type)[Preterm]     1.1955      0.004    273.582      0.000       1.187       1.204
-C(Type)[Term]        1.1602      0.002    466.019      0.000       1.155       1.165
-PMA_c               -0.0125      0.001    -11.679      0.000      -0.015      -0.010
+C(Type)[Preterm]     1.1883      0.004    264.279      0.000       1.179       1.197
+C(Type)[Term]        1.1602      0.002    488.659      0.000       1.156       1.165
+PMA_c               -0.0120      0.001    -11.330      0.000      -0.014      -0.010
 ==============================================================================
-Omnibus:                        8.128   Durbin-Watson:                   1.916
-Prob(Omnibus):                  0.017   Jarque-Bera (JB):                9.569
-Skew:                          -0.189   Prob(JB):                      0.00836
-Kurtosis:                       3.537   Cond. No.                         5.11
+Omnibus:                        4.600   Durbin-Watson:                   1.972
+Prob(Omnibus):                  0.100   Jarque-Bera (JB):                4.690
+Skew:                          -0.235   Prob(JB):                       0.0958
+Kurtosis:                       2.886   Cond. No.                         5.60
 ==============================================================================
 
 Notes:
@@ -27,26 +27,26 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:              brain_SIG   R-squared:                       0.267
-Model:                            OLS   Adj. R-squared:                  0.264
-Method:                 Least Squares   F-statistic:                     96.58
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           1.72e-36
-Time:                        16:54:04   Log-Likelihood:                 912.62
-No. Observations:                 533   AIC:                            -1819.
-Df Residuals:                     530   BIC:                            -1806.
+Dep. Variable:              brain_SIG   R-squared:                       0.249
+Model:                            OLS   Adj. R-squared:                  0.246
+Method:                 Least Squares   F-statistic:                     78.98
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           2.36e-30
+Time:                        10:14:00   Log-Likelihood:                 877.53
+No. Observations:                 480   AIC:                            -1749.
+Df Residuals:                     477   BIC:                            -1737.
 Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 =========================================================================================================
                                             coef    std err          t      P>|t|      [0.025      0.975]
 ---------------------------------------------------------------------------------------------------------
-Intercept                                 1.1602      0.002    466.019      0.000       1.155       1.165
-C(Type, Treatment('Term'))[T.Preterm]     0.0353      0.005      7.533      0.000       0.026       0.045
-PMA_c                                    -0.0125      0.001    -11.679      0.000      -0.015      -0.010
+Intercept                                 1.1602      0.002    488.659      0.000       1.156       1.165
+C(Type, Treatment('Term'))[T.Preterm]     0.0282      0.005      6.058      0.000       0.019       0.037
+PMA_c                                    -0.0120      0.001    -11.330      0.000      -0.014      -0.010
 ==============================================================================
-Omnibus:                        8.128   Durbin-Watson:                   1.916
-Prob(Omnibus):                  0.017   Jarque-Bera (JB):                9.569
-Skew:                          -0.189   Prob(JB):                      0.00836
-Kurtosis:                       3.537   Cond. No.                         5.66
+Omnibus:                        4.600   Durbin-Watson:                   1.972
+Prob(Omnibus):                  0.100   Jarque-Bera (JB):                4.690
+Skew:                          -0.235   Prob(JB):                       0.0958
+Kurtosis:                       2.886   Cond. No.                         5.92
 ==============================================================================
 
 Notes:
@@ -54,27 +54,27 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:              brain_SIG   R-squared:                       0.267
-Model:                            OLS   Adj. R-squared:                  0.263
-Method:                 Least Squares   F-statistic:                     64.34
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           1.76e-35
-Time:                        16:54:04   Log-Likelihood:                 912.71
-No. Observations:                 533   AIC:                            -1817.
-Df Residuals:                     529   BIC:                            -1800.
+Dep. Variable:              brain_SIG   R-squared:                       0.251
+Model:                            OLS   Adj. R-squared:                  0.246
+Method:                 Least Squares   F-statistic:                     53.11
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           1.25e-29
+Time:                        10:14:00   Log-Likelihood:                 878.18
+No. Observations:                 480   AIC:                            -1748.
+Df Residuals:                     476   BIC:                            -1732.
 Df Model:                           3                                         
 Covariance Type:            nonrobust                                         
 =========================================================================================
                             coef    std err          t      P>|t|      [0.025      0.975]
 -----------------------------------------------------------------------------------------
-Intercept                 1.1964      0.005    241.433      0.000       1.187       1.206
-C(Type)[T.Term]          -0.0366      0.006     -6.536      0.000      -0.048      -0.026
-PMA_c                    -0.0133      0.002     -6.009      0.000      -0.018      -0.009
-C(Type)[T.Term]:PMA_c     0.0010      0.003      0.409      0.683      -0.004       0.006
+Intercept                 1.1925      0.006    205.194      0.000       1.181       1.204
+C(Type)[T.Term]          -0.0330      0.006     -5.236      0.000      -0.045      -0.021
+PMA_c                    -0.0148      0.003     -5.532      0.000      -0.020      -0.010
+C(Type)[T.Term]:PMA_c     0.0033      0.003      1.137      0.256      -0.002       0.009
 ==============================================================================
-Omnibus:                        8.095   Durbin-Watson:                   1.917
-Prob(Omnibus):                  0.017   Jarque-Bera (JB):                9.607
-Skew:                          -0.185   Prob(JB):                      0.00820
-Kurtosis:                       3.544   Cond. No.                         11.4
+Omnibus:                        3.966   Durbin-Watson:                   1.973
+Prob(Omnibus):                  0.138   Jarque-Bera (JB):                4.046
+Skew:                          -0.217   Prob(JB):                        0.132
+Kurtosis:                       2.884   Cond. No.                         14.5
 ==============================================================================
 
 Notes:
@@ -82,26 +82,26 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:               brain_MD   R-squared:                       0.401
-Model:                            OLS   Adj. R-squared:                  0.399
-Method:                 Least Squares   F-statistic:                     177.8
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           8.42e-60
-Time:                        16:54:04   Log-Likelihood:                 1075.4
-No. Observations:                 533   AIC:                            -2145.
-Df Residuals:                     530   BIC:                            -2132.
+Dep. Variable:               brain_MD   R-squared:                       0.358
+Model:                            OLS   Adj. R-squared:                  0.356
+Method:                 Least Squares   F-statistic:                     133.2
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           1.09e-46
+Time:                        10:14:00   Log-Likelihood:                 1020.2
+No. Observations:                 480   AIC:                            -2034.
+Df Residuals:                     477   BIC:                            -2022.
 Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ====================================================================================
                        coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------
-C(Type)[Preterm]     1.2300      0.003    382.021      0.000       1.224       1.236
-C(Type)[Term]        1.1903      0.002    648.885      0.000       1.187       1.194
-PMA_c               -0.0118      0.001    -14.939      0.000      -0.013      -0.010
+C(Type)[Preterm]     1.2235      0.003    366.255      0.000       1.217       1.230
+C(Type)[Term]        1.1889      0.002    674.039      0.000       1.185       1.192
+PMA_c               -0.0106      0.001    -13.422      0.000      -0.012      -0.009
 ==============================================================================
-Omnibus:                        0.757   Durbin-Watson:                   1.953
-Prob(Omnibus):                  0.685   Jarque-Bera (JB):                0.572
-Skew:                           0.016   Prob(JB):                        0.751
-Kurtosis:                       3.157   Cond. No.                         5.11
+Omnibus:                       12.733   Durbin-Watson:                   2.019
+Prob(Omnibus):                  0.002   Jarque-Bera (JB):                7.252
+Skew:                          -0.104   Prob(JB):                       0.0266
+Kurtosis:                       2.435   Cond. No.                         5.60
 ==============================================================================
 
 Notes:
@@ -109,26 +109,26 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:               brain_MD   R-squared:                       0.401
-Model:                            OLS   Adj. R-squared:                  0.399
-Method:                 Least Squares   F-statistic:                     177.8
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           8.42e-60
-Time:                        16:54:04   Log-Likelihood:                 1075.4
-No. Observations:                 533   AIC:                            -2145.
-Df Residuals:                     530   BIC:                            -2132.
+Dep. Variable:               brain_MD   R-squared:                       0.358
+Model:                            OLS   Adj. R-squared:                  0.356
+Method:                 Least Squares   F-statistic:                     133.2
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           1.09e-46
+Time:                        10:14:00   Log-Likelihood:                 1020.2
+No. Observations:                 480   AIC:                            -2034.
+Df Residuals:                     477   BIC:                            -2022.
 Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 =========================================================================================================
                                             coef    std err          t      P>|t|      [0.025      0.975]
 ---------------------------------------------------------------------------------------------------------
-Intercept                                 1.1903      0.002    648.885      0.000       1.187       1.194
-C(Type, Treatment('Term'))[T.Preterm]     0.0397      0.003     11.501      0.000       0.033       0.047
-PMA_c                                    -0.0118      0.001    -14.939      0.000      -0.013      -0.010
+Intercept                                 1.1889      0.002    674.039      0.000       1.185       1.192
+C(Type, Treatment('Term'))[T.Preterm]     0.0346      0.003     10.017      0.000       0.028       0.041
+PMA_c                                    -0.0106      0.001    -13.422      0.000      -0.012      -0.009
 ==============================================================================
-Omnibus:                        0.757   Durbin-Watson:                   1.953
-Prob(Omnibus):                  0.685   Jarque-Bera (JB):                0.572
-Skew:                           0.016   Prob(JB):                        0.751
-Kurtosis:                       3.157   Cond. No.                         5.66
+Omnibus:                       12.733   Durbin-Watson:                   2.019
+Prob(Omnibus):                  0.002   Jarque-Bera (JB):                7.252
+Skew:                          -0.104   Prob(JB):                       0.0266
+Kurtosis:                       2.435   Cond. No.                         5.92
 ==============================================================================
 
 Notes:
@@ -136,27 +136,27 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:               brain_MD   R-squared:                       0.403
-Model:                            OLS   Adj. R-squared:                  0.400
-Method:                 Least Squares   F-statistic:                     119.1
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           6.25e-59
-Time:                        16:54:04   Log-Likelihood:                 1076.1
-No. Observations:                 533   AIC:                            -2144.
-Df Residuals:                     529   BIC:                            -2127.
+Dep. Variable:               brain_MD   R-squared:                       0.364
+Model:                            OLS   Adj. R-squared:                  0.360
+Method:                 Least Squares   F-statistic:                     90.65
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           2.04e-46
+Time:                        10:14:00   Log-Likelihood:                 1022.1
+No. Observations:                 480   AIC:                            -2036.
+Df Residuals:                     476   BIC:                            -2020.
 Df Model:                           3                                         
 Covariance Type:            nonrobust                                         
 =========================================================================================
                             coef    std err          t      P>|t|      [0.025      0.975]
 -----------------------------------------------------------------------------------------
-Intercept                 1.2321      0.004    337.823      0.000       1.225       1.239
-C(Type)[T.Term]          -0.0424      0.004    -10.300      0.000      -0.050      -0.034
-PMA_c                    -0.0135      0.002     -8.283      0.000      -0.017      -0.010
-C(Type)[T.Term]:PMA_c     0.0022      0.002      1.194      0.233      -0.001       0.006
+Intercept                 1.2289      0.004    285.401      0.000       1.220       1.237
+C(Type)[T.Term]          -0.0408      0.005     -8.744      0.000      -0.050      -0.032
+PMA_c                    -0.0142      0.002     -7.147      0.000      -0.018      -0.010
+C(Type)[T.Term]:PMA_c     0.0043      0.002      1.977      0.049    2.56e-05       0.009
 ==============================================================================
-Omnibus:                        0.940   Durbin-Watson:                   1.960
-Prob(Omnibus):                  0.625   Jarque-Bera (JB):                0.757
-Skew:                           0.011   Prob(JB):                        0.685
-Kurtosis:                       3.183   Cond. No.                         11.4
+Omnibus:                       13.180   Durbin-Watson:                   2.033
+Prob(Omnibus):                  0.001   Jarque-Bera (JB):                7.216
+Skew:                          -0.084   Prob(JB):                       0.0271
+Kurtosis:                       2.423   Cond. No.                         14.5
 ==============================================================================
 
 Notes:

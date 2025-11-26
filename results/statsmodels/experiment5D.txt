@@ -3,8 +3,8 @@
 Dep. Variable:            TSE_dGM_SIG   R-squared:                       0.090
 Model:                            OLS   Adj. R-squared:                  0.085
 Method:                 Least Squares   F-statistic:                     19.77
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           6.45e-09
-Time:                        11:34:54   Log-Likelihood:                 417.07
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           6.45e-09
+Time:                        10:40:40   Log-Likelihood:                 417.07
 No. Observations:                 405   AIC:                            -828.1
 Df Residuals:                     402   BIC:                            -816.1
 Df Model:                           2                                         
@@ -30,8 +30,8 @@ Notes:
 Dep. Variable:            TSE_dGM_SIG   R-squared:                       0.090
 Model:                            OLS   Adj. R-squared:                  0.085
 Method:                 Least Squares   F-statistic:                     19.77
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           6.45e-09
-Time:                        11:34:54   Log-Likelihood:                 417.07
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           6.45e-09
+Time:                        10:40:40   Log-Likelihood:                 417.07
 No. Observations:                 405   AIC:                            -828.1
 Df Residuals:                     402   BIC:                            -816.1
 Df Model:                           2                                         
@@ -57,8 +57,8 @@ Notes:
 Dep. Variable:            TSE_dGM_SIG   R-squared:                       0.090
 Model:                            OLS   Adj. R-squared:                  0.083
 Method:                 Least Squares   F-statistic:                     13.27
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           2.84e-08
-Time:                        11:34:54   Log-Likelihood:                 417.23
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           2.84e-08
+Time:                        10:40:40   Log-Likelihood:                 417.23
 No. Observations:                 405   AIC:                            -826.5
 Df Residuals:                     401   BIC:                            -810.4
 Df Model:                           3                                         
@@ -85,8 +85,8 @@ Notes:
 Dep. Variable:             TSE_WM_SIG   R-squared:                       0.153
 Model:                            OLS   Adj. R-squared:                  0.149
 Method:                 Least Squares   F-statistic:                     36.30
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           3.21e-15
-Time:                        11:34:54   Log-Likelihood:                 710.93
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           3.21e-15
+Time:                        10:40:40   Log-Likelihood:                 710.93
 No. Observations:                 405   AIC:                            -1416.
 Df Residuals:                     402   BIC:                            -1404.
 Df Model:                           2                                         
@@ -112,8 +112,8 @@ Notes:
 Dep. Variable:             TSE_WM_SIG   R-squared:                       0.153
 Model:                            OLS   Adj. R-squared:                  0.149
 Method:                 Least Squares   F-statistic:                     36.30
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           3.21e-15
-Time:                        11:34:54   Log-Likelihood:                 710.93
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           3.21e-15
+Time:                        10:40:40   Log-Likelihood:                 710.93
 No. Observations:                 405   AIC:                            -1416.
 Df Residuals:                     402   BIC:                            -1404.
 Df Model:                           2                                         
@@ -139,8 +139,8 @@ Notes:
 Dep. Variable:             TSE_WM_SIG   R-squared:                       0.156
 Model:                            OLS   Adj. R-squared:                  0.149
 Method:                 Least Squares   F-statistic:                     24.62
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           1.22e-14
-Time:                        11:34:54   Log-Likelihood:                 711.54
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           1.22e-14
+Time:                        10:40:40   Log-Likelihood:                 711.54
 No. Observations:                 405   AIC:                            -1415.
 Df Residuals:                     401   BIC:                            -1399.
 Df Model:                           3                                         
@@ -167,8 +167,8 @@ Notes:
 Dep. Variable:                 dGM_MD   R-squared:                       0.438
 Model:                            OLS   Adj. R-squared:                  0.435
 Method:                 Least Squares   F-statistic:                     156.4
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.62e-51
-Time:                        11:34:54   Log-Likelihood:                 873.86
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           5.62e-51
+Time:                        10:40:40   Log-Likelihood:                 873.86
 No. Observations:                 405   AIC:                            -1742.
 Df Residuals:                     402   BIC:                            -1730.
 Df Model:                           2                                         
@@ -194,8 +194,8 @@ Notes:
 Dep. Variable:                 dGM_MD   R-squared:                       0.438
 Model:                            OLS   Adj. R-squared:                  0.435
 Method:                 Least Squares   F-statistic:                     156.4
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.62e-51
-Time:                        11:34:54   Log-Likelihood:                 873.86
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           5.62e-51
+Time:                        10:40:40   Log-Likelihood:                 873.86
 No. Observations:                 405   AIC:                            -1742.
 Df Residuals:                     402   BIC:                            -1730.
 Df Model:                           2                                         
@@ -221,8 +221,8 @@ Notes:
 Dep. Variable:                 dGM_MD   R-squared:                       0.438
 Model:                            OLS   Adj. R-squared:                  0.433
 Method:                 Least Squares   F-statistic:                     104.0
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           7.96e-50
-Time:                        11:34:54   Log-Likelihood:                 873.86
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           7.96e-50
+Time:                        10:40:40   Log-Likelihood:                 873.86
 No. Observations:                 405   AIC:                            -1740.
 Df Residuals:                     401   BIC:                            -1724.
 Df Model:                           3                                         
@@ -249,8 +249,8 @@ Notes:
 Dep. Variable:                  WM_MD   R-squared:                       0.189
 Model:                            OLS   Adj. R-squared:                  0.185
 Method:                 Least Squares   F-statistic:                     46.87
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.04e-19
-Time:                        11:34:54   Log-Likelihood:                 618.61
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           5.04e-19
+Time:                        10:40:40   Log-Likelihood:                 618.61
 No. Observations:                 405   AIC:                            -1231.
 Df Residuals:                     402   BIC:                            -1219.
 Df Model:                           2                                         
@@ -276,8 +276,8 @@ Notes:
 Dep. Variable:                  WM_MD   R-squared:                       0.189
 Model:                            OLS   Adj. R-squared:                  0.185
 Method:                 Least Squares   F-statistic:                     46.87
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.04e-19
-Time:                        11:34:54   Log-Likelihood:                 618.61
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           5.04e-19
+Time:                        10:40:40   Log-Likelihood:                 618.61
 No. Observations:                 405   AIC:                            -1231.
 Df Residuals:                     402   BIC:                            -1219.
 Df Model:                           2                                         
@@ -303,8 +303,8 @@ Notes:
 Dep. Variable:                  WM_MD   R-squared:                       0.189
 Model:                            OLS   Adj. R-squared:                  0.183
 Method:                 Least Squares   F-statistic:                     31.17
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           3.93e-18
-Time:                        11:34:54   Log-Likelihood:                 618.61
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           3.93e-18
+Time:                        10:40:40   Log-Likelihood:                 618.61
 No. Observations:                 405   AIC:                            -1229.
 Df Residuals:                     401   BIC:                            -1213.
 Df Model:                           3                                         

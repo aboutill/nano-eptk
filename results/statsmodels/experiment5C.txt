@@ -3,8 +3,8 @@
 Dep. Variable:          TSE_brain_SIG   R-squared:                       0.163
 Model:                            OLS   Adj. R-squared:                  0.159
 Method:                 Least Squares   F-statistic:                     39.15
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           2.91e-16
-Time:                        11:34:52   Log-Likelihood:                 721.68
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           2.91e-16
+Time:                        10:40:38   Log-Likelihood:                 721.68
 No. Observations:                 405   AIC:                            -1437.
 Df Residuals:                     402   BIC:                            -1425.
 Df Model:                           2                                         
@@ -30,8 +30,8 @@ Notes:
 Dep. Variable:          TSE_brain_SIG   R-squared:                       0.163
 Model:                            OLS   Adj. R-squared:                  0.159
 Method:                 Least Squares   F-statistic:                     39.15
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           2.91e-16
-Time:                        11:34:52   Log-Likelihood:                 721.68
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           2.91e-16
+Time:                        10:40:38   Log-Likelihood:                 721.68
 No. Observations:                 405   AIC:                            -1437.
 Df Residuals:                     402   BIC:                            -1425.
 Df Model:                           2                                         
@@ -57,8 +57,8 @@ Notes:
 Dep. Variable:          TSE_brain_SIG   R-squared:                       0.169
 Model:                            OLS   Adj. R-squared:                  0.163
 Method:                 Least Squares   F-statistic:                     27.16
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.22e-16
-Time:                        11:34:52   Log-Likelihood:                 723.09
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           5.22e-16
+Time:                        10:40:38   Log-Likelihood:                 723.09
 No. Observations:                 405   AIC:                            -1438.
 Df Residuals:                     401   BIC:                            -1422.
 Df Model:                           3                                         
@@ -85,8 +85,8 @@ Notes:
 Dep. Variable:               brain_MD   R-squared:                       0.221
 Model:                            OLS   Adj. R-squared:                  0.217
 Method:                 Least Squares   F-statistic:                     56.99
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           1.63e-22
-Time:                        11:34:52   Log-Likelihood:                 830.21
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           1.63e-22
+Time:                        10:40:38   Log-Likelihood:                 830.21
 No. Observations:                 405   AIC:                            -1654.
 Df Residuals:                     402   BIC:                            -1642.
 Df Model:                           2                                         
@@ -112,8 +112,8 @@ Notes:
 Dep. Variable:               brain_MD   R-squared:                       0.221
 Model:                            OLS   Adj. R-squared:                  0.217
 Method:                 Least Squares   F-statistic:                     56.99
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           1.63e-22
-Time:                        11:34:52   Log-Likelihood:                 830.21
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           1.63e-22
+Time:                        10:40:38   Log-Likelihood:                 830.21
 No. Observations:                 405   AIC:                            -1654.
 Df Residuals:                     402   BIC:                            -1642.
 Df Model:                           2                                         
@@ -139,8 +139,8 @@ Notes:
 Dep. Variable:               brain_MD   R-squared:                       0.225
 Model:                            OLS   Adj. R-squared:                  0.219
 Method:                 Least Squares   F-statistic:                     38.74
-Date:                Tue, 25 Nov 2025   Prob (F-statistic):           5.25e-22
-Time:                        11:34:52   Log-Likelihood:                 831.21
+Date:                Wed, 26 Nov 2025   Prob (F-statistic):           5.25e-22
+Time:                        10:40:38   Log-Likelihood:                 831.21
 No. Observations:                 405   AIC:                            -1654.
 Df Residuals:                     401   BIC:                            -1638.
 Df Model:                           3                                         
