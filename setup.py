@@ -6,11 +6,16 @@ setup(
     version="0.0.1",
     entry_points={
         "console_scripts": [
-            "nano-eptk-mspoc = bin.mspoc:main",
-            "nano-eptk-mspocr = bin.mspocr:main",
-            "nano-eptk-poc = bin.poc:main",
-            "nano-eptk-pocr = bin.pocr:main",
-            "nano-eptk-saep = bin.saep:main",
+            "mspoc = bin.mspoc:main",
+            "mspocr = bin.mspocr:main",
+            "poc = bin.poc:main",
+            "pocr = bin.pocr:main",
+            "saep = bin.saep:main",
+            "dhcp_gre_saep = bin.dhcp_gre_saep:main",
+            "dhp_epi_poc = bin.dhp_epi_poc:main",
+            "dhp_epi_pocr = bin.dhp_epi_pocr:main",
+            "dhcp_tse_mspoc = bin.dhcp_tse_mspoc:main",
+            "dhcp_tse_mspocr = bin.dhcp_tse_mspocr:main",
             ]
         }
 )
