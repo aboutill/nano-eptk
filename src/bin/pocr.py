@@ -15,7 +15,7 @@ def parse_args():
     
     # Initialize parser
     parser = argparse.ArgumentParser(
-        prog="nano_eptk_pocr",
+        prog="pocr",
         description=(
             "pocr: part of nano eptk package.\n"
             "\n"
@@ -25,6 +25,7 @@ def parse_args():
             "Required arguments:\n"
             " - Input phase.\n"
             " - Input mask.\n"
+            " - Output conductivity.\n"
         ),
         epilog="Arnaud Boutillon (arnaud.boutillon@kcl.ac.uk)",
         formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, max_help_position=6),
@@ -50,16 +51,16 @@ def parse_args():
         metavar="\b",
     )
     
-    # Optional arguments
     # Output conductivity
     parser.add_argument(
         "--sig",
         type=pathlib.Path,
         help="Output conductivity.",
-        default=None,
+        required=True,
         metavar="\b",
     )
     
+    # Optional arguments
     # Output EP metrics
     parser.add_argument(
         "--ep_metric",
@@ -136,7 +137,7 @@ def parse_args():
         metavar="\b",
     ) 
     
-    # Diffusion regularizatio n axes
+    # Diffusion regularization axes
     parser.add_argument(
         "--diff_reg_axes",
         type=int,

@@ -15,7 +15,7 @@ def parse_args():
     
     # Initialize parser
     parser = argparse.ArgumentParser(
-        prog="nano_eptk_mspoc",
+        prog="mspoc",
         description=(
             "mspoc: part of nano eptk package.\n"
             "\n"
@@ -26,6 +26,7 @@ def parse_args():
             " - Input stacks phase.\n"
             " - Input stacks mask.\n"
             " - Input stacks rigid transformation.\n"
+            " - Output conductivity.\n"
         ),
         epilog="Arnaud Boutillon (arnaud.boutillon@kcl.ac.uk)",
         formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, max_help_position=6),
@@ -63,21 +64,21 @@ def parse_args():
         metavar="\b",
     )
     
-    # Optional arguments
-    # Reference image
-    parser.add_argument(
-        "--ref",
-        type=pathlib.Path,
-        help="Input reference image.",
-        default=None,
-        metavar="\b",
-    )
-    
     # Output conductivity
     parser.add_argument(
         "--sig",
         type=pathlib.Path,
         help="Output conductivity.",
+        required=True,
+        metavar="\b",
+    )
+    
+    # Optional arguments
+    # Reference volume
+    parser.add_argument(
+        "--ref",
+        type=pathlib.Path,
+        help="Input reference volume.",
         default=None,
         metavar="\b",
     )
@@ -217,6 +218,13 @@ def parse_args():
         help="Increase verbosity.",
     ) 
     
+    # Debug
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Save intermediate files.",
+    ) 
+    
     # Configuration file
     parser.add_argument(
         "--cfg",
@@ -272,6 +280,7 @@ def main():
         eros_rad=args.eros_rad,
         eros_strc=args.eros_strc,
         verbose=args.verbose,
+        debug=args.debug,
         cfg_path=args.cfg,
     )
     

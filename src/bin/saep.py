@@ -26,6 +26,8 @@ def parse_args():
             " - Input multi-coil magnitude.\n"
             " - Input multi-coil phase.\n"
             " - Input mask.\n"
+            " - Output conductivity.\n"
+            " - Output permittivity.\n"
         ),
         epilog="Arnaud Boutillon (arnaud.boutillon@kcl.ac.uk)",
         formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, max_help_position=6),
@@ -60,13 +62,12 @@ def parse_args():
         metavar="\b",
     )
     
-    # Optional arguments
     # Output conductivity
     parser.add_argument(
         "--sig",
         type=pathlib.Path,
         help="Output conductivity.",
-        default=None,
+        required=True,
         metavar="\b",
     )
     
@@ -75,10 +76,11 @@ def parse_args():
         "--eps",
         type=pathlib.Path,
         help="Output permittivity.",
-        default=None,
+        required=True,
         metavar="\b",
     )
-
+    
+    # Optional arguments
     # Output EP metrics
     parser.add_argument(
         "--ep_metric",
@@ -202,6 +204,13 @@ def parse_args():
         help="Increase verbosity.",
     ) 
     
+    # Debug
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Save intermediate files.",
+    ) 
+    
     # Configuration file
     parser.add_argument(
         "--cfg",
@@ -256,6 +265,7 @@ def main():
         eros_rad=args.eros_rad,
         eros_strc=args.eros_strc,
         verbose=args.verbose,
+        debug=args.debug,
         cfg_path=args.cfg,
     )
     
