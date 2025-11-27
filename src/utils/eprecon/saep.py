@@ -260,7 +260,8 @@ def _saep_reconstruction(
     
     #
     if debug:
-        debug_dir = os.path.commonpath([output_sig_path, output_eps_path])
+        temp_dir = os.path.commonpath([output_sig_path, output_eps_path])
+        temp_dir = os.path.join(temp_dir, "temporary-files")
     
     # Load niftis
     mag_nii = nib.load(input_mag_path)
@@ -287,22 +288,28 @@ def _saep_reconstruction(
     
     # Multi coil normalization
     cmpl, ref = _multi_coil_normalization(cmpl=cmpl, mask=mask, **kwargs)
+    
+    # Saving
     if debug:
-        norm_path = os.path.join(debug_dir, "norm")
+        norm_path = os.path.join(temp_dir, "norm")
         _save_cmpl_nifti(cmpl, header, affine, norm_path)
-        ref_path = os.path.join(debug_dir, "ref")
+        ref_path = os.path.join(temp_dir, "ref")
         _save_cmpl_nifti(ref, header, affine, ref_path)
     
     # Apply Gaussian smoothing
     cmpl = _gaussian_filter(cmpl=cmpl, mask=mask, vox=vox, **kwargs)
+    
+    # Saving
     if debug:
-        gs_path = os.path.join(debug_dir, "gs")
+        gs_path = os.path.join(temp_dir, "gs")
         _save_cmpl_nifti(cmpl, header, affine, gs_path)
 
     # SVD
     cmpl = _svd(cmpl=cmpl, **kwargs)
+    
+    # Saving
     if debug:
-        svd_path = os.path.join(debug_dir, "svd")
+        svd_path = os.path.join(temp_dir, "svd")
         _save_cmpl_nifti(cmpl, header, affine, svd_path)
         
     # Apply mask
@@ -337,13 +344,13 @@ def saep(
         input_mag_path,
         input_pha_path,
         input_mask_path,
-        output_sig_path=None,
-        output_eps_path=None,
+        output_sig_path,
+        output_eps_path,
         output_ep_metrics_path=None,
         output_mask_eroded_path=None,
         output_sig_eroded_path=None,
         output_eps_eroded_path=None,
-        verbose=None,
+        verbose=False,
         **kwargs,
     ):
     
@@ -352,19 +359,16 @@ def saep(
         start_time = datetime.datetime.now()
     
     # Temporary dir
-    temp_dir = tempfile.TemporaryDirectory()
-    if output_sig_path is None:
-        output_sig_path = os.path.join(temp_dir.name, "sig.nii.gz")
-    if output_eps_path is None:
-        output_eps_path = os.path.join(temp_dir.name, "eps.nii.gz")
+    temp_dir_obj = tempfile.TemporaryDirectory()
+    temp_dir = temp_dir_obj.name
     if output_ep_metrics_path is None:
-        output_ep_metrics_path = os.path.join(temp_dir.name, "ep_metrics.json")
+        output_ep_metrics_path = os.path.join(temp_dir, "ep_metrics.json")
     if output_mask_eroded_path is None:
-        output_mask_eroded_path = os.path.join(temp_dir.name, "mask_eroded.nii.gz")
+        output_mask_eroded_path = os.path.join(temp_dir, "mask_eroded.nii.gz")
     if output_sig_eroded_path is None:
-        output_sig_eroded_path = os.path.join(temp_dir.name, "sig_eroded.nii.gz")
+        output_sig_eroded_path = os.path.join(temp_dir, "sig_eroded.nii.gz")
     if output_eps_eroded_path is None:
-        output_eps_eroded_path = os.path.join(temp_dir.name, "eps_eroded.nii.gz")
+        output_eps_eroded_path = os.path.join(temp_dir, "eps_eroded.nii.gz")
         
     # SAEP reconstruction
     _saep_reconstruction(
@@ -411,5 +415,5 @@ def saep(
         elapsed_time = datetime.datetime.now() - start_time
         print(f"SAEP run time: {elapsed_time}")
     
-    # Delete temp dir    
-    shutil.rmtree(temp_dir.name)
+    # Delete temp dir 
+    shutil.rmtree(temp_dir)

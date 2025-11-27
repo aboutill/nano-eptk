@@ -1,4 +1,5 @@
 import os 
+import re
 import datetime
 import tempfile
 import shutil
@@ -13,6 +14,17 @@ from utils.tools.mirtk import mirtk_average_images
 from utils.tools.mrtrix import mrtrix_multiply
 from utils.mask import erode_mask
 from utils.metrics import extract_ep_metrics
+
+
+def _save_nifti(img, header, affine, output_path):
+    
+    # Initialize output directory
+    output_dir = os.path.dirname(output_path)
+    os.makedirs(output_dir, exist_ok=True)
+        
+    # Save image
+    mag_nii = nib.Nifti1Image(img, affine, header)
+    nib.save(mag_nii, output_path)
 
 
 def _gaussian_filter(
@@ -80,8 +92,13 @@ def _poc_reconstruction(
         input_pha_path,
         input_mask_path,
         output_sig_path,
+        debug=False,
         **kwargs,
     ):  
+    
+    if debug:
+        temp_dir = os.path.dirname(output_sig_path)
+        temp_dir = os.path.join(temp_dir, "temporary-files")
     
     # Load phase
     pha_nii = nib.load(input_pha_path)
@@ -101,30 +118,29 @@ def _poc_reconstruction(
     # Apply mask on phase
     pha *= mask
     
-    # Apply TPA
+    # Apply Transceive Phase Assumption (TPA)
     pha /= 2
     
     # Apply Gaussian smoothing
     pha = _gaussian_filter(img=pha, mask=mask, vox=vox, **kwargs)
-                
+    
+    # Saving
+    if debug:
+        gs_path = os.path.join(temp_dir, "gs_pha.nii.gz")
+        _save_nifti(pha, header, affine, gs_path)
+        
     # Solve POC
     vox = vox * 1e-3 # in m
     sig = _poc_solver(pha, vox=vox, **kwargs)
     
-    # Initialize output directory
-    output_dir = os.path.dirname(output_sig_path)
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-        
     # Save sig
-    sig_nii = nib.Nifti1Image(sig, affine, header)
-    nib.save(sig_nii, output_sig_path)
+    _save_nifti(sig, header, affine, output_sig_path)
     
 
 def poc(
         input_pha_path,
         input_mask_path,
-        output_sig_path=None,
+        output_sig_path,
         output_ep_metrics_path=None,
         output_mask_eroded_path=None,
         output_sig_eroded_path=None,
@@ -137,15 +153,14 @@ def poc(
         start_time = datetime.datetime.now()
     
     # Temporary dir
-    temp_dir = tempfile.TemporaryDirectory()
-    if output_sig_path is None:
-        output_sig_path = os.path.join(temp_dir.name, "sig.nii.gz")
+    temp_dir_obj = tempfile.TemporaryDirectory()
+    temp_dir = temp_dir_obj.name
     if output_ep_metrics_path is None:
-        output_ep_metrics_path = os.path.join(temp_dir.name, "ep_metrics.json")
+        output_ep_metrics_path = os.path.join(temp_dir, "ep_metrics.json")
     if output_mask_eroded_path is None:
-        output_mask_eroded_path = os.path.join(temp_dir.name, "mask_eroded.nii.gz")
+        output_mask_eroded_path = os.path.join(temp_dir, "mask_eroded.nii.gz")
     if output_sig_eroded_path is None:
-        output_sig_eroded_path = os.path.join(temp_dir.name, "sig_eroded.nii.gz")
+        output_sig_eroded_path = os.path.join(temp_dir, "sig_eroded.nii.gz")
     
     # POC reconstruction
     _poc_reconstruction(
@@ -183,14 +198,14 @@ def poc(
         print(f"POC reconstruction run time: {elapsed_time}")
         
     # Delete temp dir    
-    shutil.rmtree(temp_dir.name)
+    shutil.rmtree(temp_dir)
     
 
 def mspoc(
         input_pha_paths,
         input_mask_paths,
         input_dof_paths,
-        output_sig_path=None,
+        output_sig_path,
         input_ref_path=None,
         input_dhcp_labels9_paths=None,
         output_sig_paths=None,
@@ -203,50 +218,56 @@ def mspoc(
         output_sig_eroded_path=None,
         output_dhcp_labels9_path=None,
         verbose=False,
+        debug=False,
         **kwargs,
     ):
     
     # Initialize timer
     if verbose:
         start_time = datetime.datetime.now()
-    
+        
+    # Intermediate directory
+    if debug:
+        temp_dir = os.path.dirname(output_sig_path)
+        temp_dir = os.path.join(temp_dir, "temporary-files")
+    else:
+        temp_dir_obj = tempfile.TemporaryDirectory()
+        temp_dir = temp_dir_obj.name
+   
     # Set length
     n = len(input_pha_paths)
     
     # Temporary dir
-    temp_dir = tempfile.TemporaryDirectory()
-    if output_sig_path is None:
-        output_sig_path = os.path.join(temp_dir.name, "sig.nii.gz")
     if output_sig_paths is None:
         output_sig_paths = [
-            os.path.join(temp_dir.name, f"sig-{i}.nii.gz")
+            os.path.join(temp_dir, f"sig-{i}.nii.gz")
             for i in range(n)
         ]
     if output_mask_eroded_paths is None:
             output_mask_eroded_paths = [
-                os.path.join(temp_dir.name, f"mask_eroded-{i}.nii.gz")
+                os.path.join(temp_dir, f"mask_eroded-{i}.nii.gz")
                 for i in range(n)
             ]
     if output_ep_metrics_paths is None:
         output_ep_metrics_paths = [
-            os.path.join(temp_dir.name, f"ep_metrics-{i}.json")
+            os.path.join(temp_dir, f"ep_metrics-{i}.json")
             for i in range(n)
         ]
     if output_sig_eroded_paths is None:
         output_sig_eroded_paths = [
-            os.path.join(temp_dir.name, f"sig_eroded-{i}.nii.gz")
+            os.path.join(temp_dir, f"sig_eroded-{i}.nii.gz")
             for i in range(n)
         ]
     if output_mask_path is None:
-        output_mask_path = os.path.join(temp_dir.name, "mask.nii.gz")
+        output_mask_path = os.path.join(temp_dir, "mask.nii.gz")
     if output_mask_eroded_path is None:
-        output_mask_eroded_path = os.path.join(temp_dir.name, "mask_eroded.nii.gz")
+        output_mask_eroded_path = os.path.join(temp_dir, "mask_eroded.nii.gz")
     if output_ep_metrics_path is None:
-        output_ep_metrics_path = os.path.join(temp_dir.name, "ep_metrics.json")
+        output_ep_metrics_path = os.path.join(temp_dir, "ep_metrics.json")
     if output_sig_eroded_path is None:
-        output_sig_eroded_path = os.path.join(temp_dir.name, "sig_eroded.nii.gz")
+        output_sig_eroded_path = os.path.join(temp_dir, "sig_eroded.nii.gz")
     if input_dhcp_labels9_paths is not None and output_dhcp_labels9_path is None:
-        output_dhcp_labels9_path = os.path.join(temp_dir.name, "dhcp_labels9.nii.gz")
+        output_dhcp_labels9_path = os.path.join(temp_dir, "dhcp_labels9.nii.gz")
     if input_dhcp_labels9_paths is None:
         input_dhcp_labels9_paths = n*[None]
     
@@ -347,5 +368,12 @@ def mspoc(
         elapsed_time = datetime.datetime.now() - start_time
         print(f"MSPOC run time: {elapsed_time}")
         
-    # Delete temp dir    
-    shutil.rmtree(temp_dir.name)
+    # Delete temp dir
+    if debug:
+        pattern = r"^sig-\d+\.nii\.gz$"
+        for filename in os.listdir(temp_dir):
+            if not re.match(pattern, filename):
+                filepath = os.path.join(temp_dir, filename)
+                os.remove(filepath)
+    else:
+        shutil.rmtree(temp_dir)

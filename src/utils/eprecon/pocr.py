@@ -1,8 +1,10 @@
 import os 
-import datetime
+import re
 import json
-import tempfile
 import shutil
+import datetime
+import tempfile
+
 
 import nibabel as nib
 import numpy as np
@@ -25,6 +27,17 @@ from utils.tools.mrtrix import mrtrix_multiply
 from utils.mask import erode_mask
 from utils.metrics import extract_ep_metrics, extract_outlier_metrics
 
+
+def _save_nifti(img, header, affine, output_path):
+    
+    # Initialize output directory
+    output_dir = os.path.dirname(output_path)
+    os.makedirs(output_dir, exist_ok=True)
+        
+    # Save image
+    mag_nii = nib.Nifti1Image(img, affine, header)
+    nib.save(mag_nii, output_path)
+    
 
 def _gaussian_filter(
         img,
@@ -361,7 +374,7 @@ def _outlier_stack_rejection(
     if len(inlier_index) == 0:
         inlier_index = [i for i in range(n)]
 
-    # If only one stack, make it double
+    # If only one stack, prepare for trouble, make it double
     elif len(inlier_index) == 1:
         inlier_index += [inlier_index[0]]
             
@@ -373,9 +386,16 @@ def _pocr_reconstruction(
         input_mask_path,
         output_sig_path,
         output_mask_outlier_path=None,
+        debug=False,
         **kwargs,
     ):    
     
+    if debug:
+        temp_dir = os.path.dirname(output_sig_path)
+        temp_dir = os.path.join(temp_dir, "temporary-files")
+        if output_mask_outlier_path is None:
+            output_mask_outlier_path = os.path.join(temp_dir, "mask_outlier.nii.gz")
+        
     # Load phase
     pha_nii = nib.load(input_pha_path)
     pha = pha_nii.get_fdata()
@@ -396,6 +416,11 @@ def _pocr_reconstruction(
     
     # Apply Gaussian smoothing
     pha = _gaussian_filter(img=pha, mask=mask, vox=vox, **kwargs)
+    
+    # Saving
+    if debug:
+        gs_path = os.path.join(temp_dir, "gs_pha.nii.gz")
+        _save_nifti(pha, header, affine, gs_path)
                 
     # Solve POCR
     vox = vox * 1e-3 # in m
@@ -412,28 +437,18 @@ def _pocr_reconstruction(
         vox=vox,
     )
     
-    # Initialize output directory
-    output_dir = os.path.dirname(output_sig_path)
-    os.makedirs(output_dir, exist_ok=True)
-        
     # Save sig
-    sig_nii = nib.Nifti1Image(sig, affine, header)
-    nib.save(sig_nii, output_sig_path)
+    _save_nifti(sig, header, affine, output_sig_path)
     
     if output_mask_outlier_path is not None:
-        # Initialize output directory
-        output_dir = os.path.dirname(output_mask_outlier_path)
-        os.makedirs(output_dir, exist_ok=True)
-            
         # Save mask outlier
-        mask_outlier_nii = nib.Nifti1Image(mask_outlier.astype(np.float32), affine, header)
-        nib.save(mask_outlier_nii, output_mask_outlier_path)
+        _save_nifti(mask_outlier.astype(np.float32), header, affine, output_mask_outlier_path)
     
 
 def pocr(
         input_pha_path,
         input_mask_path,
-        output_sig_path=None,
+        output_sig_path,
         output_ep_metrics_path=None,
         output_mask_eroded_path=None,
         output_sig_eroded_path=None,
@@ -446,15 +461,14 @@ def pocr(
        start_time = datetime.datetime.now()
     
     # Temporary dir
-    temp_dir = tempfile.TemporaryDirectory()
-    if output_sig_path is None:
-        output_sig_path = os.path.join(temp_dir.name, "sig.nii.gz")
+    temp_dir_obj = tempfile.TemporaryDirectory()
+    temp_dir = temp_dir_obj.name
     if output_ep_metrics_path is None:
-        output_ep_metrics_path = os.path.join(temp_dir.name, "ep_metrics.json")
+        output_ep_metrics_path = os.path.join(temp_dir, "ep_metrics.json")
     if output_mask_eroded_path is None:
-        output_mask_eroded_path = os.path.join(temp_dir.name, "mask_eroded.nii.gz") 
+        output_mask_eroded_path = os.path.join(temp_dir, "mask_eroded.nii.gz") 
     if output_sig_eroded_path is None:
-        output_sig_eroded_path = os.path.join(temp_dir.name, "sig_eroded.nii.gz")
+        output_sig_eroded_path = os.path.join(temp_dir, "sig_eroded.nii.gz")
         
     # POCR reconstruction
     _pocr_reconstruction(
@@ -492,14 +506,14 @@ def pocr(
         print(f"POCR run time: {elapsed_time}")
         
     # Delete temp dir    
-    shutil.rmtree(temp_dir.name)
+    shutil.rmtree(temp_dir)
     
         
 def mspocr(
         input_pha_paths,
         input_mask_paths,
         input_dof_paths,
-        output_sig_path=None,
+        output_sig_path,
         input_ref_path=None,
         input_dhcp_labels9_paths=None,
         output_sig_paths=None,
@@ -512,6 +526,7 @@ def mspocr(
         output_sig_eroded_path=None,
         output_dhcp_labels9_path=None,
         verbose=False,
+        debug=False,
         **kwargs,
     ):
     
@@ -523,47 +538,51 @@ def mspocr(
     n = len(input_pha_paths)
     
     # Temporary dir
-    temp_dir = tempfile.TemporaryDirectory()
-    if output_sig_path is None:
-        output_sig_path = os.path.join(temp_dir.name, "sig.nii.gz")
+    if debug:
+        temp_dir = os.path.dirname(output_sig_path)
+        temp_dir = os.path.join(temp_dir, "temporary-files")
+    else:
+        temp_dir_obj = tempfile.TemporaryDirectory()
+        temp_dir = temp_dir_obj.name
+
     if output_sig_paths is None:
         output_sig_paths = [
-            os.path.join(temp_dir.name, f"sig-{i}.nii.gz") 
+            os.path.join(temp_dir, f"sig-{i}.nii.gz") 
             for i in range(n)
         ]
     output_mask_outlier_paths = [
-        os.path.join(temp_dir.name, f"mask_outlier-{i}.nii.gz")
+        os.path.join(temp_dir, f"mask_outlier-{i}.nii.gz")
         for i in range(n)
     ]
     if output_mask_eroded_paths is None:
         output_mask_eroded_paths = [
-            os.path.join(temp_dir.name, f"mask_eroded-{i}.nii.gz")
+            os.path.join(temp_dir, f"mask_eroded-{i}.nii.gz")
             for i in range(n)
         ]
     if output_ep_metrics_paths is None:
         output_ep_metrics_paths = [
-            os.path.join(temp_dir.name, f"ep_metrics-{i}.json")
+            os.path.join(temp_dir, f"ep_metrics-{i}.json")
             for i in range(n)
         ]
     if output_sig_eroded_paths is None:
         output_sig_eroded_paths = [
-            os.path.join(temp_dir.name, f"sig_eroded-{i}.nii.gz")
+            os.path.join(temp_dir, f"sig_eroded-{i}.nii.gz")
             for i in range(n)
         ]
     output_outlier_metrics_paths = [
-        os.path.join(temp_dir.name, f"outlier_metrics-{i}.json")
+        os.path.join(temp_dir, f"outlier_metrics-{i}.json")
         for i in range(n)
     ]
     if output_mask_path is None:
-        output_mask_path = os.path.join(temp_dir.name, "mask.nii.gz")
+        output_mask_path = os.path.join(temp_dir, "mask.nii.gz")
     if output_mask_eroded_path is None:
-        output_mask_eroded_path = os.path.join(temp_dir.name, "mask_eroded.nii.gz")
+        output_mask_eroded_path = os.path.join(temp_dir, "mask_eroded.nii.gz")
     if output_ep_metrics_path is None:
-        output_ep_metrics_path = os.path.join(temp_dir.name, "ep_metrics.json")
+        output_ep_metrics_path = os.path.join(temp_dir, "ep_metrics.json")
     if output_sig_eroded_path is None:
-        output_sig_eroded_path = os.path.join(temp_dir.name, "sig_eroded.nii.gz")
+        output_sig_eroded_path = os.path.join(temp_dir, "sig_eroded.nii.gz")
     if input_dhcp_labels9_paths is not None and output_dhcp_labels9_path is None:
-        output_dhcp_labels9_path = os.path.join(temp_dir.name, "dhcp_labels9.nii.gz")
+        output_dhcp_labels9_path = os.path.join(temp_dir, "dhcp_labels9.nii.gz")
     if input_dhcp_labels9_paths is None:
         input_dhcp_labels9_paths = n*[None]
         
@@ -683,5 +702,12 @@ def mspocr(
         elapsed_time = datetime.datetime.now() - start_time
         print(f"MSPOCR run time: {elapsed_time}")
     
-    # Delete temp dir    
-    shutil.rmtree(temp_dir.name)
+    # Delete temp dir
+    if debug:
+        patterns = [r"^sig-\d+\.nii\.gz$", r"^mask_outlier-\d+\.nii\.gz$"]
+        for filename in os.listdir(temp_dir):
+            if not any([re.match(pattern, filename) for pattern in patterns]):
+                filepath = os.path.join(temp_dir, filename)
+                os.remove(filepath)
+    else:
+        shutil.rmtree(temp_dir)
