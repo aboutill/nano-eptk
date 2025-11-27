@@ -1,0 +1,19 @@
+# dHCP TSE MSPOC configuration
+
+pha_corr: # Phase correction
+  bsp_n: 100 # Number of neighbors in B-spline interpolation
+  bsp_axes: # B-spline axes
+  - 0
+  - 1
+  
+mspoc: # Multi-Stack Phase Only Conductivity reconstruction method
+  gs_sigma: 1.6 # Gaussian Smoothing standard deviation
+  gs_axes: # Gaussian smoothing axes
+  - 0
+  - 1
+  f0: 128000000.0 # Frequency of B0 magnetic field
+  pde_axes: # Partial differential equation axes
+  - 0
+  - 1
+  eros_rad: 4.8 # Erosion radius
+  eros_strc: ellipsoid # Erosion shape

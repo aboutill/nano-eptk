@@ -1,0 +1,28 @@
+# dHCP EPI POC configuration
+
+topup: # TOPUP correction
+  pe_dirs: # Phase-encoding directions
+  - -1
+  - 1
+  - -1
+  - 1
+  pe_axis: 1 # Phase-encoding axis
+  rd_time: 0.04745257979 # Readout time
+  
+pha_corr: # Phase correction
+  bsp_n: 100 # Number of neighbors in B-spline interpolation
+  bsp_axes: # B-spline axes
+  - 0
+  - 1
+  
+poc: # Phase Only Conductivity reconstruction method
+  gs_sigma: 2.1 # Gaussian Smoothing standard deviation
+  gs_axes: # Gaussian smoothing axes
+  - 0
+  - 1
+  f0: 128000000.0 # Frequency of B0 magnetic field
+  pde_axes: # Partial differential equation axes
+  - 0
+  - 1
+  eros_rad: 8.4 # Erosion radius
+  eros_strc: ellipsoid # Erosion shape
