@@ -2,25 +2,15 @@
 ==============================================================================
 Dep. Variable:          TSE_brain_SIG   R-squared:                       0.163
 Model:                            OLS   Adj. R-squared:                  0.159
-Method:                 Least Squares   F-statistic:                     39.15
-Date:                Thu, 27 Nov 2025   Prob (F-statistic):           2.91e-16
-Time:                        16:37:23   Log-Likelihood:                 721.68
-No. Observations:                 405   AIC:                            -1437.
-Df Residuals:                     402   BIC:                            -1425.
-Df Model:                           2                                         
-Covariance Type:            nonrobust                                         
+No. Observations:                 405   F-statistic:                     39.15
+Covariance Type:            nonrobust   Prob (F-statistic):           2.91e-16
 ====================================================================================
                        coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------
 C(Type)[Control]     1.2099      0.003    446.583      0.000       1.205       1.215
 C(Type)[HIE]         1.2667      0.008    155.829      0.000       1.251       1.283
 PMA_c               -0.0068      0.001     -5.293      0.000      -0.009      -0.004
-==============================================================================
-Omnibus:                        0.703   Durbin-Watson:                   1.909
-Prob(Omnibus):                  0.704   Jarque-Bera (JB):                0.796
-Skew:                          -0.092   Prob(JB):                        0.672
-Kurtosis:                       2.884   Cond. No.                         8.68
-==============================================================================
+====================================================================================
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
@@ -29,25 +19,15 @@ Notes:
 ==============================================================================
 Dep. Variable:          TSE_brain_SIG   R-squared:                       0.163
 Model:                            OLS   Adj. R-squared:                  0.159
-Method:                 Least Squares   F-statistic:                     39.15
-Date:                Thu, 27 Nov 2025   Prob (F-statistic):           2.91e-16
-Time:                        16:37:23   Log-Likelihood:                 721.68
-No. Observations:                 405   AIC:                            -1437.
-Df Residuals:                     402   BIC:                            -1425.
-Df Model:                           2                                         
-Covariance Type:            nonrobust                                         
+No. Observations:                 405   F-statistic:                     39.15
+Covariance Type:            nonrobust   Prob (F-statistic):           2.91e-16
 ==================================================================================
                      coef    std err          t      P>|t|      [0.025      0.975]
 ----------------------------------------------------------------------------------
 Intercept          1.2099      0.003    446.583      0.000       1.205       1.215
 C(Type)[T.HIE]     0.0568      0.008      6.848      0.000       0.041       0.073
 PMA_c             -0.0068      0.001     -5.293      0.000      -0.009      -0.004
-==============================================================================
-Omnibus:                        0.703   Durbin-Watson:                   1.909
-Prob(Omnibus):                  0.704   Jarque-Bera (JB):                0.796
-Skew:                          -0.092   Prob(JB):                        0.672
-Kurtosis:                       2.884   Cond. No.                         8.92
-==============================================================================
+==================================================================================
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
@@ -56,13 +36,8 @@ Notes:
 ==============================================================================
 Dep. Variable:          TSE_brain_SIG   R-squared:                       0.169
 Model:                            OLS   Adj. R-squared:                  0.163
-Method:                 Least Squares   F-statistic:                     27.16
-Date:                Thu, 27 Nov 2025   Prob (F-statistic):           5.22e-16
-Time:                        16:37:23   Log-Likelihood:                 723.09
-No. Observations:                 405   AIC:                            -1438.
-Df Residuals:                     401   BIC:                            -1422.
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
+No. Observations:                 405   F-statistic:                     27.16
+Covariance Type:            nonrobust   Prob (F-statistic):           5.22e-16
 ========================================================================================
                            coef    std err          t      P>|t|      [0.025      0.975]
 ----------------------------------------------------------------------------------------
@@ -70,12 +45,7 @@ Intercept                1.2092      0.003    442.007      0.000       1.204    
 C(Type)[T.HIE]           0.0666      0.010      6.572      0.000       0.047       0.087
 PMA_c                   -0.0062      0.001     -4.750      0.000      -0.009      -0.004
 C(Type)[T.HIE]:PMA_c    -0.0092      0.005     -1.677      0.094      -0.020       0.002
-==============================================================================
-Omnibus:                        0.466   Durbin-Watson:                   1.895
-Prob(Omnibus):                  0.792   Jarque-Bera (JB):                0.535
-Skew:                          -0.078   Prob(JB):                        0.765
-Kurtosis:                       2.915   Cond. No.                         11.6
-==============================================================================
+========================================================================================
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
@@ -84,25 +54,15 @@ Notes:
 ==============================================================================
 Dep. Variable:               brain_MD   R-squared:                       0.221
 Model:                            OLS   Adj. R-squared:                  0.217
-Method:                 Least Squares   F-statistic:                     56.99
-Date:                Thu, 27 Nov 2025   Prob (F-statistic):           1.63e-22
-Time:                        16:37:23   Log-Likelihood:                 830.21
-No. Observations:                 405   AIC:                            -1654.
-Df Residuals:                     402   BIC:                            -1642.
-Df Model:                           2                                         
-Covariance Type:            nonrobust                                         
+No. Observations:                 405   F-statistic:                     56.99
+Covariance Type:            nonrobust   Prob (F-statistic):           1.63e-22
 ====================================================================================
                        coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------
 C(Type)[Control]     1.1881      0.002    573.317      0.000       1.184       1.192
 C(Type)[HIE]         1.1906      0.006    191.478      0.000       1.178       1.203
 PMA_c               -0.0104      0.001    -10.640      0.000      -0.012      -0.008
-==============================================================================
-Omnibus:                        5.653   Durbin-Watson:                   2.056
-Prob(Omnibus):                  0.059   Jarque-Bera (JB):                5.853
-Skew:                           0.205   Prob(JB):                       0.0536
-Kurtosis:                       3.423   Cond. No.                         8.68
-==============================================================================
+====================================================================================
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
@@ -111,25 +71,15 @@ Notes:
 ==============================================================================
 Dep. Variable:               brain_MD   R-squared:                       0.221
 Model:                            OLS   Adj. R-squared:                  0.217
-Method:                 Least Squares   F-statistic:                     56.99
-Date:                Thu, 27 Nov 2025   Prob (F-statistic):           1.63e-22
-Time:                        16:37:23   Log-Likelihood:                 830.21
-No. Observations:                 405   AIC:                            -1654.
-Df Residuals:                     402   BIC:                            -1642.
-Df Model:                           2                                         
-Covariance Type:            nonrobust                                         
+No. Observations:                 405   F-statistic:                     56.99
+Covariance Type:            nonrobust   Prob (F-statistic):           1.63e-22
 ==================================================================================
                      coef    std err          t      P>|t|      [0.025      0.975]
 ----------------------------------------------------------------------------------
 Intercept          1.1881      0.002    573.317      0.000       1.184       1.192
 C(Type)[T.HIE]     0.0025      0.006      0.391      0.696      -0.010       0.015
 PMA_c             -0.0104      0.001    -10.640      0.000      -0.012      -0.008
-==============================================================================
-Omnibus:                        5.653   Durbin-Watson:                   2.056
-Prob(Omnibus):                  0.059   Jarque-Bera (JB):                5.853
-Skew:                           0.205   Prob(JB):                       0.0536
-Kurtosis:                       3.423   Cond. No.                         8.92
-==============================================================================
+==================================================================================
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
@@ -138,13 +88,8 @@ Notes:
 ==============================================================================
 Dep. Variable:               brain_MD   R-squared:                       0.225
 Model:                            OLS   Adj. R-squared:                  0.219
-Method:                 Least Squares   F-statistic:                     38.74
-Date:                Thu, 27 Nov 2025   Prob (F-statistic):           5.25e-22
-Time:                        16:37:23   Log-Likelihood:                 831.21
-No. Observations:                 405   AIC:                            -1654.
-Df Residuals:                     401   BIC:                            -1638.
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
+No. Observations:                 405   F-statistic:                     38.74
+Covariance Type:            nonrobust   Prob (F-statistic):           5.25e-22
 ========================================================================================
                            coef    std err          t      P>|t|      [0.025      0.975]
 ----------------------------------------------------------------------------------------
@@ -152,12 +97,7 @@ Intercept                1.1876      0.002    566.973      0.000       1.184    
 C(Type)[T.HIE]           0.0088      0.008      1.133      0.258      -0.006       0.024
 PMA_c                   -0.0101      0.001    -10.008      0.000      -0.012      -0.008
 C(Type)[T.HIE]:PMA_c    -0.0059      0.004     -1.408      0.160      -0.014       0.002
-==============================================================================
-Omnibus:                        4.291   Durbin-Watson:                   2.078
-Prob(Omnibus):                  0.117   Jarque-Bera (JB):                4.578
-Skew:                           0.140   Prob(JB):                        0.101
-Kurtosis:                       3.439   Cond. No.                         11.6
-==============================================================================
+========================================================================================
 
 Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
