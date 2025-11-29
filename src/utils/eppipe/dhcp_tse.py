@@ -38,7 +38,6 @@ def _dhcp_tse(
         if step not in cfg:
             cfg[step] = {}
     
-    
     # Intermediate directory
     if debug:
         temp_dir = os.path.dirname(output_sig_path)

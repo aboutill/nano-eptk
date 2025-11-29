@@ -27,7 +27,7 @@ def dhcp_gre_saep(
     # Load configuration
     cfg = yaml.safe_load(open(cfg_path))
     
-    # Set 
+    # Default values
     for step in ["degibbs", "saep"]:
         if step not in cfg:
             cfg[step] = {}
@@ -45,7 +45,7 @@ def dhcp_gre_saep(
     pha_degibbs_path = os.path.join(temp_dir, "pha_degibbs.nii.gz")
     
     # Run DeGibbs correction
-    if "degibbs" in cfg:
+    if cfg["degibbs"]:
         degibbs(
             input_mag_path=input_mag_path, 
             input_pha_path=input_pha_path,
