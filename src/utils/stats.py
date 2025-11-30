@@ -7,7 +7,7 @@ from scipy.stats import chi2
 def convert_pvalue_to_asterisks(p):
     if p < 0.0001:
         return '****'
-    if p < 0.001:
+    elif p < 0.001:
         return '***'
     elif p < 0.01:
         return '**'
