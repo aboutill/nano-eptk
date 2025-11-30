@@ -1,0 +1,49 @@
+# dHCP GRE SAEP configuration
+
+degibbs: # DeGibbs correction
+  k_window: null # k-space truncation window
+
+saep: # Single Acquisition Electrial Properties reconstruction method
+  coils_idx: # Coils indexes
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  ref_coil_idx: -1 # Reference coil index
+  gs_sigma: 5.25 # Gaussian Smoothing standard deviation
+  gs_axes: # Gaussian smoothing axes
+  - 0
+  - 1
+  - 2
+  n_svd: 12 # SVD truncation number
+  f0: 128000000.0 # Frequency of B0 magnetic field
+  eros_rad: 24.5 # Erosion radius
+  eros_strc: ellipsoid # Erosion shape
