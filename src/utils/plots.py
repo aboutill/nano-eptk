@@ -1267,7 +1267,9 @@ def annotate_pairplot(x, y, hue=None, ax=None, **kws):
     ylim = calculate_plot_lim(y, coeff_margin=0.15)
 
     # Pearson correlation
-    r, p = pearsonr(x, y)
+    res = pearsonr(x, y)
+    r, p = res[0], res[1]
+    ci = res.confidence_interval(confidence_level=0.95)
 
     # Prepare axis
     ax = ax or plt.gca()
@@ -1293,6 +1295,9 @@ def annotate_pairplot(x, y, hue=None, ax=None, **kws):
         rf"${label} = {r:.2f}$ ({convert_pvalue_to_asterisks(p)})",
         xy=xy, xycoords=ax.transAxes, fontsize=10
     )
+    
+    # Print CI
+    # print(rf"${label}$ 95%CI = [{ci[0]:.2f}, {ci[1]:.2f}]")
     
     
 def annotate_cat_pairplot(x, y, cats=None, cats_idx=None, hue=None, ax=None, **kws):
@@ -1321,7 +1326,9 @@ def annotate_cat_pairplot(x, y, cats=None, cats_idx=None, hue=None, ax=None, **k
         y_cat = y[cat_idx]
 
         # Pearson correlation
-        r, p = pearsonr(x_cat, y_cat)
+        res = pearsonr(x_cat, y_cat)
+        r, p = res[0], res[1]
+        ci = res.confidence_interval(confidence_level=0.95)
     
         # Extract variable names
         x_name = getattr(x, 'name', 'x')
@@ -1335,6 +1342,9 @@ def annotate_cat_pairplot(x, y, cats=None, cats_idx=None, hue=None, ax=None, **k
         subscript = f"{format_var(x_name)}-{format_var(y_name)}"
         label = rf"\rho_{{\mathregular{{{subscript}}}}}^{{\mathregular{{{cat}}}}}"
         lgd += rf"${label} = {r:.2f}$ ({convert_pvalue_to_asterisks(p)})"
+        
+        # Print CI
+        # print(rf"${label}$ 95%CI = [{ci[0]:.2f}, {ci[1]:.2f}]")
 
     # Annotate with correlation and p-value significance
     ax.annotate(lgd, xy=xy, xycoords=ax.transAxes, fontsize=10)
