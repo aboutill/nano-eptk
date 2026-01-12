@@ -12,7 +12,7 @@ from .mask import (
 from .metrics import (
     extract_ep_metrics,
     extract_dhcp_volume_metrics,
-    extract_dhcp_mean_diffusivity_metrics,
+    extract_md_metrics,
     extract_outlier_metrics,
 )
 from .plots import (

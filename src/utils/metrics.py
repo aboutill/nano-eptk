@@ -29,6 +29,7 @@ tissue_ids = [
     dhcp_labels9_str.index("WM"),
     dhcp_labels9_str.index("dGM"),
 ]
+ventricle_id = dhcp_labels9_str.index("ventricle")
 
 
 def extract_ep_metrics(
@@ -38,6 +39,7 @@ def extract_ep_metrics(
         input_mask_eroded_path=None,
         input_mask_outlier_path=None,
         input_dhcp_labels9_path=None,
+        ndigits=4,
         **kwargs
     ):
 
@@ -45,29 +47,29 @@ def extract_ep_metrics(
     ep_metrics = {}
     
     # Load niftis
-    if input_sig_path is not None:
+    if input_sig_path:
         sig_nii = nib.load(input_sig_path)
         sig = sig_nii.get_fdata()
         
-    if input_eps_path is not None:
+    if input_eps_path:
         eps_nii = nib.load(input_eps_path)
         eps = eps_nii.get_fdata()
         
-    if input_mask_eroded_path is not None:
+    if input_mask_eroded_path:
         mask_eroded_nii = nib.load(input_mask_eroded_path)
         mask_eroded = mask_eroded_nii.get_fdata().astype(bool)
         
-    if input_dhcp_labels9_path is not None:
+    if input_dhcp_labels9_path:
         dhcp_labels9_nii = nib.load(input_dhcp_labels9_path)
         dhcp_labels9 = dhcp_labels9_nii.get_fdata()
         
     # Save results (computed in eroded mask)
-    if input_mask_eroded_path is not None:
-        if input_sig_path is not None:
+    if input_mask_eroded_path:
+        if input_sig_path:
             ep_metrics["SIG"] = np.median(sig[mask_eroded])
             ep_metrics["SIG_std"] = np.std(sig[mask_eroded])
             
-            if input_dhcp_labels9_path is not None:
+            if input_dhcp_labels9_path:
                 # Apply eroded mask
                 dhcp_labels9 *= mask_eroded
                 
@@ -87,11 +89,11 @@ def extract_ep_metrics(
                 ep_metrics["brain_SIG"] = np.median(tissues_sig)
                 ep_metrics["brain_SIG_std"] = np.std(tissues_sig)
     
-        if input_eps_path is not None:
+        if input_eps_path:
             ep_metrics["EPS"] = np.median(eps[mask_eroded])
             ep_metrics["EPS_std"] = np.std(eps[mask_eroded])
             
-            if input_dhcp_labels9_path is not None:
+            if input_dhcp_labels9_path:
                 # Apply eroded mask
                 dhcp_labels9 *= mask_eroded
                 
@@ -112,8 +114,9 @@ def extract_ep_metrics(
                 ep_metrics["brain_EPS_std"] = np.std(tissues_eps)
                 
     # Round results
-    for key, value in ep_metrics.items():
-        ep_metrics[key] = round(ep_metrics[key], 4)
+    if ndigits:
+        for key, value in ep_metrics.items():
+            ep_metrics[key] = round(ep_metrics[key], ndigits)
                 
     # Initialize output directory
     output_dir = os.path.dirname(output_ep_metrics_path)
@@ -127,6 +130,8 @@ def extract_ep_metrics(
 def extract_dhcp_volume_metrics(
         input_dhcp_labels9_path,
         output_volume_metrics_path,
+        vol_factor=1e2,
+        ndigits=4
     ):
     
     # Initialize metrics
@@ -143,13 +148,13 @@ def extract_dhcp_volume_metrics(
     brain_vol = np.sum(dhcp_labels9 >= 1)
     
     # Compute relative volume for all tissue
-    ventricle_id = dhcp_labels9_str.index("ventricle")
     tissue_vol = np.sum(dhcp_labels9 == ventricle_id+1)
-    volume_metrics["RVV"] = tissue_vol / brain_vol * 1e2
+    volume_metrics["RVV"] = tissue_vol / brain_vol * vol_factor
     
     # Round results
-    for key, value in volume_metrics.items():
-        volume_metrics[key] = round(volume_metrics[key], 4)
+    if ndigits:
+        for key, value in volume_metrics.items():
+            volume_metrics[key] = round(volume_metrics[key], ndigits)
     
     # Initialize output directory
     output_dir = os.path.dirname(output_volume_metrics_path)
@@ -160,39 +165,43 @@ def extract_dhcp_volume_metrics(
         json.dump(volume_metrics, f, ensure_ascii=False, indent=4)
     
 
-def extract_dhcp_mean_diffusivity_metrics(
-        input_mean_diffusivity_path,
-        input_dhcp_labels9_path,
+def extract_md_metrics(
+        input_md_path,
         output_md_metrics_path,
+        input_dhcp_labels9_path=None,
+        md_factor=1e3,
+        ndigits=4,
     ):
     
     # Initialize metrics
     md_metrics = {}
         
     # Load nifti
-    md_nii = nib.load(input_mean_diffusivity_path)
-    dhcp_labels9_nii = nib.load(input_dhcp_labels9_path)
+    md_nii = nib.load(input_md_path)
+    md = md_nii.get_fdata() * md_factor
     
-    md = md_nii.get_fdata() * 1e3
-    dhcp_labels9 = dhcp_labels9_nii.get_fdata()
+    if input_dhcp_labels9_path:
+        dhcp_labels9_nii = nib.load(input_dhcp_labels9_path)
+        dhcp_labels9 = dhcp_labels9_nii.get_fdata()
     
-    # WN and dGM
-    for tissue_id in tissue_ids:
-        tissue_str = dhcp_labels9_str[tissue_id]
-        tissue_md = md[dhcp_labels9 == tissue_id + 1]
-        md_metrics[f"{tissue_str}_MD"] = np.median(tissue_md)
-    
-    # All brain tissues (excluding CSF and ventricle)
-    tissues_md = np.concatenate(
-        [md[dhcp_labels9 == tissue_id + 1]
-         for tissue_id in brain_tissue_ids], 
-        axis=-1,
-    )
-    md_metrics["brain_MD"] = np.median(tissues_md)
+        # WN and dGM
+        for tissue_id in tissue_ids:
+            tissue_str = dhcp_labels9_str[tissue_id]
+            tissue_md = md[dhcp_labels9 == tissue_id + 1]
+            md_metrics[f"{tissue_str}_MD"] = np.median(tissue_md)
+            
+        # All brain tissues (excluding CSF and ventricle)
+        tissues_md = np.concatenate(
+            [md[dhcp_labels9 == tissue_id + 1]
+             for tissue_id in brain_tissue_ids], 
+            axis=-1,
+        )
+        md_metrics["brain_MD"] = np.median(tissues_md)
     
     # Round results
-    for key, value in md_metrics.items():
-        md_metrics[key] = round(md_metrics[key], 4)
+    if ndigits:
+        for key, value in md_metrics.items():
+            md_metrics[key] = round(md_metrics[key], ndigits)
     
     # Initialize output directory
     output_dir = os.path.dirname(output_md_metrics_path)
@@ -202,7 +211,7 @@ def extract_dhcp_mean_diffusivity_metrics(
     with open(output_md_metrics_path, "w", encoding="utf-8") as f:
         json.dump(md_metrics, f, ensure_ascii=False, indent=4)
         
-
+        
 def extract_outlier_metrics(
         input_mask_path,
         input_mask_outlier_path,

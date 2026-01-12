@@ -86,7 +86,7 @@ def _extract_slice_img(
     img = nib.orientations.apply_orientation(img, transform)
     
     # Load mask
-    if mask_path is not None:
+    if mask_path:
         mask_nii = nib.load(mask_path)
         mask = mask_nii.get_fdata().astype(bool)
         
@@ -100,7 +100,7 @@ def _extract_slice_img(
             img *= mask[..., np.newaxis]
       
     # Load outline
-    if outline_path is not None:
+    if outline_path:
         outline_nii = nib.load(outline_path)
         outline = outline_nii.get_fdata().astype(bool)
         
@@ -113,11 +113,11 @@ def _extract_slice_img(
     # Custom bwr colormap
     if cmap == "bwr":
         cm = _custom_bwr_cmap()
-    elif cmap is not None:
+    elif cmap:
         cm = plt.get_cmap(cmap)
         
     #
-    if img_index is not None:
+    if img_index:
         img = img[:,:,:,img_index]
 
     # Treshold image
@@ -145,13 +145,13 @@ def _extract_slice_img(
     img = np.fliplr(np.rot90(img))
         
     # Image window
-    if xlim is not None:
+    if xlim:
         img = img[xlim[0]:xlim[1],:]
-    if ylim is not None:
+    if ylim:
         img = img[:,ylim[0]:ylim[1]]
          
     # Extract outline
-    if outline_path is not None:
+    if outline_path:
         if slice_ornt == "axial":
             outline = outline[:,:,slice_index]
         elif slice_ornt == "coronal":
@@ -160,13 +160,13 @@ def _extract_slice_img(
             outline = outline[slice_index,:,:]
         outline = np.fliplr(np.rot90(outline))
             
-        if xlim is not None:
+        if xlim:
             outline = outline[xlim[0]:xlim[1],:]
-        if ylim is not None:
+        if ylim:
             outline = outline[:,ylim[0]:ylim[1]]
             
     # Colormap adn outlines
-    if cmap is not None:
+    if cmap:
         # Apply colormap
         img = cm(img)
         
@@ -175,14 +175,14 @@ def _extract_slice_img(
             img = img[..., 0:3]
         
         # Mark outlines
-        if outline_path is not None:
+        if outline_path:
             img = mark_boundaries(img, outline, color=outline_c)
           
         # to integer
         img *= 255
         img = img.astype(np.uint8)
     else:
-        if outline_path is not None:
+        if outline_path:
             # Mark outline
             img = mark_boundaries(img, outline, color=outline_c)
             

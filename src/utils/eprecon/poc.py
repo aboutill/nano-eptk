@@ -266,7 +266,7 @@ def mspoc(
         output_ep_metrics_path = os.path.join(temp_dir, "ep_metrics.json")
     if output_sig_eroded_path is None:
         output_sig_eroded_path = os.path.join(temp_dir, "sig_eroded.nii.gz")
-    if input_dhcp_labels9_paths is not None and output_dhcp_labels9_path is None:
+    if input_dhcp_labels9_paths and output_dhcp_labels9_path is None:
         output_dhcp_labels9_path = os.path.join(temp_dir, "dhcp_labels9.nii.gz")
     if input_dhcp_labels9_paths is None:
         input_dhcp_labels9_paths = n*[None]
@@ -315,7 +315,7 @@ def mspoc(
     )
     
     # Compute average labels
-    if output_dhcp_labels9_path is not None:
+    if output_dhcp_labels9_path:
         mirtk_average_images(
             input_paths=input_dhcp_labels9_paths,
             input_dof_paths=input_dof_paths,

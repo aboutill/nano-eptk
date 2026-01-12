@@ -94,7 +94,7 @@ def _multi_coil_normalization(
     if ref_coil_idx is None:
         
         # Extract coils
-        if coils_idx is not None:
+        if coils_idx:
             cmpl = cmpl[..., coils_idx]
         
         # Create system
@@ -172,7 +172,7 @@ def _svd(
     nx, ny, nz, nc = np.shape(cmpl)
     
     # Apply SVD
-    if n_svd is not None and n_svd >= 3:
+    if n_svd and n_svd >= 3:
         cmpl = np.reshape(cmpl, [nx*ny*nz, nc]) # flatten each
         u, _ ,_ = svd(cmpl, full_matrices=False)
         cmpl = np.reshape(u, [nx, ny, nz, nc])

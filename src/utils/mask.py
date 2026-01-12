@@ -131,11 +131,11 @@ def extract_tissue_labels(
     affine = labels_nii.affine
     
     # Create mask
-    if labels_idx is not None:
+    if labels_idx:
         mask = np.zeros_like(labels)
         for label_idx in labels_idx:
             mask[labels == label_idx] = 1
-    elif exclude_labels_idx is not None:
+    elif exclude_labels_idx:
         mask = np.ones_like(labels)
         for label_idx in exclude_labels_idx:
             mask[labels == label_idx] = 0
