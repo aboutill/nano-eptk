@@ -117,7 +117,7 @@ def _extract_slice_img(
         cm = plt.get_cmap(cmap)
         
     #
-    if img_index:
+    if img_index is not None:
         img = img[:,:,:,img_index]
 
     # Treshold image
@@ -1261,7 +1261,7 @@ def covariates_plot(
         plt.savefig(output_plot_path, bbox_inches='tight', dpi=300)
     
     
-def annotate_pairplot(x, y, hue=None, ax=None, **kws):
+def annotate_pairplot(x, y, disp_ci=False, hue=None, ax=None, **kws):
     
     # Calculate limits
     ylim = calculate_plot_lim(y, coeff_margin=0.15)
@@ -1297,10 +1297,11 @@ def annotate_pairplot(x, y, hue=None, ax=None, **kws):
     )
     
     # Print CI
-    # print(rf"${label}$ 95%CI = [{ci[0]:.2f}, {ci[1]:.2f}]")
+    if disp_ci:
+        	print(rf"${label}$ 95%CI = [{ci[0]:.2f}, {ci[1]:.2f}]")
     
     
-def annotate_cat_pairplot(x, y, cats=None, cats_idx=None, hue=None, ax=None, **kws):
+def annotate_cat_pairplot(x, y, cats=None, cats_idx=None, disp_ci=False, hue=None, ax=None, **kws):
 
     # Calculate limits
     ylim = calculate_plot_lim(y, coeff_margin=0.15)
@@ -1344,7 +1345,8 @@ def annotate_cat_pairplot(x, y, cats=None, cats_idx=None, hue=None, ax=None, **k
         lgd += rf"${label} = {r:.2f}$ ({convert_pvalue_to_asterisks(p)})"
         
         # Print CI
-        # print(rf"${label}$ 95%CI = [{ci[0]:.2f}, {ci[1]:.2f}]")
+        if disp_ci:
+            print(rf"${label}$ 95%CI = [{ci[0]:.2f}, {ci[1]:.2f}]")
 
     # Annotate with correlation and p-value significance
     ax.annotate(lgd, xy=xy, xycoords=ax.transAxes, fontsize=10)
