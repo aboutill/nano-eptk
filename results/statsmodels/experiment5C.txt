@@ -1,15 +1,15 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:          TSE_brain_SIG   R-squared:                       0.163
-Model:                            OLS   Adj. R-squared:                  0.159
-No. Observations:                 405   F-statistic:                     39.15
-Covariance Type:            nonrobust   Prob (F-statistic):           2.91e-16
+Dep. Variable:              brain_SIG   R-squared:                       0.164
+Model:                            OLS   Adj. R-squared:                  0.160
+No. Observations:                 404   F-statistic:                     39.40
+Covariance Type:            nonrobust   Prob (F-statistic):           2.39e-16
 ====================================================================================
                        coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------
-C(Type)[Control]     1.2099      0.003    446.583      0.000       1.205       1.215
-C(Type)[HIE]         1.2667      0.008    155.829      0.000       1.251       1.283
-PMA_c               -0.0068      0.001     -5.293      0.000      -0.009      -0.004
+C(Type)[Control]     1.2098      0.003    445.741      0.000       1.204       1.215
+C(Type)[HIE]         1.2678      0.008    153.303      0.000       1.252       1.284
+PMA_c               -0.0067      0.001     -5.212      0.000      -0.009      -0.004
 ====================================================================================
 
 Notes:
@@ -17,16 +17,16 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:          TSE_brain_SIG   R-squared:                       0.163
-Model:                            OLS   Adj. R-squared:                  0.159
-No. Observations:                 405   F-statistic:                     39.15
-Covariance Type:            nonrobust   Prob (F-statistic):           2.91e-16
+Dep. Variable:              brain_SIG   R-squared:                       0.164
+Model:                            OLS   Adj. R-squared:                  0.160
+No. Observations:                 404   F-statistic:                     39.40
+Covariance Type:            nonrobust   Prob (F-statistic):           2.39e-16
 ==================================================================================
                      coef    std err          t      P>|t|      [0.025      0.975]
 ----------------------------------------------------------------------------------
-Intercept          1.2099      0.003    446.583      0.000       1.205       1.215
-C(Type)[T.HIE]     0.0568      0.008      6.848      0.000       0.041       0.073
-PMA_c             -0.0068      0.001     -5.293      0.000      -0.009      -0.004
+Intercept          1.2098      0.003    445.741      0.000       1.204       1.215
+C(Type)[T.HIE]     0.0581      0.008      6.865      0.000       0.041       0.075
+PMA_c             -0.0067      0.001     -5.212      0.000      -0.009      -0.004
 ==================================================================================
 
 Notes:
@@ -34,17 +34,17 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:          TSE_brain_SIG   R-squared:                       0.169
+Dep. Variable:              brain_SIG   R-squared:                       0.169
 Model:                            OLS   Adj. R-squared:                  0.163
-No. Observations:                 405   F-statistic:                     27.16
-Covariance Type:            nonrobust   Prob (F-statistic):           5.22e-16
+No. Observations:                 404   F-statistic:                     27.10
+Covariance Type:            nonrobust   Prob (F-statistic):           5.63e-16
 ========================================================================================
                            coef    std err          t      P>|t|      [0.025      0.975]
 ----------------------------------------------------------------------------------------
-Intercept                1.2092      0.003    442.007      0.000       1.204       1.215
-C(Type)[T.HIE]           0.0666      0.010      6.572      0.000       0.047       0.087
-PMA_c                   -0.0062      0.001     -4.750      0.000      -0.009      -0.004
-C(Type)[T.HIE]:PMA_c    -0.0092      0.005     -1.677      0.094      -0.020       0.002
+Intercept                1.2092      0.003    441.487      0.000       1.204       1.215
+C(Type)[T.HIE]           0.0666      0.010      6.554      0.000       0.047       0.087
+PMA_c                   -0.0062      0.001     -4.745      0.000      -0.009      -0.004
+C(Type)[T.HIE]:PMA_c    -0.0088      0.006     -1.505      0.133      -0.020       0.003
 ========================================================================================
 
 Notes:
@@ -52,16 +52,16 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:               brain_MD   R-squared:                       0.221
-Model:                            OLS   Adj. R-squared:                  0.217
-No. Observations:                 405   F-statistic:                     56.99
-Covariance Type:            nonrobust   Prob (F-statistic):           1.63e-22
+Dep. Variable:               brain_MD   R-squared:                       0.219
+Model:                            OLS   Adj. R-squared:                  0.215
+No. Observations:                 404   F-statistic:                     56.17
+Covariance Type:            nonrobust   Prob (F-statistic):           3.11e-22
 ====================================================================================
                        coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------
-C(Type)[Control]     1.1881      0.002    573.317      0.000       1.184       1.192
-C(Type)[HIE]         1.1906      0.006    191.478      0.000       1.178       1.203
-PMA_c               -0.0104      0.001    -10.640      0.000      -0.012      -0.008
+C(Type)[Control]     1.1880      0.002    572.333      0.000       1.184       1.192
+C(Type)[HIE]         1.1915      0.006    188.386      0.000       1.179       1.204
+PMA_c               -0.0103      0.001    -10.534      0.000      -0.012      -0.008
 ====================================================================================
 
 Notes:
@@ -69,16 +69,16 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:               brain_MD   R-squared:                       0.221
-Model:                            OLS   Adj. R-squared:                  0.217
-No. Observations:                 405   F-statistic:                     56.99
-Covariance Type:            nonrobust   Prob (F-statistic):           1.63e-22
+Dep. Variable:               brain_MD   R-squared:                       0.219
+Model:                            OLS   Adj. R-squared:                  0.215
+No. Observations:                 404   F-statistic:                     56.17
+Covariance Type:            nonrobust   Prob (F-statistic):           3.11e-22
 ==================================================================================
                      coef    std err          t      P>|t|      [0.025      0.975]
 ----------------------------------------------------------------------------------
-Intercept          1.1881      0.002    573.317      0.000       1.184       1.192
-C(Type)[T.HIE]     0.0025      0.006      0.391      0.696      -0.010       0.015
-PMA_c             -0.0104      0.001    -10.640      0.000      -0.012      -0.008
+Intercept          1.1880      0.002    572.333      0.000       1.184       1.192
+C(Type)[T.HIE]     0.0035      0.006      0.548      0.584      -0.009       0.016
+PMA_c             -0.0103      0.001    -10.534      0.000      -0.012      -0.008
 ==================================================================================
 
 Notes:
@@ -86,17 +86,17 @@ Notes:
 
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:               brain_MD   R-squared:                       0.225
-Model:                            OLS   Adj. R-squared:                  0.219
-No. Observations:                 405   F-statistic:                     38.74
-Covariance Type:            nonrobust   Prob (F-statistic):           5.25e-22
+Dep. Variable:               brain_MD   R-squared:                       0.222
+Model:                            OLS   Adj. R-squared:                  0.216
+No. Observations:                 404   F-statistic:                     37.97
+Covariance Type:            nonrobust   Prob (F-statistic):           1.31e-21
 ========================================================================================
                            coef    std err          t      P>|t|      [0.025      0.975]
 ----------------------------------------------------------------------------------------
-Intercept                1.1876      0.002    566.973      0.000       1.184       1.192
-C(Type)[T.HIE]           0.0088      0.008      1.133      0.258      -0.006       0.024
-PMA_c                   -0.0101      0.001    -10.008      0.000      -0.012      -0.008
-C(Type)[T.HIE]:PMA_c    -0.0059      0.004     -1.408      0.160      -0.014       0.002
+Intercept                1.1876      0.002    566.386      0.000       1.184       1.192
+C(Type)[T.HIE]           0.0087      0.008      1.120      0.264      -0.007       0.024
+PMA_c                   -0.0101      0.001     -9.997      0.000      -0.012      -0.008
+C(Type)[T.HIE]:PMA_c    -0.0053      0.004     -1.195      0.233      -0.014       0.003
 ========================================================================================
 
 Notes:
