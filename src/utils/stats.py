@@ -16,6 +16,17 @@ def convert_pvalue_to_asterisks(p):
     return 'n.s.'
 
 
+def convert_pvalue_to_sci_notation(p, sig_fig=2):
+    if p < 1e-10:
+        return r"$P < 10^{-10}$"
+    else:
+        ret_string = "{0:.{1:d}e}".format(p, sig_fig)
+        a, b = ret_string.split("e")
+        # remove leading "+" and strip leading zeros
+        b = int(b)
+        return rf"$P = {a} \times 10^{{{b}}}$"
+    
+
 def lme_coefficient_determination(
         model, 
         df,

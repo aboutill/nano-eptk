@@ -10,7 +10,7 @@ from skimage.segmentation import mark_boundaries
 from matplotlib.colors import ListedColormap
 from scipy.stats import pearsonr
 
-from utils.stats import convert_pvalue_to_asterisks
+from utils.stats import convert_pvalue_to_sci_notation
 
 
 def _get_img_dim_in_RAS(img_path):
@@ -1292,7 +1292,7 @@ def annotate_pairplot(x, y, disp_ci=False, hue=None, ax=None, **kws):
 
     # Annotate with correlation and p-value significance
     ax.annotate(
-        rf"${label} = {r:.2f}$ ({convert_pvalue_to_asterisks(p)})",
+        rf"${label} = {r:.2f}$ ({convert_pvalue_to_sci_notation(p)})",
         xy=xy, xycoords=ax.transAxes, fontsize=10
     )
     
@@ -1342,7 +1342,7 @@ def annotate_cat_pairplot(x, y, cats=None, cats_idx=None, disp_ci=False, hue=Non
         # Label
         subscript = f"{format_var(x_name)}-{format_var(y_name)}"
         label = rf"\rho_{{\mathregular{{{subscript}}}}}^{{\mathregular{{{cat}}}}}"
-        lgd += rf"${label} = {r:.2f}$ ({convert_pvalue_to_asterisks(p)})"
+        lgd += rf"${label} = {r:.2f}$ ({convert_pvalue_to_sci_notation(p)})"
         
         # Print CI
         if disp_ci:
