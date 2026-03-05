@@ -1,56 +1,52 @@
-                   Mixed Linear Model Regression Results
-============================================================================
-Model:                   MixedLM        Dependent Variable:        SIG      
-No. Observations:        808            Method:                    ML       
-No. Groups:              404            Scale:                     0.0039   
-Min. group size:         2              Log-Likelihood:            1059.4574
-Max. group size:         2              Converged:                 Yes      
-Mean group size:         2.0                                                
-----------------------------------------------------------------------------
-                                 Coef.  Std.Err.    z    P>|z| [0.025 0.975]
-----------------------------------------------------------------------------
-C(Tissue)[WM]                     1.200    0.003 356.161 0.000  1.193  1.206
-C(Tissue)[dGM]                    1.171    0.003 347.251 0.000  1.164  1.178
-C(Tissue)[WM]:C(Type)[T.HIE]      0.057    0.014   3.957 0.000  0.029  0.086
-C(Tissue)[dGM]:C(Type)[T.HIE]     0.061    0.016   3.905 0.000  0.030  0.092
-C(Tissue)[WM]:PMA                -0.003    0.002  -1.161 0.246 -0.007  0.002
-C(Tissue)[dGM]:PMA               -0.007    0.003  -2.481 0.013 -0.012 -0.001
-C(Tissue)[WM]:RVV                 0.001    0.014   0.097 0.923 -0.027  0.029
-C(Tissue)[dGM]:RVV                0.032    0.014   2.219 0.027  0.004  0.060
-C(Tissue)[WM]:MD                  0.296    0.067   4.397 0.000  0.164  0.429
-C(Tissue)[dGM]:MD                 0.542    0.121   4.478 0.000  0.305  0.779
-C(Tissue)[WM]:C(Type)[T.HIE]:MD  -0.252    0.160  -1.577 0.115 -0.566  0.061
-C(Tissue)[dGM]:C(Type)[T.HIE]:MD  0.586    0.323   1.811 0.070 -0.048  1.220
-Group Var                         0.000    0.004                            
-============================================================================
+                  Mixed Linear Model Regression Results
+=========================================================================
+Model:                  MixedLM       Dependent Variable:       SIG      
+No. Observations:       808           Method:                   ML       
+No. Groups:             404           Scale:                    0.0039   
+Min. group size:        2             Log-Likelihood:           1056.4051
+Max. group size:        2             Converged:                Yes      
+Mean group size:        2.0                                              
+-------------------------------------------------------------------------
+                              Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+-------------------------------------------------------------------------
+C(Tissue)[WM]                  1.200    0.003 354.716 0.000  1.193  1.206
+C(Tissue)[dGM]                 1.171    0.003 345.828 0.000  1.164  1.178
+C(Tissue)[WM]:C(Type)[T.HIE]   0.062    0.014   4.328 0.000  0.034  0.090
+C(Tissue)[dGM]:C(Type)[T.HIE]  0.050    0.014   3.458 0.001  0.022  0.078
+C(Tissue)[WM]:PMA             -0.003    0.002  -1.346 0.178 -0.008  0.001
+C(Tissue)[dGM]:PMA            -0.006    0.003  -2.301 0.021 -0.012 -0.001
+C(Tissue)[WM]:RVV             -0.001    0.014  -0.062 0.951 -0.029  0.027
+C(Tissue)[dGM]:RVV             0.036    0.014   2.506 0.012  0.008  0.064
+C(Tissue)[WM]:MD               0.256    0.062   4.096 0.000  0.133  0.378
+C(Tissue)[dGM]:MD              0.605    0.116   5.205 0.000  0.377  0.832
+Group Var                      0.000    0.004                            
+=========================================================================
 
-Marginal R² = 0.20, Conditional R² = 0.27
+Marginal R² = 0.19, Conditional R² = 0.27
 
-                   Mixed Linear Model Regression Results
-===========================================================================
-Model:                   MixedLM       Dependent Variable:       SIG       
-No. Observations:        808           Method:                   ML        
-No. Groups:              404           Scale:                    0.7053    
-Min. group size:         2             Log-Likelihood:           -1056.4058
-Max. group size:         2             Converged:                Yes       
-Mean group size:         2.0                                               
----------------------------------------------------------------------------
-                                 Coef.  Std.Err.   z    P>|z| [0.025 0.975]
----------------------------------------------------------------------------
-C(Tissue)[WM]                    -0.084    0.046 -1.816 0.069 -0.175  0.007
-C(Tissue)[dGM]                   -0.034    0.046 -0.737 0.461 -0.125  0.057
-C(Tissue)[WM]:C(Type)[T.HIE]      1.251    0.199  6.298 0.000  0.861  1.640
-C(Tissue)[dGM]:C(Type)[T.HIE]     0.658    0.215  3.053 0.002  0.235  1.080
-C(Tissue)[WM]:PMA                -0.095    0.050 -1.908 0.056 -0.193  0.003
-C(Tissue)[dGM]:PMA               -0.116    0.059 -1.960 0.050 -0.232 -0.000
-C(Tissue)[WM]:RVV                 0.008    0.047  0.166 0.868 -0.084  0.100
-C(Tissue)[dGM]:RVV                0.086    0.047  1.829 0.067 -0.006  0.178
-C(Tissue)[WM]:MD                  0.375    0.054  6.948 0.000  0.269  0.481
-C(Tissue)[dGM]:MD                 0.230    0.062  3.720 0.000  0.109  0.352
-C(Tissue)[WM]:C(Type)[T.HIE]:MD  -0.330    0.128 -2.570 0.010 -0.581 -0.078
-C(Tissue)[dGM]:C(Type)[T.HIE]:MD  0.199    0.167  1.193 0.233 -0.128  0.526
-Group Var                         0.101    0.055                           
-===========================================================================
+                 Mixed Linear Model Regression Results
+========================================================================
+Model:                  MixedLM      Dependent Variable:      SIG       
+No. Observations:       808          Method:                  ML        
+No. Groups:             404          Scale:                   0.7087    
+Min. group size:        2            Log-Likelihood:          -1060.6609
+Max. group size:        2            Converged:               Yes       
+Mean group size:        2.0                                             
+------------------------------------------------------------------------
+                              Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+------------------------------------------------------------------------
+C(Tissue)[WM]                 -0.084    0.047 -1.794 0.073 -0.175  0.008
+C(Tissue)[dGM]                -0.034    0.047 -0.739 0.460 -0.126  0.057
+C(Tissue)[WM]:C(Type)[T.HIE]   1.350    0.196  6.887 0.000  0.965  1.734
+C(Tissue)[dGM]:C(Type)[T.HIE]  0.556    0.199  2.792 0.005  0.166  0.946
+C(Tissue)[WM]:PMA             -0.110    0.050 -2.209 0.027 -0.208 -0.012
+C(Tissue)[dGM]:PMA            -0.109    0.059 -1.840 0.066 -0.225  0.007
+C(Tissue)[WM]:RVV             -0.004    0.047 -0.092 0.927 -0.096  0.088
+C(Tissue)[dGM]:RVV             0.094    0.047  2.019 0.043  0.003  0.186
+C(Tissue)[WM]:MD               0.321    0.050  6.429 0.000  0.223  0.419
+C(Tissue)[dGM]:MD              0.252    0.059  4.230 0.000  0.135  0.368
+Group Var                      0.107    0.055                           
+========================================================================
 
-Marginal R² = 0.19, Conditional R² = 0.30
+Marginal R² = 0.19, Conditional R² = 0.29
 
