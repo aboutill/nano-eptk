@@ -2,41 +2,41 @@
 =======================================================
 Model:            MixedLM Dependent Variable: brain_SIG
 No. Observations: 534     Method:             ML       
-No. Groups:       534     Scale:              0.0009   
-Min. group size:  1       Log-Likelihood:     944.0827 
+No. Groups:       534     Scale:              0.0007   
+Min. group size:  1       Log-Likelihood:     982.3574 
 Max. group size:  1       Converged:          Yes      
 Mean group size:  1.0                                  
 -------------------------------------------------------
            Coef.  Std.Err.    z     P>|z| [0.025 0.975]
 -------------------------------------------------------
-Intercept   1.153    0.001 1371.977 0.000  1.151  1.155
-PTB         0.002    0.001    3.932 0.000  0.001  0.003
-PMA        -0.008    0.001   -7.857 0.000 -0.010 -0.006
-RVV         0.017    0.005    3.271 0.001  0.007  0.027
-brain_MD    0.323    0.055    5.872 0.000  0.215  0.431
+Intercept   1.139    0.000 3144.300 0.000  1.139  1.140
+PTB         0.002    0.001    4.368 0.000  0.001  0.003
+PMA        -0.008    0.001   -7.213 0.000 -0.010 -0.006
+RVV         0.020    0.005    4.109 0.000  0.010  0.029
+brain_MD    0.346    0.051    6.722 0.000  0.245  0.446
 Group Var   0.001                                      
 =======================================================
 
-Marginal R² = 0.35, Conditional R² = 0.68
+Marginal R² = 0.40, Conditional R² = 0.70
 
          Mixed Linear Model Regression Results
 =======================================================
 Model:            MixedLM Dependent Variable: brain_SIG
 No. Observations: 534     Method:             ML       
-No. Groups:       534     Scale:              0.3232   
-Min. group size:  1       Log-Likelihood:     -641.1739
+No. Groups:       534     Scale:              0.3015   
+Min. group size:  1       Log-Likelihood:     -622.6171
 Max. group size:  1       Converged:          Yes      
 Mean group size:  1.0                                  
 -------------------------------------------------------
-             Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+            Coef.  Std.Err.    z    P>|z| [0.025 0.975]
 -------------------------------------------------------
-Intercept    -0.000    0.034 -0.000 1.000 -0.066  0.066
-PTB           0.166    0.040  4.154 0.000  0.088  0.244
-PMA          -0.292    0.035 -8.397 0.000 -0.361 -0.224
-RVV           0.125    0.037  3.389 0.001  0.053  0.197
-brain_MD      0.263    0.041  6.422 0.000  0.183  0.343
-Group Var     0.323                                    
+Intercept   -0.000    0.032  -0.000 1.000 -0.063  0.063
+PTB          0.179    0.040   4.488 0.000  0.101  0.257
+PMA         -0.280    0.022 -12.529 0.000 -0.324 -0.236
+RVV          0.153    0.037   4.128 0.000  0.080  0.226
+brain_MD     0.291    0.037   7.937 0.000  0.219  0.363
+Group Var    0.301                                     
 =======================================================
 
-Marginal R² = 0.35, Conditional R² = 0.68
+Marginal R² = 0.40, Conditional R² = 0.70
 

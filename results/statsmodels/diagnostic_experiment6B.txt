@@ -1,0 +1,42 @@
+         Mixed Linear Model Regression Results
+=======================================================
+Model:            MixedLM Dependent Variable: brain_SIG
+No. Observations: 534     Method:             ML       
+No. Groups:       534     Scale:              0.0008   
+Min. group size:  1       Log-Likelihood:     955.3866 
+Max. group size:  1       Converged:          Yes      
+Mean group size:  1.0                                  
+-------------------------------------------------------
+            Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+-------------------------------------------------------
+Intercept   -0.018    0.002 -10.318 0.000 -0.021 -0.015
+PTB          0.002    0.000  10.810 0.000  0.002  0.003
+PMA         -0.008    0.001  -7.091 0.000 -0.010 -0.006
+RVV          0.017    0.005   3.396 0.001  0.007  0.026
+brain_MD     0.326    0.043   7.509 0.000  0.241  0.410
+Group Var    0.001                                     
+=======================================================
+
+Marginal R² = 0.36, Conditional R² = 0.68
+
+         Mixed Linear Model Regression Results
+=======================================================
+Model:            MixedLM Dependent Variable: brain_SIG
+No. Observations: 534     Method:             ML       
+No. Groups:       534     Scale:              0.3205   
+Min. group size:  1       Log-Likelihood:     -638.9482
+Max. group size:  1       Converged:          Yes      
+Mean group size:  1.0                                  
+-------------------------------------------------------
+            Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+-------------------------------------------------------
+Intercept   -0.000    0.034  -0.000 1.000 -0.067  0.067
+PTB          0.170    0.042   4.074 0.000  0.088  0.251
+PMA         -0.287    0.022 -13.128 0.000 -0.330 -0.244
+RVV          0.126    0.035   3.568 0.000  0.057  0.195
+brain_MD     0.269    0.044   6.056 0.000  0.182  0.356
+Group Var    0.320                                     
+=======================================================
+
+Marginal R² = 0.36, Conditional R² = 0.68
+

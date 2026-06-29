@@ -21,7 +21,7 @@ Notes:
 ===========================================================
 Model:              RLM              Df Residuals: 529     
 Dependent Variable: brain_SIG        Norm:         HuberT  
-Date:               2026-01-14 09:06 Scale Est.:   mad     
+Date:               2026-06-29 08:49 Scale Est.:   mad     
 No. Observations:   534              Cov. Type:    H1      
 Df Model:           4                Scale:        0.038412
 -----------------------------------------------------------

@@ -1,0 +1,18 @@
+         Mixed Linear Model Regression Results
+=======================================================
+Model:            MixedLM Dependent Variable: brain_SIG
+No. Observations: 725     Method:             ML       
+No. Groups:       650     Scale:              0.0013   
+Min. group size:  1       Log-Likelihood:     1218.0390
+Max. group size:  2       Converged:          Yes      
+Mean group size:  1.1                                  
+-------------------------------------------------------
+            Coef.  Std.Err.    z    P>|z| [0.025 0.975]
+-------------------------------------------------------
+Intercept    1.157    0.002 658.954 0.000  1.154  1.160
+PMA         -0.015    0.000 -31.226 0.000 -0.016 -0.014
+Group Var    0.001    0.008                            
+=======================================================
+
+Marginal R² = 0.56, Conditional R² = 0.73
+
