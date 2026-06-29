@@ -3,7 +3,6 @@ from setuptools import setup
 
 setup(
     name="nano-eptk",
-    version="0.0.1",
     entry_points={
         "console_scripts": [
             "mspoc = bin.mspoc:main",
