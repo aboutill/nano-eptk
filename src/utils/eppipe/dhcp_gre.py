@@ -25,7 +25,10 @@ def dhcp_gre_saep(
         start_time = datetime.datetime.now()
     
     # Load configuration
-    cfg = yaml.safe_load(open(cfg_path))
+    if cfg_path is not None:
+        cfg = yaml.safe_load(open(cfg_path))
+    else:
+        cfg = {}
     
     # Default values
     for step in ["degibbs", "saep"]:

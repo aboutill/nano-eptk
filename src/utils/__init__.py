@@ -34,7 +34,4 @@ from .stats import (
     lme_confidence_interval,
     likelihood_ratio,
 )
-#from .tbm import (
-#    create_jacobian_determinant,
-#)
 

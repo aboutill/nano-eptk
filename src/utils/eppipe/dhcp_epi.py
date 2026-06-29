@@ -25,9 +25,16 @@ def _dhcp_epi(
     # Initialize timer
     if verbose:
         start_time = datetime.datetime.now()
+        
+    # Chek method
+    if not (eprecon == "poc" or eprecon == "pocr"):
+        return
     
     # Load configuration
-    cfg = yaml.safe_load(open(cfg_path))
+    if cfg_path is not None:
+        cfg = yaml.safe_load(open(cfg_path))
+    else:
+        cfg = {}
     
     # Default values
     for step in ["topup", "pha_corr", eprecon]:
@@ -95,9 +102,7 @@ def _dhcp_epi(
         pocr(
             input_pha_path=pha_corr_path,
             input_mask_path=input_mask_path,
-            input_dhcp_labels9_path=input_dhcp_labels9_path,
             output_sig_path=output_sig_path,
-            output_ep_metrics_path=output_ep_metrics_path,
             verbose=verbose,
             debug=debug,
             **cfg["pocr"],

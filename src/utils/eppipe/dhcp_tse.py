@@ -29,9 +29,16 @@ def _dhcp_tse(
     # Initialize timer
     if verbose:
         start_time = datetime.datetime.now()
+        
+    # Check method
+    if not (eprecon == "poc" or eprecon == "pocr"):
+        return
     
     # Load configuration
-    cfg = yaml.safe_load(open(cfg_path))
+    if cfg_path is not None:
+        cfg = yaml.safe_load(open(cfg_path))
+    else:
+        cfg = {}
     
     # Default values
     for step in ["topup", "pha_corr", eprecon]:

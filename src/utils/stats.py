@@ -34,7 +34,7 @@ def lme_coefficient_determination(
     
     # Extract model variance
     var_resid = model.scale
-    var_random_effect = float(model.cov_re.iloc[0])
+    var_random_effect = float(model.cov_re.iloc[0].values[0])
     var_fixed_effect = model.predict(df).var()
     
     # Compute marginal and conditional coefficients of determination
