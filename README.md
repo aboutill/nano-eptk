@@ -11,5 +11,5 @@ To install this package and its Python dependencies:\
 `pip install .`
 
 ## References
-A. Boutillon et al. "Radiofrequency electrical conductivity reveals a distinct dimension of early human brain development", Preprint
+A. Boutillon et al. "Radiofrequency electrical conductivity reveals a distinct dimension of early human brain development", Preprint\
 A. Boutillon et al. "Investigating the association between conductivity and brain development over the neonatal period", ISMRM 2024, DOI: https://doi.org/10.58530/2025/3266
