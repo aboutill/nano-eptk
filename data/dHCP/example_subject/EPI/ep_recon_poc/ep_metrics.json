@@ -1,10 +1,10 @@
 {
-    "SIG": 1.0729,
-    "SIG_std": 1.3393,
-    "WM_SIG": 0.9793,
-    "WM_SIG_std": 1.0143,
-    "dGM_SIG": 1.2011,
-    "dGM_SIG_std": 0.9613,
-    "brain_SIG": 1.0858,
-    "brain_SIG_std": 1.2208
+    "SIG": 1.0764,
+    "SIG_std": 1.3169,
+    "WM_SIG": 0.981,
+    "WM_SIG_std": 1.0077,
+    "dGM_SIG": 1.2073,
+    "dGM_SIG_std": 0.9728,
+    "brain_SIG": 1.0885,
+    "brain_SIG_std": 1.2157
 }
