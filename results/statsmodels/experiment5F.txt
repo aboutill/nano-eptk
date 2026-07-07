@@ -3,8 +3,8 @@
 Dep. Variable:                   Type   No. Observations:                  404
 Model:                          Logit   Df Residuals:                      399
 Method:                           MLE   Df Model:                            4
-Date:                Sat, 27 Jun 2026   Pseudo R-squ.:                  0.3433
-Time:                        11:27:28   Log-Likelihood:                -61.586
+Date:                Tue, 07 Jul 2026   Pseudo R-squ.:                  0.3433
+Time:                        09:59:04   Log-Likelihood:                -61.586
 converged:                       True   LL-Null:                       -93.773
 Covariance Type:            nonrobust   LLR p-value:                 3.483e-13
 ==============================================================================
