@@ -91,6 +91,29 @@ Display the help for a specific command — for example, the Single-Acquisition 
 nano-eptk saep -h
 ```
 
+We provide helper scripts to run the EPT pipelines inside docker:
+
+```bash
+./scripts/runPipeline_dHCP_GRE_SAEP.bash
+./scripts/runPipeline_dHCP_EPI_POCR.bash
+```
+
+### Running MRtrix3, FSL and MIRTK tools
+
+All MRtrix3, FSL and MIRTK command-line tools and utilities are available both in Docker and in a local installation.
+
+For example, display the help for a specific MRtrix3 command:
+
+```bash
+mrconvert -h
+```
+
+We provide a helper script to run MRtrix3 Graphical User Interface (MRview) inside docker:
+
+```bash
+./scripts/runMRview.bash
+```
+
 ### Running the notebooks
 
 The analysis notebooks can be run locally with:
@@ -104,6 +127,10 @@ Or inside Docker using the provided helper script:
 ```bash
 ./scripts/runNotebooks.bash
 ```
+
+
+
+
 
 ---
 
