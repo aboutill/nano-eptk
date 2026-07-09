@@ -17,6 +17,7 @@ def parse_args():
             "\n"
             "Reconstruct conductivity and permittivity from complex multi-coil image\n"
             "using the single-acquisition electrical properties (SAEP) method.\n"
+            "Reference: Marques et al. (2015).\n"
             "\n"    
             "Required arguments:\n"
             " - Input multi-coil magnitude.\n"
@@ -230,10 +231,10 @@ def execute_saep_with_cfg(
     # Load configuration
     if cfg_path:
         cfg = yaml.safe_load(open(cfg_path))
-        cfg.update(kwargs)
-   
+        kwargs.update(cfg)
+
     # Run SAEP
-    saep(**cfg)
+    saep(**kwargs)
         
 
 def main():
@@ -255,7 +256,7 @@ def main():
         coils_idx=args.coils_idx,
         ref_coil_idx=args.ref_coil_idx,
         gs_sigma=args.gs_sigma,
-        gs_axes=args.gsr_axes,
+        gs_axes=args.gs_axes,
         n_svd=args.n_svd,
         f0=args.f0,
         eros_rad=args.eros_rad,

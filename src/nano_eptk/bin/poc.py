@@ -183,10 +183,10 @@ def execute_poc_with_cfg(
     # Load configuration
     if cfg_path:
         cfg = yaml.safe_load(open(cfg_path))
-        cfg.update(kwargs)
+        kwargs.update(cfg)
    
     # Run POC
-    poc(**cfg)
+    poc(**kwargs)
         
 
 def main():

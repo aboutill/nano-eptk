@@ -30,6 +30,7 @@ def degibbs(
         k_window=None,
         verbose=False,
         axes=[0,1,2],
+        **kwargs,
     ):
 
     # Initialize timer
@@ -272,6 +273,7 @@ def extract_reference_coil(
         input_mag_path,
         output_mag_path,
         ref_coil_idx=None,
+        **kwargs,
     ):
     
     # Initialize output directory

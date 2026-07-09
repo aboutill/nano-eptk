@@ -244,10 +244,10 @@ def execute_mspoc_with_cfg(
     # Load configuration
     if cfg_path:
         cfg = yaml.safe_load(open(cfg_path))
-        cfg.update(kwargs)
+        kwargs.update(cfg)
     
     # Run MSPOC
-    mspoc(**cfg)
+    mspoc(**kwargs)
         
 
 def main():

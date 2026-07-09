@@ -26,6 +26,7 @@ def _select_PE_directions(
         output_info_path,
         pe_dirs=[],
         rd_time=1.0,
+        **kwargs,
     ):
     
     # Load magnitude
@@ -69,16 +70,16 @@ def _select_PE_directions(
     
     # Set info
     up_info = {
-        "mag": input_mag_path,
-        "pha": input_pha_path,
+        "mag": str(input_mag_path),
+        "pha": str(input_pha_path),
         "pe_idx": up_idx,
         "z_smooth": up_min_z_smooth, 
         "rd_time": rd_time,
     }
     
     down_info = {
-        "mag": input_mag_path,
-        "pha": input_pha_path,
+        "mag": str(input_mag_path),
+        "pha": str(input_pha_path),
         "pe_idx": down_idx, 
         "z_smooth": down_min_z_smooth,
         "rd_time": rd_time,

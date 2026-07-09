@@ -263,10 +263,10 @@ def execute_mspocr_with_cfg(
     # Load configuration
     if cfg_path:
         cfg = yaml.safe_load(open(cfg_path))
-        cfg.update(kwargs)
+        kwargs.update(cfg)
     
     # Run MSPOCR
-    mspocr(**cfg)
+    mspocr(**kwargs)
         
 
 def main():

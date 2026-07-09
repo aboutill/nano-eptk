@@ -17,6 +17,7 @@ def parse_args():
             "\n"
             "Reconstruct conductivity from phase image using the phase-only\n"
             "convection-reaction (POCR) method.\n"
+            "Reference: Gurler and Ider (2017).\n"
             "\n"    
             "Required arguments:\n"
             " - Input phase.\n"
@@ -195,10 +196,10 @@ def execute_pocr_with_cfg(
     # Load configuration
     if cfg_path:
         cfg = yaml.safe_load(open(cfg_path))
-        cfg.update(kwargs)
+        kwargs.update(cfg)
    
     # Run POCR
-    pocr(**cfg)
+    pocr(**kwargs)
         
 
 def main():

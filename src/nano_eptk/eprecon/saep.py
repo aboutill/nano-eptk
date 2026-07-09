@@ -140,7 +140,7 @@ def _gaussian_filter(
     d = np.ndim(cmpl) 
     if np.ndim(mask) == d-1:
         mask = mask[..., None]
-    
+
     if gs_sigma > 0.0:
         
         # Set sigma
