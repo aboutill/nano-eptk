@@ -61,8 +61,8 @@ cmd="dhcp_gre_saep \
 # Launch docker
 docker run \
   --user $(id -u):$(id -g) \
-  -v "${host_workdir}/${data_dir}:${docker_workdir}/${data_dir}" \
-  -v "${host_workdir}/${cfg_dir}:${docker_workdir}/${cfg_dir}" \
+  -v "${host_workdir}/${data_dir}":"${docker_workdir}/${data_dir}" \
+  -v "${host_workdir}/${cfg_dir}":"${docker_workdir}/${cfg_dir}" \
   -it \
   --rm \
   $docker_img \
