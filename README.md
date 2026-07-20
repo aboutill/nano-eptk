@@ -135,13 +135,12 @@ Or inside Docker using the provided helper script:
 
 ### CDB Seminar — July 17, 2026
 
-Slides presented at the CDB Seminar, King's College London.
+Slides presented at the Centre for the Developing Brain Seminar, King's College London.
 
 **Title:** Radiofrequency electrical conductivity reveals a distinct
 dimension of early human brain development
 
-**File:**
-- `CDB_Seminar_170726.pdf` — PDF version
+**File:** `CDB_Seminar_170726.pdf` — PDF version
 
 **Licence:** CC BY 4.0 — free to reuse and adapt with attribution.
 
