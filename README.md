@@ -24,6 +24,7 @@ The package includes:
 - [Usage](#usage)
   - [Running the EPT tools](#running-the-ept-tools)
   - [Running the notebooks](#running-the-notebooks)
+- [Presentations](#presentations)
 - [Citation](#citation)
 - [References](#references)
 - [Contact](#contact)
@@ -128,8 +129,21 @@ Or inside Docker using the provided helper script:
 ./scripts/runNotebooks.bash
 ```
 
+--- 
 
+## Presentations
 
+### CDB Seminar — July 17, 2026
+
+Slides presented at the CDB Seminar, King's College London.
+
+**Title:** Radiofrequency electrical conductivity reveals a distinct
+dimension of early human brain development
+
+**File:**
+- `CDB_Seminar_170726.pdf` — PDF version
+
+**Licence:** CC BY 4.0 — free to reuse and adapt with attribution.
 
 
 ---
