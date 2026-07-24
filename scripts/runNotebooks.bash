@@ -34,6 +34,7 @@ command -v docker >/dev/null 2>&1 || die "docker not found on PATH"
 [[ -d "${HOST_DIR}/${cfg_dir}" ]] || die "cfg directory not found: ${HOST_DIR}/${cfg_dir}"
 [[ -d "${HOST_DIR}/${data_dir}" ]] || die "data directory not found: ${HOST_DIR}/${data_dir}"
 [[ -d "${HOST_DIR}/${notebooks_dir}" ]] || die "notebooks directory not found: ${HOST_DIR}/${notebooks_dir}"
+
 mkdir -p "${HOST_DIR}/${results_dir}"
 
 # =============================================================================
