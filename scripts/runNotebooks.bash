@@ -2,41 +2,69 @@
 # =============================================================================
 # runNotebook.bash: part of nano-eptk package.
 #
-# Run Jupyter notebooks inside Docker container interactively.
+# Run the Jupyter notebooks interactively via the nano-eptk  Docker image.
 #
+# Configuration is set in the USER INPUTS block below.
 # =============================================================================
 
-# Host directories
-host_workdir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
-cfg_dir="cfg"
-data_dir="data"
-notebooks_dir="notebooks"
-results_dir="results"
+set -euo pipefail
 
-# Docker application image name
-docker_img="aboutill/nano-eptk:latest"
+# =============================================================================
+# USER INPUTS
+# =============================================================================
+cfg_dir="cfg"             # Configuration directory, relative to the app root
+data_dir="data"           # Data directory, relative to the app root
+notebooks_dir="notebooks" # Notebooks directory, relative to the app root
+results_dir="results"     # Results directory, relative to the app root
 
-# Docker directory
-docker_workdir="/usr/src/app"
+# =============================================================================
+# Do not edit
+# =============================================================================
+readonly HOST_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
+readonly DOCKER_DIR="/usr/src/app"
+readonly DOCKER_IMG="aboutill/nano-eptk:latest"
+readonly PORT=8888
 
-# Port (host and container must match Jupyter's --port)
-port=8008
+die() { echo "Error: $*" >&2; exit 1; }
 
-# Launch docker
+# =============================================================================
+# Validation
+# =============================================================================
+command -v docker >/dev/null 2>&1 || die "docker not found on PATH"
+[[ -d "${HOST_DIR}/${cfg_dir}" ]] || die "cfg directory not found: ${HOST_DIR}/${cfg_dir}"
+[[ -d "${HOST_DIR}/${data_dir}" ]] || die "data directory not found: ${HOST_DIR}/${data_dir}"
+[[ -d "${HOST_DIR}/${notebooks_dir}" ]] || die "notebooks directory not found: ${HOST_DIR}/${notebooks_dir}"
+mkdir -p "${HOST_DIR}/${results_dir}"
+
+# =============================================================================
+# Build command
+# =============================================================================
+app_cmd=(
+  jupyter notebook
+  --ip=0.0.0.0
+  --port="${PORT}"
+  --no-browser
+)
+
+docker_flags=( 
+  --rm 
+  --user "$(id -u):$(id -g)" 
+  -p "${PORT}":"${PORT}" 
+  --volume "${HOST_DIR}/${cfg_dir}:${DOCKER_DIR}/${cfg_dir}"
+  --volume "${HOST_DIR}/${data_dir}:${DOCKER_DIR}/${data_dir}"
+  --volume "${HOST_DIR}/${notebooks_dir}:${DOCKER_DIR}/${notebooks_dir}"
+  --volume "${HOST_DIR}/${results_dir}:${DOCKER_DIR}/${results_dir}"
+)
+[[ -t 0 && -t 1 ]] && docker_flags+=( -it )
+
+# =============================================================================
+# Run Docker application
+# =============================================================================
+echo "Running notebooks via ${DOCKER_IMG} ..."
+
 docker run \
-  --user $(id -u):$(id -g) \
-  -v "${host_workdir}/${cfg_dir}":"${docker_workdir}/${cfg_dir}" \
-  -v "${host_workdir}/${data_dir}":"${docker_workdir}/${data_dir}" \
-  -v "${host_workdir}/${notebooks_dir}":"${docker_workdir}/${notebooks_dir}" \
-  -v "${host_workdir}/${results_dir}":"${docker_workdir}/${results_dir}" \
-  -p "${port}":"${port}" \
-  -it \
-  --rm \
-  "$docker_img" \
-  jupyter notebook \
-    --ip=0.0.0.0 \
-    --port="${port}" \
-    --no-browser
-
-# Cmd display
-echo "Docker container stopped!"
+  "${docker_flags[@]}" \
+  "${DOCKER_IMG}" \
+  "${app_cmd[@]}"
+  
+echo "Done!"
