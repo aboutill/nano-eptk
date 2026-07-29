@@ -68,8 +68,8 @@ app_cmd=(
 docker_flags=( 
   --rm 
   --user "$(id -u):$(id -g)"
-  --volume "${HOST_DIR}/${data_dir}":"${DOCKER_DIR}/${data_dir}"
-  --volume "${HOST_DIR}/${cfg_dir}":"${DOCKER_DIR}/${cfg_dir}"
+  --volume "${HOST_DIR}/${data_dir}:${DOCKER_DIR}/${data_dir}"
+  --volume "${HOST_DIR}/${cfg_dir}:${DOCKER_DIR}/${cfg_dir}"
 )
 [[ -t 0 && -t 1 ]] && docker_flags+=( -it )
 

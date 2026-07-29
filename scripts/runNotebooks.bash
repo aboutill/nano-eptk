@@ -50,7 +50,7 @@ app_cmd=(
 docker_flags=( 
   --rm 
   --user "$(id -u):$(id -g)" 
-  -p "${PORT}":"${PORT}" 
+  -p "${PORT}:${PORT}" 
   --volume "${HOST_DIR}/${cfg_dir}:${DOCKER_DIR}/${cfg_dir}"
   --volume "${HOST_DIR}/${data_dir}:${DOCKER_DIR}/${data_dir}"
   --volume "${HOST_DIR}/${notebooks_dir}:${DOCKER_DIR}/${notebooks_dir}"

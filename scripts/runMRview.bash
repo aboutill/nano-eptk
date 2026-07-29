@@ -39,7 +39,7 @@ app_cmd=( mrview )
 docker_flags=( 
   --rm 
   --user "$(id -u):$(id -g)"
-  --volume "${HOST_DIR}/${data_dir}":"${DOCKER_DIR}/${data_dir}"
+  --volume "${HOST_DIR}/${data_dir}:${DOCKER_DIR}/${data_dir}"
   --volume /tmp/.X11-unix:/tmp/.X11-unix 
   --gpus all
   --security-opt apparmor=unconfined
